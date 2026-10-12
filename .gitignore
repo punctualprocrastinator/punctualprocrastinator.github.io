@@ -1,2 +1,5 @@
 # the source photo; portrait.jpg is the copy the site uses
 my photo.jpg
+
+# local artwork preview sheet, not part of the site
+art-preview.html

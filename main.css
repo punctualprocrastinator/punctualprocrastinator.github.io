@@ -83,54 +83,68 @@ body {
    the markup, no pointer events, gone in print. */
 
 :root {
-    --art-a: #545a9c;
-    --art-b: #9095ca;
-    --art-c: #b4772f;          /* the one warm note, used sparingly */
-    --art-opacity: 0.5;
+    --art-a: #4a5196;          /* periwinkle: grounds the line work */
+    --art-b: #8b91c8;
+    --art-c: #c08a28;          /* gold: carries the wash */
+    --art-d: #a9552c;          /* terracotta: the deep note */
+    --art-opacity: 0.85;
 }
 @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
-        --art-a: #8e95e0;
-        --art-b: #6a70ad;
-        --art-c: #d9a05c;
-        --art-opacity: 0.42;
+        --art-a: #9aa0e8;
+        --art-b: #6f76b4;
+        --art-c: #e8b75e;      /* gold holds up against the dark ground */
+        --art-d: #d4825a;
+        --art-opacity: 0.70;
     }
 }
 :root[data-theme="dark"] {
-    --art-a: #8e95e0;
-    --art-b: #6a70ad;
-    --art-c: #d9a05c;
-    --art-opacity: 0.42;
+    --art-a: #9aa0e8;
+    --art-b: #6f76b4;
+    --art-c: #e8b75e;
+    --art-d: #d4825a;
+    --art-opacity: 0.70;
 }
 
 .artwork {
     position: absolute;
-    top: -2rem;
-    right: -6rem;
-    width: clamp(20rem, 52vw, 44rem);
+    top: 0;
+    right: 0;
+    width: clamp(22rem, 58vw, 52rem);
+    height: clamp(26rem, 70vh, 46rem);
+    overflow: hidden;
     z-index: 0;
     opacity: var(--art-opacity);
     pointer-events: none;
     user-select: none;
 }
-.artwork svg { display: block; width: 100%; height: auto; }
+.artwork svg { display: block; width: 100%; height: 100%; }
 
 /* The drawing fades out before it reaches the reading column. */
 .artwork::after {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(to right,
-        var(--paper) 0%,
-        color-mix(in srgb, var(--paper) 55%, transparent) 26%,
-        transparent 62%);
+    background:
+        linear-gradient(to right,
+            var(--paper) 0%,
+            color-mix(in srgb, var(--paper) 70%, transparent) 30%,
+            transparent 72%),
+        linear-gradient(to bottom,
+            transparent 45%,
+            color-mix(in srgb, var(--paper) 72%, transparent) 80%,
+            var(--paper) 100%);
 }
 
 /* Text sits above it, always. */
 .wrap { position: relative; z-index: 1; }
 
 @media (max-width: 52rem) {
-    .artwork { right: -10rem; top: -1rem; opacity: calc(var(--art-opacity) * 0.6); }
+    .artwork {
+        width: 130%;
+        height: 22rem;
+        opacity: calc(var(--art-opacity) * 0.55);
+    }
 }
 @media (prefers-reduced-motion: no-preference) {
     .artwork { transition: opacity 0.4s ease; }
