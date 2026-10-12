@@ -77,6 +77,43 @@
     }
 
     /* ---------------------------------------------------------------
+       One page, four sections: mark the nav link for whichever section
+       you are reading. Falls back to doing nothing on browsers without
+       IntersectionObserver - the links still jump.
+       --------------------------------------------------------------- */
+
+    var navLinks = Array.prototype.slice.call(
+        document.querySelectorAll('#sitenav a[href^="#"]'));
+
+    if (navLinks.length && 'IntersectionObserver' in window) {
+        var byId = {};
+        navLinks.forEach(function (a) { byId[a.getAttribute('href').slice(1)] = a; });
+
+        var seen = {};
+        var observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) { seen[e.target.id] = e.isIntersecting; });
+
+            // The topmost visible section wins, so scrolling up and down
+            // both land on something sensible.
+            var current = null;
+            Object.keys(byId).forEach(function (id) {
+                if (!current && seen[id]) { current = id; }
+            });
+
+            navLinks.forEach(function (a) {
+                var on = a.getAttribute('href') === '#' + current;
+                if (on) { a.setAttribute('aria-current', 'true'); }
+                else { a.removeAttribute('aria-current'); }
+            });
+        }, { rootMargin: '-10% 0px -70% 0px' });
+
+        Object.keys(byId).forEach(function (id) {
+            var section = document.getElementById(id);
+            if (section) { observer.observe(section); }
+        });
+    }
+
+    /* ---------------------------------------------------------------
        Paper dialogs. Each index entry has a button and a <dialog>; the
        button is hidden until this runs, so with JS off the page still
        works and the titles still link to the full entry.

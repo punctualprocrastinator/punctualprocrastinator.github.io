@@ -120,6 +120,10 @@ h1 a:hover { background: none; }
 /* ------------------------------ nav --------------------------- */
 
 #sitenav {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    background-color: var(--paper);
     margin: 1.8rem 0 0;
     border-top: 3px double var(--rule);
     border-bottom: 3px double var(--rule);
@@ -146,6 +150,7 @@ h1 a:hover { background: none; }
     border-bottom: 1px solid transparent;
 }
 #sitenav a:hover { border-bottom-color: var(--accent); background: none; }
+#sitenav [aria-current="true"],
 #sitenav [aria-current="page"] {
     color: var(--accent);
     padding-bottom: 2px;
@@ -179,6 +184,7 @@ main > blockquote {
 /* ------------------------------ headings ---------------------- */
 
 h2 {
+    scroll-margin-top: 3.5rem;
     display: flex;
     align-items: center;
     gap: 0.9rem;
@@ -287,15 +293,42 @@ hr { margin: 3rem auto; border: 0; border-top: 1px solid var(--rule); max-width:
     text-align: left;
 }
 
-.contact { list-style: none; padding: 0; margin: 1.2rem 0 0; }
-.contact li { margin: 0.3rem 0; font-size: 0.92rem; line-height: 1.35; }
-.contact .label {
-    display: block;
+.contact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.2rem 1.1rem;
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0;
     font-family: var(--mono);
-    font-size: 0.6rem;
-    letter-spacing: 0.12em;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
+}
+.contact li { margin: 0; }
+
+/* The one-line facts under the intro paragraph: where I am, in order. */
+.facts {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0;
+    font-size: 0.92rem;
+    line-height: 1.45;
+}
+.facts li {
+    margin: 0.25rem 0;
+    padding-left: 0.9rem;
+    border-left: 2px solid var(--hairline);
     color: var(--muted);
+}
+.facts .k {
+    display: inline;
+    margin-right: 0.45rem;
+    font-family: var(--mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink);
 }
 
 @media (max-width: 46rem) {
@@ -308,12 +341,13 @@ hr { margin: 3rem auto; border: 0; border-top: 1px solid var(--rule); max-width:
 /* Portrait and contact, side by side under the masthead. */
 .intro {
     display: grid;
-    grid-template-columns: 11rem minmax(0, 1fr);
-    gap: 1.8rem;
+    grid-template-columns: 12rem minmax(0, 1fr);
+    gap: 2rem;
     align-items: start;
-    max-width: var(--measure);
+    max-width: 44rem;
     margin: 2.4rem auto 0;
 }
+.intro p { text-align: left; margin-bottom: 0; }
 .intro .intro-side h4:first-child { margin-top: 0; }
 @media (max-width: 34rem) {
     .intro { grid-template-columns: 1fr; gap: 1.2rem; }

@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- EDIT: swap punctualprocrastinator for your GitHub username (or your domain). -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://punctualprocrastinator.github.io/</loc></url>
-  <url><loc>https://punctualprocrastinator.github.io/safety.html</loc></url>
-  <url><loc>https://punctualprocrastinator.github.io/capability.html</loc></url>
-  <url><loc>https://punctualprocrastinator.github.io/writing.html</loc></url>
   <url><loc>https://punctualprocrastinator.github.io/cv.html</loc></url>
 </urlset>

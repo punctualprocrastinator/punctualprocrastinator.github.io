@@ -4,11 +4,9 @@ A static personal site: four hand-edited HTML pages, one stylesheet, one small
 script. No build step, no dependencies, no generator. Edit a file, push, done.
 
 ```
-index.html      bio, photo, contact, selected work
-safety.html     AI Safety Research
-capability.html AI Capability Research (Lexsi Labs)
-writing.html    posts, notes, interesting reads
-cv.html         education, experience, awards, teaching, service
+index.html      the whole site: intro, Selected Work, AI Safety,
+                Tabular Foundation Models, AI4Science
+cv.html         full CV (linked, not in the section nav)
 404.html        shown by GitHub Pages for bad URLs
 main.css        the whole design
 app.js          light/dark toggle + email obfuscation
