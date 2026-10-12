@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Teaching &mdash; Shivam Dubey</title>
+<meta name="description" content="The Redarc Fellows curriculum: an eight-session mechanistic interpretability cohort taught by Shivam Dubey.">
+<meta name="author" content="Shivam Dubey">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Teaching &mdash; Shivam Dubey">
+<meta property="og:url" content="https://punctualprocrastinator.github.io/teaching.html">
+<meta property="og:image" content="https://punctualprocrastinator.github.io/og.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="canonical" href="https://punctualprocrastinator.github.io/teaching.html">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="main.css">
+<!-- Applies a stored theme override before first paint, so there is no flash. -->
+<script>try{var t=localStorage.getItem("theme");
+if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+<script src="app.js" defer></script>
+</head>
+
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="wrap">
+
+<header id="masthead">
+    <button id="theme-toggle" type="button" aria-live="polite">Dark</button>
+    <h1><a href="index.html">Shivam Dubey</a></h1>
+</header>
+<nav id="sitenav" aria-label="Main">
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="safety.html">AI Safety Research</a></li>
+        <li><a href="capability.html">AI Capability Research</a></li>
+        <li><a href="resume.html">Resume</a></li>
+        <li><a href="writing.html">Writing</a></li>
+        <li><a href="teaching.html" aria-current="page">Teaching</a></li>
+    </ul>
+</nav>
+
+<main id="main">
+
+    <p class="lead">I write and teach <strong>Redarc Fellows</strong>, the
+    eight-session mechanistic interpretability cohort at
+    <a href="https://www.redarclabs.com" target="_blank" rel="noopener">Redarc Labs</a>.
+    There is no interpretability library in the stack: hooks are written by
+    hand, because people learn the thing faster when nothing is hidden from
+    them.</p>
+
+    <p>One rule is set in week one and repeated every week after it: <strong>a
+    rigorous investigation with a careful negative result counts as a
+    success.</strong> Two papers came out of the first cohort.</p>
+
+    <h2>Curriculum</h2>
+
+    <div class="cv-item">
+        <span class="when">Session 1<br>90 min</span>
+        <div class="what">
+            <p><strong>Why did it say that?</strong></p>
+            <p>Open a language model, trace how it builds an answer layer by layer, and compare Hindi and French.</p>
+            <p class="where"><span class="topics">hooks, logit lens, residual stream</span><br>
+            <span class="milestone">Milestone: Teams formed, with two or three candidate concepts.</span></p>
+        </div>
+    </div>
+
+    <div class="cv-item">
+        <span class="when">Session 2<br>90 min</span>
+        <div class="what">
+            <p><strong>Make it say something else</strong></p>
+            <p>Change the model&rsquo;s output by adding a vector to its residual stream, then measure the cost.</p>
+            <p class="where"><span class="topics">steering, contrastive pairs, working range</span><br>
+            <span class="milestone">Milestone: Ten to twenty contrastive pairs and one steering demo.</span></p>
+        </div>
+    </div>
+
+    <div class="cv-item">
+        <span class="when">Session 3<br>90 min</span>
+        <div class="what">
+            <p><strong>Prove it</strong></p>
+            <p>Turn the previous week&rsquo;s result into a measurement with a versioned eval set, a baseline, and controls.</p>
+            <p class="where"><span class="topics">evaluation, controls, model-written evals</span><br>
+            <span class="milestone">Milestone: Versioned eval set, baseline number, repository.</span></p>
+        </div>
+    </div>
+
+    <div class="cv-item">
+        <span class="when">Session 4<br>90 min</span>
+        <div class="what">
+            <p><strong>Where does it actually happen?</strong></p>
+            <p>Use activation patching to locate where the output depends on a given site.</p>
+            <p class="where"><span class="topics">activation patching, causal evidence, attribution patching</span><br>
+            <span class="milestone">Milestone: Patching heatmap for your concept, and a draft started.</span></p>
+        </div>
+    </div>
+
+    <div class="cv-item">
+        <span class="when">Session 5<br>90 min</span>
+        <div class="what">
+            <p><strong>What can you read off a vector?</strong></p>
+            <p>Train a probe on activations and learn why a high accuracy alone proves little.</p>
+            <p class="where"><span class="topics">probes, control tasks, representation geometry</span><br>
+            <span class="milestone">Milestone: Probe with a control-task baseline.</span></p>
+        </div>
+    </div>
+
+    <div class="cv-item">
+        <span class="when">Session 6<br>120 min</span>
+        <div class="what">
+            <p><strong>Attack the figure</strong></p>
+            <p>Teams present their best figure for group critique, then rebuild it to a reviewer-acceptable spec.</p>
+            <p class="where"><span class="topics">figures, triangulation, seeds</span><br>
+            <span class="milestone">Milestone: The figure that becomes Figure 1.</span></p>
+        </div>
+    </div>
+
+    <div class="cv-item">
+        <span class="when">Session 7<br>90 min</span>
+        <div class="what">
+            <p><strong>Make it survive review</strong></p>
+            <p>Turn the figure into a paper.</p>
+            <p class="where"><span class="topics">writing, peer review, methods</span><br>
+            <span class="milestone">Milestone: Introduction and methods draft, plus a review of another team&rsquo;s draft.</span></p>
+        </div>
+    </div>
+
+    <div class="cv-item">
+        <span class="when">Session 8<br>120 min</span>
+        <div class="what">
+            <p><strong>Why is your work cool?</strong></p>
+            <p>Teams give talks.</p>
+            <p class="where"><span class="topics">demo day, talks, submission</span><br>
+            <span class="milestone">Milestone: Talk delivered, with a venue and date set for the write-up.</span></p>
+        </div>
+    </div>
+
+    <p><a href="https://www.redarclabs.com/curriculum" target="_blank" rel="noopener">The curriculum at Redarc Labs &rarr;</a></p>
+
+    <h2>Also</h2>
+    <p>I mentor three first-author projects in Cohort 01, built around one
+    thesis: expressed confidence in LLMs is separable from internal knowledge.
+    Two of those papers are under review at NeurIPS 2026 workshops.</p>
+
+</main>
+
+<footer>
+    <p><a href="resume.html">Resume</a> &middot;
+       <a href="https://github.com/punctualprocrastinator" target="_blank" rel="noopener">GitHub</a> &middot;
+       <a href="https://linkedin.com/in/syntaxsavant" rel="me">LinkedIn</a></p>
+    <p class="keywords">Shivam Dubey &middot; AI safety &middot; mechanistic interpretability &middot; adversarial robustness &middot; tabular foundation models &middot; Lexsi Labs &middot; IIT Madras</p>
+    <p>Last updated <time datetime="2026-10">October 2026</time>.</p>
+</footer>
+
+</div><!-- /.wrap -->
+</body>
+</html>

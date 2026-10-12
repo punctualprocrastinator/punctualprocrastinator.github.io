@@ -585,6 +585,17 @@ hr { margin: 3rem auto; border: 0; border-top: 1px solid var(--rule); max-width:
     .cv-item .when { padding-top: 0; }
 }
 
+/* Curriculum rows on the teaching page. */
+.cv-item .topics {
+    font-family: var(--mono);
+    font-size: 0.64rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+.cv-item .milestone { font-size: 0.88rem; }
+.cv-item .when { line-height: 1.5; }
+
 /* ------------------------------ footer ------------------------ */
 
 footer {

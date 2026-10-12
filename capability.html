@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>AI Capability Research &mdash; Shivam Dubey</title>
-<meta name="description" content="AI Capability Research by Shivam Dubey.">
+<meta name="description" content="Capability research by Shivam Dubey: tabular foundation models, synthetic pretraining data, and AI for science.">
 <meta name="author" content="Shivam Dubey">
 
 <meta property="og:type" content="website">
@@ -31,21 +31,45 @@ if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)
     <button id="theme-toggle" type="button" aria-live="polite">Dark</button>
     <h1><a href="index.html">Shivam Dubey</a></h1>
 </header>
-<nav id="sitenav" aria-label="Research sections">
+<nav id="sitenav" aria-label="Main">
     <ul>
+        <li><a href="index.html">Home</a></li>
         <li><a href="safety.html">AI Safety Research</a></li>
-        <li><a href="tabular.html">Tabular Foundation Model</a></li>
         <li><a href="capability.html" aria-current="page">AI Capability Research</a></li>
-        <li><a href="science.html">AI for Science Research</a></li>
+        <li><a href="resume.html">Resume</a></li>
+        <li><a href="writing.html">Writing</a></li>
+        <li><a href="teaching.html">Teaching</a></li>
     </ul>
 </nav>
 
 <main id="main">
 
-    <p class="lead">What makes a foundation model good in the first place &mdash; what it is pretrained on, and which inductive biases are worth building in.</p>
+    <p class="lead">Capability research on foundation models: what makes one good in the first place, what it is pretrained on, and how you would know from its behaviour which part of the data was responsible. Most of this is with the Tabular Foundation Models Lab at <strong>Lexsi Labs</strong>.</p>
 
-    <h2>Papers</h2>
     <p class="footnote">* equal contribution. NeurIPS workshop papers are non-archival.</p>
+
+    <h2>Tabular foundation models</h2>
+
+    <article class="pub" data-cat="tabular">
+        <h3>When Does Synthetic Relational Data Teach Models to Use Relations? Tracing Predictive Structure from Pretraining Data to Model Behavior</h3>
+        <span class="venue">NeurIPS 2026 &middot; ATTRIB Workshop</span>
+        <p class="authors"><span class="me">Shivam Dubey</span>, Mohamed Bouadi, Nassim Bouarour, Varun Kulkarni, Aditya Tanna, Vinay Kumar Sankarapu</p>
+        <p class="abstract">Synthetic relational pretraining data is supposed to teach a tabular foundation model to use relations. This traces the predictive structure from the pretraining distribution through to model behaviour, and separates the cases where the model genuinely learns to use relations from the cases where it only appears to.</p>
+    </article>
+    <article class="pub" data-cat="tabular">
+        <h3>From Behavior to Provenance: Attributing Tabular Foundation Models to Synthetic Pretraining Data</h3>
+        <span class="venue">NeurIPS 2026 &middot; ATTRIB Workshop</span>
+        <p class="authors">Mohamed Bouadi, Nassim Bouarour, <span class="me">Shivam Dubey</span>, Aditya Tanna, Vinay Kumar Sankarapu</p>
+        <p class="abstract">Attributing what a tabular foundation model does at inference back to the synthetic data it was pretrained on &mdash; behaviour to provenance, rather than the usual direction.</p>
+    </article>
+    <article class="pub" data-cat="tabular">
+        <h3>Context Poisoning in Tabular ICL: Geometric Hijacking and Inverse Scaling</h3>
+        <span class="venue"><span class="status">2026 &mdash; mechanistic interpretability</span></span>
+        <p class="authors"><span class="me">Shivam Dubey</span></p>
+        <p class="abstract">The first logit-lens implementation for tabular in-context learning: a classification phase transition at Layer 8, representation hijacking as early as Layer 4, and total hijacking from 1.2% poisoned context. Larger models are more vulnerable, not less. QK/OV decomposition and direct logit attribution show that mechanistically-informed defences &mdash; PCA subspace scrubbing, head ablation &mdash; fail because of manifold redundancy.</p>
+        <p class="links"><a href="https://github.com/punctualprocrastinator" target="_blank" rel="noopener">Code</a></p>
+    </article>
+    <h2>Pretraining and inductive bias</h2>
 
     <article class="pub" data-cat="capability">
         <h3>What You Pretrain On Matters: Synthetic Task Distributions Determine Tabular Foundation Model Quality</h3>
@@ -53,12 +77,19 @@ if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)
         <p class="authors">Mohamed Bouadi, Nassim Bouarour, Varun Kulkarni, Aditya Tanna, <span class="me">Shivam Dubey</span>, Vinay Kumar Sankarapu</p>
         <p class="abstract">Introduces O'Prior, a compositional realism prior for synthetic pretraining of tabular foundation models. I ran the interpretability and data-quality ablations, which confirm that mechanism diversity, realism composition, and shift-aware stress each contribute independently to downstream quality.</p>
     </article>
+    <h2>AI for science</h2>
 
+    <article class="pub" data-cat="science">
+        <h3>Physics-Informed Neural Operators with Multi-Method Explainability for Ocean Temperature Prediction</h3>
+        <span class="venue">AAAI 2026 &middot; XAI4Science Workshop</span>
+        <p class="authors"><span class="me">Shivam Dubey</span></p>
+        <p class="abstract">Neural operators for ocean temperature prediction, with the physics constraint and the explanation methods carrying equal weight: a forecast you cannot interrogate is not much use to the people who have to act on it.</p>
+    </article>
 
 </main>
 
 <footer>
-    <p><a href="cv.pdf">CV</a> &middot;
+    <p><a href="resume.html">Resume</a> &middot;
        <a href="https://github.com/punctualprocrastinator" target="_blank" rel="noopener">GitHub</a> &middot;
        <a href="https://linkedin.com/in/syntaxsavant" rel="me">LinkedIn</a></p>
     <p class="keywords">Shivam Dubey &middot; AI safety &middot; mechanistic interpretability &middot; adversarial robustness &middot; tabular foundation models &middot; Lexsi Labs &middot; IIT Madras</p>

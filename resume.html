@@ -4,14 +4,17 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>CV &mdash; Shivam Dubey</title>
-<meta name="description" content="Curriculum vitae of Shivam Dubey: AI safety, mechanistic interpretability, adversarial robustness.">
+<title>Resume &mdash; Shivam Dubey</title>
+<meta name="description" content="Resume of Shivam Dubey: research experience, publications, education and skills.">
+<meta name="author" content="Shivam Dubey">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="CV &mdash; Shivam Dubey">
-<meta property="og:url" content="https://punctualprocrastinator.github.io/cv.html">
+<meta property="og:title" content="Resume &mdash; Shivam Dubey">
+<meta property="og:url" content="https://punctualprocrastinator.github.io/resume.html">
+<meta property="og:image" content="https://punctualprocrastinator.github.io/og.png">
+<meta name="twitter:card" content="summary_large_image">
 
-<link rel="canonical" href="https://punctualprocrastinator.github.io/cv.html">
+<link rel="canonical" href="https://punctualprocrastinator.github.io/resume.html">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="main.css">
 <!-- Applies a stored theme override before first paint, so there is no flash. -->
@@ -28,25 +31,26 @@ if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)
     <button id="theme-toggle" type="button" aria-live="polite">Dark</button>
     <h1><a href="index.html">Shivam Dubey</a></h1>
 </header>
-
-<nav id="sitenav" aria-label="Research sections">
+<nav id="sitenav" aria-label="Main">
     <ul>
+        <li><a href="index.html">Home</a></li>
         <li><a href="safety.html">AI Safety Research</a></li>
-        <li><a href="tabular.html">Tabular Foundation Model</a></li>
         <li><a href="capability.html">AI Capability Research</a></li>
-        <li><a href="science.html">AI for Science Research</a></li>
+        <li><a href="resume.html" aria-current="page">Resume</a></li>
+        <li><a href="writing.html">Writing</a></li>
+        <li><a href="teaching.html">Teaching</a></li>
     </ul>
 </nav>
 
 <main id="main">
 
+    <p class="lead">AI researcher working on mechanistic interpretability,
+    adversarial robustness and white-box AI control.</p>
+
+
     <!-- This page prints cleanly - nav, toggle and photo are hidden in the
          print styles - so Ctrl+P to PDF gives a serviceable copy. Drop your
          LaTeX PDF in as cv.pdf and the link below starts working. -->
-    <p class="lead">AI safety researcher: mechanistic interpretability,
-    adversarial robustness, white-box AI control.
-    <a href="cv.pdf">PDF version</a>.</p>
-
     <h2>Research experience</h2>
 
     <div class="cv-item">
@@ -92,7 +96,7 @@ if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)
             <p>Capability research on tabular foundation models: attributing
             model behaviour back to synthetic pretraining data. Two papers at
             the ATTRIB workshop, NeurIPS 2026, and one at FMSD, ICML 2026.
-            <a href="tabular.html">Listed here</a>.</p>
+            <a href="capability.html">Listed here</a>.</p>
         </div>
     </div>
 
@@ -124,7 +128,7 @@ if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)
 
     <h2>Publications</h2>
     <p>Full descriptions on the <a href="safety.html">AI safety</a> and
-    <a href="tabular.html">AI capability</a> pages.</p>
+    <a href="capability.html">AI capability</a> pages.</p>
 
     <h4>Peer-reviewed and accepted</h4>
     <ul class="entries">
@@ -150,17 +154,17 @@ if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)
         </li>
         <li>
             <span class="date">2026</span>
-            <span class="what"><a href="tabular.html">When Does Synthetic Relational Data Teach Models to Use Relations? Tracing Predictive Structure from Pretraining Data to Model Behavior</a>
+            <span class="what"><a href="capability.html">When Does Synthetic Relational Data Teach Models to Use Relations? Tracing Predictive Structure from Pretraining Data to Model Behavior</a>
                 <span class="note">ATTRIB Workshop, NeurIPS 2026. First author, with Bouadi, Bouarour, Kulkarni, Tanna, Sankarapu</span></span>
         </li>
         <li>
             <span class="date">2026</span>
-            <span class="what"><a href="tabular.html">From Behavior to Provenance: Attributing Tabular Foundation Models to Synthetic Pretraining Data</a>
+            <span class="what"><a href="capability.html">From Behavior to Provenance: Attributing Tabular Foundation Models to Synthetic Pretraining Data</a>
                 <span class="note">ATTRIB Workshop, NeurIPS 2026. With Bouadi, Bouarour, Tanna, Sankarapu</span></span>
         </li>
         <li>
             <span class="date">2026</span>
-            <span class="what"><a href="tabular.html">What You Pretrain On Matters: Synthetic Task Distributions Determine Tabular Foundation Model Quality</a>
+            <span class="what"><a href="capability.html">What You Pretrain On Matters: Synthetic Task Distributions Determine Tabular Foundation Model Quality</a>
                 <span class="note">FMSD Workshop, ICML 2026, accepted poster. With Bouadi, Bouarour, Kulkarni, Tanna, Sankarapu</span></span>
         </li>
         <li>
@@ -170,7 +174,7 @@ if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)
         </li>
         <li>
             <span class="date">2026</span>
-            <span class="what"><a href="tabular.html">Physics-Informed Neural Operators with Multi-Method Explainability for Ocean Temperature Prediction</a>
+            <span class="what"><a href="capability.html">Physics-Informed Neural Operators with Multi-Method Explainability for Ocean Temperature Prediction</a>
                 <span class="note">XAI4Science Workshop, AAAI 2026. Sole author</span></span>
         </li>
         <li>
@@ -260,9 +264,10 @@ if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)
         <span class="when">2026</span>
         <div class="what">
             <p><strong>Redarc Fellows</strong><br>
-            <span class="where">Eight-week mechanistic interpretability cohort</span></p>
-            <p>Taught with PyTorch hooks and Hugging Face directly, no wrapper
-            libraries.</p>
+            <span class="where">Eight-session mechanistic interpretability cohort</span></p>
+            <p>Written and taught by me, with PyTorch hooks and Hugging Face
+            directly and no interpretability library in the stack.
+            <a href="teaching.html">The curriculum is here</a>.</p>
         </div>
     </div>
 
@@ -287,12 +292,13 @@ if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)
 </main>
 
 <footer>
-    <p><a href="index.html">Home</a> &middot;
-       <a href="safety.html">AI Safety Research</a> &middot;
-       <a href="cv.pdf">CV as PDF</a></p>
+    <p><a href="cv.pdf">Download as PDF</a> &middot;
+       <a href="https://github.com/punctualprocrastinator" target="_blank" rel="noopener">GitHub</a> &middot;
+       <a href="https://linkedin.com/in/syntaxsavant" rel="me">LinkedIn</a></p>
+    <p class="keywords">Shivam Dubey &middot; AI safety &middot; mechanistic interpretability &middot; adversarial robustness &middot; tabular foundation models &middot; Lexsi Labs &middot; IIT Madras</p>
     <p>Last updated <time datetime="2026-10">October 2026</time>.</p>
 </footer>
 
-</div>
+</div><!-- /.wrap -->
 </body>
 </html>
