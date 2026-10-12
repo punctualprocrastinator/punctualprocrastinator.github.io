@@ -267,6 +267,10 @@ hr { margin: 3rem auto; border: 0; border-top: 1px solid var(--rule); max-width:
 
 #portrait {
     width: 100%;
+    /* height:auto is load-bearing: without it the img's height attribute
+       wins as a presentational hint, the box stops being square, and
+       object-fit crops a vertical strip out of the middle of the photo. */
+    height: auto;
     display: block;
     aspect-ratio: 1 / 1;
     object-fit: cover;
