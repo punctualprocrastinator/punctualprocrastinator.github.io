@@ -293,6 +293,15 @@ hr { margin: 3rem auto; border: 0; border-top: 1px solid var(--rule); max-width:
     text-align: left;
 }
 
+/* Under the portrait: a short stacked list, not a row. */
+.intro-photo .contact {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+    margin-top: 0.9rem;
+    font-size: 0.72rem;
+}
+
 .contact {
     display: flex;
     flex-wrap: wrap;
@@ -351,7 +360,7 @@ hr { margin: 3rem auto; border: 0; border-top: 1px solid var(--rule); max-width:
 .intro .intro-side h4:first-child { margin-top: 0; }
 @media (max-width: 34rem) {
     .intro { grid-template-columns: 1fr; gap: 1.2rem; }
-    .intro #portrait { max-width: 11rem; }
+    .intro-photo { max-width: 12rem; }
 }
 
 /* ------------------------------ paper dialogs ----------------- */
