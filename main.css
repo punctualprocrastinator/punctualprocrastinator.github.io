@@ -88,11 +88,11 @@ body {
    stays above 11:1 in light and 12:1 in dark. */
 
 :root {
-    --atm-L: 0.85;
-    --atm-C: 0.095;
-    --atm-alpha: 0.95;
-    --atm-veil: 50%;
-    --grain: 0.05;
+    --atm-L: 0.86;
+    --atm-C: 0.085;
+    --atm-alpha: 0.85;
+    --atm-veil: 52%;
+    --grain: 0.025;
     --h1: 272; --h2: 300; --h3: 335; --h4: 232; --h5: 200;
     --sp: 0;                         /* scroll progress, set by app.js */
 
@@ -103,11 +103,11 @@ body {
 }
 @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
-        --atm-L: 0.42;
-        --atm-C: 0.115;
-        --atm-alpha: 0.85;
-        --atm-veil: 48%;
-        --grain: 0.07;
+        --atm-L: 0.36;
+        --atm-C: 0.055;      /* in gamut: the limit here is 0.061 */
+        --atm-alpha: 0.70;
+        --atm-veil: 52%;
+        --grain: 0.03;
         --art-a: #98a6ea;
         --art-b: #8874ae;
         --art-c: #e694bb;
@@ -115,11 +115,11 @@ body {
     }
 }
 :root[data-theme="dark"] {
-    --atm-L: 0.42;
-    --atm-C: 0.115;
-    --atm-alpha: 0.85;
-    --atm-veil: 48%;
-    --grain: 0.07;
+    --atm-L: 0.36;
+    --atm-C: 0.055;
+    --atm-alpha: 0.70;
+    --atm-veil: 52%;
+    --grain: 0.03;
     --art-a: #98a6ea;
     --art-b: #8874ae;
     --art-c: #e694bb;
@@ -157,34 +157,34 @@ body[data-art="teaching"]   { --h1: 240; --h2: 270; --h3: 202; --h4: 300; --h5: 
 .backdrop .b1 {
     --h: var(--h1);
     top: -26vmax; right: -18vmax;
-    opacity: calc(var(--atm-alpha) * (1 - var(--sp) * 0.4));
-    transform: translate3d(calc(var(--sp) * -9vw), calc(var(--sp) * 16vh), 0)
-               scale(calc(1 + var(--sp) * 0.18));
+    opacity: calc(var(--atm-alpha) * (1 - var(--sp) * 0.25));
+    transform: translate3d(calc(var(--sp) * -4vw), calc(var(--sp) * 8vh), 0)
+               scale(calc(1 + var(--sp) * 0.08));
 }
 .backdrop .b2 {
     --h: var(--h2);
     width: 58vmax; height: 58vmax;
     top: 14vh; right: -16vmax;
-    transform: translate3d(calc(var(--sp) * 12vw), calc(var(--sp) * -10vh), 0);
+    transform: translate3d(calc(var(--sp) * 5vw), calc(var(--sp) * -5vh), 0);
 }
 .backdrop .b3 {
     --h: var(--h3);
     bottom: -30vmax; left: -22vmax;
-    transform: translate3d(calc(var(--sp) * 8vw), calc(var(--sp) * -18vh), 0)
-               scale(calc(1 + var(--sp) * 0.12));
+    transform: translate3d(calc(var(--sp) * 4vw), calc(var(--sp) * -8vh), 0)
+               scale(calc(1 + var(--sp) * 0.06));
 }
 .backdrop .b4 {
     --h: var(--h4);
     width: 52vmax; height: 52vmax;
     top: 4vh; left: -28vmax;
-    transform: translate3d(calc(var(--sp) * 6vw), calc(var(--sp) * 12vh), 0);
+    transform: translate3d(calc(var(--sp) * 3vw), calc(var(--sp) * 6vh), 0);
 }
 .backdrop .b5 {
     --h: var(--h5);
     width: 58vmax; height: 58vmax;
     bottom: -24vmax; right: -14vmax;
-    opacity: calc(var(--atm-alpha) * var(--sp));      /* arrives as you read */
-    transform: translate3d(calc(var(--sp) * -6vw), calc(var(--sp) * -14vh), 0);
+    opacity: calc(var(--atm-alpha) * var(--sp) * 0.6);      /* arrives as you read */
+    transform: translate3d(calc(var(--sp) * -3vw), calc(var(--sp) * -7vh), 0);
 }
 .backdrop .grain {
     position: absolute;
@@ -218,7 +218,7 @@ body[data-art="teaching"]   { --h1: 240; --h2: 270; --h3: 202; --h4: 300; --h5: 
     pointer-events: none;
     -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 60%);
             mask-image: linear-gradient(to right, transparent 0%, #000 60%);
-    transform: translate3d(0, calc(var(--sp) * -8vh), 0);
+    transform: translate3d(0, calc(var(--sp) * -4vh), 0);
     will-change: transform;
 }
 .artwork svg { display: block; width: 100%; height: 100%; }
