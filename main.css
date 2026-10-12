@@ -1,0 +1,455 @@
+/* ---------------------------------------------------------------
+   main.css - one stylesheet for the whole site.
+
+   Journal layout, periwinkle palette. Centered masthead, double
+   rules, a justified measure, a drop cap on the opening paragraph,
+   and publications set as a numbered reference list.
+
+   Published and accepted work carries the visual weight: the venue
+   sits in accent caps directly under the title, and repository links
+   are deliberately quiet.
+   --------------------------------------------------------------- */
+
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300..700;1,8..60,300..700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+:root {
+    --paper:     #f0f1fa;
+    --paper-2:   #e2e4f4;
+    --ink:       #26283f;
+    --accent:    #545a9c;          /* links, venues, section labels */
+    --accent-2:  #9095ca;          /* decorative rules only - too pale for text */
+    --wash:      #dcdef4;          /* selection and link hover */
+    --rule:      rgba(38, 40, 63, 0.20);
+    --hairline:  rgba(38, 40, 63, 0.10);
+    --muted:     rgba(38, 40, 63, 0.68);
+
+    --serif: 'Source Serif 4', 'Iowan Old Style', Georgia, 'Times New Roman', serif;
+    --mono:  'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Consolas, monospace;
+
+    --measure: 36rem;              /* the reading column */
+    --page:    50rem;              /* the full page, for blocks that break out */
+    color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        --paper:    #15161f;
+        --paper-2:  #1d1f2b;
+        --ink:      #e4e6f4;
+        --accent:   #a6abe8;
+        --accent-2: #7f85b8;
+        --wash:     #2a2d3f;
+        --rule:     rgba(228, 230, 244, 0.24);
+        --hairline: rgba(228, 230, 244, 0.13);
+        --muted:    rgba(228, 230, 244, 0.62);
+    }
+}
+:root[data-theme="dark"] {
+    --paper:    #15161f;
+    --paper-2:  #1d1f2b;
+    --ink:      #e4e6f4;
+    --accent:   #a6abe8;
+    --accent-2: #7f85b8;
+    --wash:     #2a2d3f;
+    --rule:     rgba(228, 230, 244, 0.24);
+    --hairline: rgba(228, 230, 244, 0.13);
+    --muted:    rgba(228, 230, 244, 0.62);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+    margin: 0;
+    padding: 0 16px 5rem;
+    background-color: var(--paper);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+.wrap { max-width: var(--page); margin: 0 auto; }
+
+/* ------------------------------ masthead ---------------------- */
+
+#masthead {
+    position: relative;
+    padding: 3.2rem 0 0;
+    text-align: center;
+}
+
+h1 {
+    margin: 0;
+    font-weight: 600;
+    font-size: clamp(2rem, 5vw, 2.7rem);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+}
+h1 .subtitle {
+    display: block;
+    margin-top: 0.6rem;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    font-weight: 400;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+h1 a:link, h1 a:visited { color: inherit; text-decoration: none; }
+h1 a:hover { background: none; }
+
+#theme-toggle {
+    position: absolute;
+    top: 1.1rem;
+    right: 0;
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: none;
+    border: 0;
+    padding: 0.2rem;
+    cursor: pointer;
+}
+#theme-toggle:hover { color: var(--accent); }
+
+/* ------------------------------ nav --------------------------- */
+
+#sitenav {
+    margin: 1.8rem 0 0;
+    border-top: 3px double var(--rule);
+    border-bottom: 3px double var(--rule);
+}
+#sitenav ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.3rem 1.8rem;
+    margin: 0;
+    padding: 0.6rem 0;
+    max-width: none;
+    list-style: none;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+}
+#sitenav li { margin: 0; }
+#sitenav a:link, #sitenav a:visited {
+    color: var(--ink);
+    text-decoration: none;
+    padding-bottom: 2px;
+    border-bottom: 1px solid transparent;
+}
+#sitenav a:hover { border-bottom-color: var(--accent); background: none; }
+#sitenav [aria-current="page"] {
+    color: var(--accent);
+    padding-bottom: 2px;
+    border-bottom: 1px solid var(--accent);
+}
+
+/* ------------------------------ the column -------------------- */
+
+main {
+    counter-reset: ref;
+    max-width: var(--page);
+    margin: 2.6rem auto 0;
+}
+
+/* Everything sits in the reading measure; .bio and .wide break out. */
+main > p,
+main > ul,
+main > ol,
+main > h2,
+main > h3,
+main > h4,
+main > .pub,
+main > .entries,
+main > .cv-item,
+main > blockquote {
+    max-width: var(--measure);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ------------------------------ headings ---------------------- */
+
+h2 {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    margin: 3rem auto 1rem;
+    font-family: var(--mono);
+    font-size: 0.76rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+h2::before, h2::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background-color: var(--rule);
+}
+
+h3 {
+    margin: 0 0 0.2rem;
+    font-weight: 600;
+    font-size: 1.15rem;
+    line-height: 1.3;
+    letter-spacing: -0.005em;
+}
+
+h4 {
+    margin: 2rem auto 0.4rem;
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+/* ------------------------------ text -------------------------- */
+
+p { margin: 0 0 1rem; }
+main p { text-align: justify; hyphens: auto; }
+
+.lead { font-size: 1.15rem; line-height: 1.5; }
+.lead::first-letter {
+    float: left;
+    font-size: 3.2em;
+    line-height: 0.82;
+    padding: 0.08em 0.09em 0 0;
+    color: var(--accent);
+    font-weight: 600;
+}
+
+ul, ol { padding-left: 1.2rem; }
+li { margin: 0.3rem 0; }
+
+a:link, a:visited {
+    color: var(--accent);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2.5px;
+}
+a:hover {
+    background-color: var(--wash);
+    text-decoration-color: currentColor;
+}
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+::selection { background-color: var(--wash); color: var(--ink); }
+
+strong, b { font-weight: 600; }
+code, kbd { font-family: var(--mono); font-size: 0.9em; }
+
+hr { margin: 3rem auto; border: 0; border-top: 1px solid var(--rule); max-width: var(--measure); }
+
+/* ------------------------------ bio + portrait ---------------- */
+
+/* The one block that breaks out of the measure, so the photo can sit
+   beside the opening paragraphs. */
+.bio {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 13rem;
+    gap: 2.4rem;
+    align-items: start;
+    max-width: var(--page);
+    margin: 0 auto;
+}
+.bio .bio-text > p:last-child { margin-bottom: 0; }
+
+#portrait {
+    width: 100%;
+    display: block;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border: 1px solid var(--rule);
+    background-color: var(--paper-2);
+}
+.caption {
+    margin: 0.5rem 0 0;
+    font-family: var(--mono);
+    font-size: 0.66rem;
+    line-height: 1.5;
+    letter-spacing: 0.03em;
+    color: var(--muted);
+    text-align: left;
+}
+
+.contact { list-style: none; padding: 0; margin: 1.2rem 0 0; }
+.contact li { margin: 0.3rem 0; font-size: 0.92rem; line-height: 1.35; }
+.contact .label {
+    display: block;
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+@media (max-width: 46rem) {
+    .bio { grid-template-columns: 1fr; gap: 1.4rem; }
+    .bio-side { max-width: 13rem; }
+}
+
+/* ------------------------------ publications ------------------ */
+
+/* Numbered like a reference list. The venue line is the loudest part
+   after the title: accepted work should read as accepted at a glance. */
+
+.pub {
+    counter-increment: ref;
+    position: relative;
+    margin: 0 auto 1.8rem;
+    padding-left: 2.4rem;
+}
+.pub::before {
+    content: "[" counter(ref) "]";
+    position: absolute;
+    left: 0;
+    top: 0.2rem;
+    font-family: var(--mono);
+    font-size: 0.74rem;
+    color: var(--accent);
+}
+
+.pub .venue {
+    display: block;
+    margin: 0.25rem 0 0.4rem;
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+.pub .venue .status {
+    color: var(--muted);
+    font-weight: 400;
+    letter-spacing: 0.08em;
+}
+
+.pub .authors {
+    margin: 0 0 0.45rem;
+    font-size: 0.92rem;
+    line-height: 1.45;
+    color: var(--muted);
+    text-align: left;
+}
+.pub .authors .me { color: var(--ink); font-weight: 600; }
+
+.pub .abstract { margin: 0 0 0.4rem; }
+
+/* Repository and PDF links sit below the work, quiet on purpose. */
+.pub .links {
+    margin: 0;
+    font-family: var(--mono);
+    font-size: 0.64rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-align: left;
+}
+.pub .links a:link, .pub .links a:visited {
+    color: var(--muted);
+    text-decoration-color: var(--hairline);
+    margin-right: 0.9rem;
+}
+.pub .links a:hover { color: var(--accent); }
+
+/* Unrefereed items: no venue line, so the title carries less weight. */
+.pub.informal h3 { font-weight: 500; font-size: 1.05rem; }
+
+/* ------------------------------ entry lists ------------------- */
+
+.entries { list-style: none; padding: 0; }
+.entries li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0 0.9rem;
+    margin: 0;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--hairline);
+}
+.entries .date {
+    flex: 0 0 4.5rem;
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+}
+.entries .what { flex: 1 1 16rem; min-width: 0; text-align: left; }
+.entries .note { display: block; font-size: 0.9rem; color: var(--muted); }
+
+/* ------------------------------ CV ---------------------------- */
+
+.cv-item {
+    display: grid;
+    grid-template-columns: 7.5rem minmax(0, 1fr);
+    gap: 0 1.4rem;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid var(--hairline);
+    max-width: 42rem;
+}
+.cv-item .when {
+    padding-top: 0.3rem;
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+}
+.cv-item .what p { text-align: left; }
+.cv-item .what p:last-child { margin-bottom: 0; }
+.cv-item .what .where { color: var(--muted); }
+@media (max-width: 34rem) {
+    .cv-item { grid-template-columns: 1fr; gap: 0.2rem; }
+    .cv-item .when { padding-top: 0; }
+}
+
+/* ------------------------------ footer ------------------------ */
+
+footer {
+    max-width: var(--measure);
+    margin: 4rem auto 0;
+    padding-top: 1.2rem;
+    border-top: 3px double var(--rule);
+    font-size: 0.9rem;
+    color: var(--muted);
+    text-align: center;
+}
+.keywords { font-family: var(--mono); font-size: 0.64rem; letter-spacing: 0.05em; line-height: 1.7; }
+
+.skip { position: absolute; left: -9999px; }
+.skip:focus {
+    left: 1rem;
+    top: 1rem;
+    z-index: 10;
+    padding: 0.5rem 0.8rem;
+    background-color: var(--paper);
+    border: 2px solid var(--accent);
+}
+
+/* ------------------------------ print ------------------------- */
+
+@media print {
+    :root {
+        --paper: #fff;
+        --ink: #000;
+        --accent: #000;
+        --muted: #444;
+        --rule: #999;
+        --hairline: #ccc;
+    }
+    body { font-size: 10.5pt; padding: 0; }
+    #sitenav, #theme-toggle, .bio-side, .caption { display: none; }
+    a:link, a:visited { text-decoration: none; }
+    .cv-item, .entries li, .pub { break-inside: avoid; }
+    .bio { display: block; }
+}

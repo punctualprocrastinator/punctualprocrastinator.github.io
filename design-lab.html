@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Design lab &mdash; Shivam Dubey</title>
+
+<!-- A scratch file for choosing a look. Not part of the site: delete it
+     before pushing, or leave it - nothing links to it. Six layouts, eight
+     pastel palettes, three type pairings, light and dark. Pick a
+     combination and press "Copy CSS" to get the block for main.css. -->
+
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300..700;1,8..60,300..700&family=IBM+Plex+Mono:wght@400;500&family=EB+Garamond:ital,wght@0,400..700;1,400..600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ===================================================================
+   1. The lab chrome (neutral, deliberately not part of the design)
+   =================================================================== */
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    background: #11161c;
+    color: #cfd8e3;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.lab-head {
+    max-width: 78rem;
+    margin: 0 auto;
+    padding: 1.6rem 1.25rem 0.9rem;
+}
+.lab-head h1 {
+    margin: 0 0 0.3rem;
+    font-size: 1.15rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: #f0f4f8;
+}
+.lab-head p { margin: 0; color: #7f8da0; max-width: 46rem; font-size: 0.86rem; }
+.lab-head kbd {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.78em;
+    background: #1d2630;
+    border: 1px solid #2d3a47;
+    border-radius: 3px;
+    padding: 0 0.3em;
+}
+
+.controls {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: rgba(17, 22, 28, 0.94);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid #232d38;
+}
+.controls-inner {
+    max-width: 78rem;
+    margin: 0 auto;
+    padding: 0.75rem 1.25rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem 1.8rem;
+    align-items: flex-start;
+}
+.group { display: flex; flex-direction: column; gap: 0.35rem; }
+.group > span {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+
+    color: #697a8c;
+}
+.chips { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+
+.chip {
+    font: inherit;
+    font-size: 0.78rem;
+    color: #b9c4d1;
+    background: #1a222c;
+    border: 1px solid #2b3744;
+    border-radius: 4px;
+    padding: 0.28rem 0.6rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    white-space: nowrap;
+}
+.chip:hover { border-color: #46586b; color: #e6edf4; }
+.chip[aria-pressed="true"] {
+    background: #e8eef5;
+    border-color: #e8eef5;
+    color: #11161c;
+    font-weight: 500;
+}
+.chip:focus-visible { outline: 2px solid #7fb0e0; outline-offset: 2px; }
+
+.chip .dot {
+    width: 0.85rem;
+    height: 0.85rem;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    flex: none;
+}
+
+.readout {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
+    color: #7f8da0;
+}
+.readout b { color: #cfd8e3; font-weight: 500; }
+.badge {
+    padding: 0.1rem 0.4rem;
+    border-radius: 3px;
+    border: 1px solid currentColor;
+    font-size: 0.62rem;
+    letter-spacing: 0.06em;
+}
+.badge.ok   { color: #7fd1a6; }
+.badge.mid  { color: #e0c36a; }
+.badge.bad  { color: #e08a7f; }
+
+/* the preview frame */
+.stage-wrap { max-width: 78rem; margin: 1.4rem auto 0; padding: 0 1.25rem 3rem; }
+.stage {
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 1px 0 rgba(255,255,255,0.04), 0 18px 50px rgba(0,0,0,0.45);
+}
+.caption-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+    align-items: baseline;
+    margin: 0 0 0.6rem;
+    font-size: 0.8rem;
+    color: #7f8da0;
+}
+.caption-bar b { color: #e6edf4; font-weight: 500; }
+.caption-bar .why { font-style: italic; }
+
+.swatches { display: flex; gap: 0.25rem; margin-left: auto; }
+.swatches i {
+    width: 1.4rem; height: 0.9rem; border-radius: 2px;
+    border: 1px solid rgba(255,255,255,0.12);
+}
+
+/* ===================================================================
+   2. Palettes. Six variables each; everything else is derived.
+   =================================================================== */
+
+.stage {
+    --rule:     color-mix(in srgb, var(--ink) 18%, transparent);
+    --hairline: color-mix(in srgb, var(--ink) 10%, transparent);
+    --muted:    color-mix(in srgb, var(--ink) 62%, var(--paper));
+}
+
+/* --- light ------------------------------------------------------- */
+.stage[data-palette="oyster"]      { --paper:#f6f3ee; --paper2:#ebe5db; --ink:#2a2724; --accent:#7f6353; --accent2:#a8927d; --hl:#e8d9c3; }
+.stage[data-palette="sage"]        { --paper:#eef2ec; --paper2:#e0e8dd; --ink:#22302a; --accent:#487059; --accent2:#8aa78f; --hl:#d4e4d2; }
+.stage[data-palette="lilac"]       { --paper:#f4f1f8; --paper2:#e9e3f2; --ink:#2c2838; --accent:#6a5a92; --accent2:#9b8fb8; --hl:#e0d8f0; }
+.stage[data-palette="cyanotype"]   { --paper:#eef2f7; --paper2:#dfe8f1; --ink:#1c2a3a; --accent:#3d6a94; --accent2:#7fa3c2; --hl:#d4e3f1; }
+.stage[data-palette="rose"]        { --paper:#faf2f0; --paper2:#f1e2df; --ink:#342828; --accent:#955656; --accent2:#c99a97; --hl:#f2dcd8; }
+.stage[data-palette="mint"]        { --paper:#ecf4f1; --paper2:#dcebe6; --ink:#1e3330; --accent:#2f7a6e; --accent2:#7fb3a8; --hl:#cfe8e0; }
+.stage[data-palette="buttercream"] { --paper:#faf5e8; --paper2:#f0e8d3; --ink:#312d20; --accent:#7e681b; --accent2:#b9a35a; --hl:#efe2bb; }
+.stage[data-palette="periwinkle"]  { --paper:#f0f1fa; --paper2:#e2e4f4; --ink:#26283f; --accent:#545a9c; --accent2:#9095ca; --hl:#dcdef4; }
+
+/* --- dark -------------------------------------------------------- */
+.stage[data-mode="dark"][data-palette="oyster"]      { --paper:#1a1816; --paper2:#23201d; --ink:#ece6dd; --accent:#d3a98c; --accent2:#a98f7b; --hl:#3a332b; }
+.stage[data-mode="dark"][data-palette="sage"]        { --paper:#141917; --paper2:#1d2420; --ink:#e2e9e2; --accent:#8fc5a4; --accent2:#6f9a7e; --hl:#27332c; }
+.stage[data-mode="dark"][data-palette="lilac"]       { --paper:#17151d; --paper2:#201d29; --ink:#e8e4f0; --accent:#b3a3dd; --accent2:#8a7cb0; --hl:#2e2940; }
+.stage[data-mode="dark"][data-palette="cyanotype"]   { --paper:#121820; --paper2:#1a222c; --ink:#e0e8f2; --accent:#8fc0e8; --accent2:#6e94b8; --hl:#24303e; }
+.stage[data-mode="dark"][data-palette="rose"]        { --paper:#1c1616; --paper2:#261e1e; --ink:#f0e4e2; --accent:#dfa09c; --accent2:#b07d79; --hl:#3a2b2a; }
+.stage[data-mode="dark"][data-palette="mint"]        { --paper:#111b19; --paper2:#192422; --ink:#ddeae6; --accent:#76c9b8; --accent2:#5a9c8f; --hl:#203531; }
+.stage[data-mode="dark"][data-palette="buttercream"] { --paper:#1a1812; --paper2:#23201a; --ink:#efe8d6; --accent:#d8c070; --accent2:#ab9752; --hl:#332d1e; }
+.stage[data-mode="dark"][data-palette="periwinkle"]  { --paper:#15161f; --paper2:#1d1f2b; --ink:#e4e6f4; --accent:#a6abe8; --accent2:#7f85b8; --hl:#2a2d3f; }
+
+/* ===================================================================
+   3. Type pairings
+   =================================================================== */
+
+.stage[data-type="ruled"] {
+    --f-body:  'Source Serif 4', Georgia, serif;
+    --f-head:  'Source Serif 4', Georgia, serif;
+    --f-label: 'IBM Plex Mono', ui-monospace, monospace;
+    --label-tr: uppercase; --label-ls: 0.16em; --label-sz: 0.76rem;
+    --body-sz: 1.0rem;
+}
+.stage[data-type="classic"] {
+    --f-body:  'EB Garamond', Garamond, 'Times New Roman', serif;
+    --f-head:  'EB Garamond', Garamond, serif;
+    --f-label: 'EB Garamond', Garamond, serif;
+    --label-tr: uppercase; --label-ls: 0.22em; --label-sz: 0.9rem;
+    --body-sz: 1.12rem;
+}
+.stage[data-type="modern"] {
+    --f-body:  'Inter', system-ui, sans-serif;
+    --f-head:  'Source Serif 4', Georgia, serif;
+    --f-label: 'Inter', system-ui, sans-serif;
+    --label-tr: uppercase; --label-ls: 0.13em; --label-sz: 0.7rem;
+    --body-sz: 0.95rem;
+}
+
+/* ===================================================================
+   4. The mock site - shared base
+   =================================================================== */
+
+.site {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--f-body);
+    font-size: var(--body-sz);
+    line-height: 1.6;
+    padding: 2.6rem 2.8rem 2.2rem;
+    min-height: 32rem;
+}
+
+.site h1 {
+    margin: 0;
+    font-family: var(--f-head);
+    font-size: 2.1rem;
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+}
+.m-sub {
+    margin: 0.4rem 0 0;
+    font-family: var(--f-label);
+    font-size: 0.68rem;
+    letter-spacing: var(--label-ls);
+    text-transform: var(--label-tr);
+    color: var(--muted);
+}
+.site h2 {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    margin: 2.2rem 0 0.9rem;
+    font-family: var(--f-label);
+    font-size: var(--label-sz);
+    font-weight: 500;
+    letter-spacing: var(--label-ls);
+    text-transform: var(--label-tr);
+    color: var(--accent);
+}
+.site h2::after { content: ''; flex: 1; height: 1px; background: var(--rule); }
+.site h3 {
+    margin: 0 0 0.15rem;
+    font-family: var(--f-head);
+    font-size: 1.05rem;
+    font-weight: 600;
+    line-height: 1.3;
+}
+.site h4 {
+    margin: 1.4rem 0 0.4rem;
+    font-family: var(--f-label);
+    font-size: 0.64rem;
+    font-weight: 500;
+    letter-spacing: var(--label-ls);
+    text-transform: var(--label-tr);
+    color: var(--muted);
+}
+.site p { margin: 0 0 0.8rem; }
+.m-lead { font-size: 1.1em; line-height: 1.5; }
+.site a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
+
+.m-nav { display: flex; flex-wrap: wrap; gap: 0 1.3rem; }
+.m-nav a {
+    font-family: var(--f-label);
+    font-size: 0.7rem;
+    letter-spacing: var(--label-ls);
+    text-transform: var(--label-tr);
+    color: var(--ink);
+    text-decoration: none;
+    padding-bottom: 2px;
+    border-bottom: 1px solid transparent;
+}
+.m-nav a.on { color: var(--accent); border-bottom-color: var(--accent); }
+
+.m-pub { margin: 0 0 1.3rem; }
+.m-authors { margin: 0.1rem 0 0.3rem; font-size: 0.86em; color: var(--muted); }
+.m-abs { margin: 0; font-size: 0.94em; }
+.m-year {
+    font-family: var(--f-label);
+    font-size: 0.64rem;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+}
+
+.m-photo {
+    aspect-ratio: 4 / 5;
+    background: var(--hl);
+    border: 1px solid var(--rule);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 0.6rem;
+    font-family: var(--f-label);
+    font-size: 0.58rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+.m-contact { list-style: none; margin: 1.1rem 0 0; padding: 0; font-size: 0.86em; }
+.m-contact li { margin: 0.2rem 0; display: flex; gap: 0.5rem; }
+.m-contact .k {
+    font-family: var(--f-label);
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    min-width: 4.2rem;
+}
+.m-foot {
+    margin-top: 2.4rem;
+    padding-top: 0.9rem;
+    border-top: 2px solid var(--ink);
+    font-size: 0.8em;
+    color: var(--muted);
+}
+
+/* ===================================================================
+   5. Layout A - SIDEBAR  (what the site does today)
+   =================================================================== */
+
+.stage[data-layout="sidebar"] .m-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1rem;
+}
+.stage[data-layout="sidebar"] h1 {
+    padding-left: 0.7rem;
+    border-left: 5px solid var(--accent2);
+}
+.stage[data-layout="sidebar"] .m-nav {
+    width: 100%;
+    margin-top: 1.4rem;
+    padding: 0.5rem 0;
+    border-top: 2px solid var(--ink);
+    border-bottom: 1px solid var(--rule);
+}
+.stage[data-layout="sidebar"] .m-body {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 12rem;
+    gap: 2.6rem;
+    align-items: start;
+    margin-top: 1.8rem;
+}
+.stage[data-layout="sidebar"] .m-pub {
+    padding-left: 0.9rem;
+    border-left: 2px solid var(--hairline);
+}
+
+/* ===================================================================
+   6. Layout B - CENTERED COLUMN
+   =================================================================== */
+
+.stage[data-layout="centered"] .site { padding-top: 3.4rem; }
+.stage[data-layout="centered"] .m-head { text-align: center; }
+.stage[data-layout="centered"] .m-nav {
+    justify-content: center;
+    margin-top: 1.3rem;
+    padding: 0.6rem 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+}
+.stage[data-layout="centered"] .m-body {
+    max-width: 34rem;
+    margin: 2rem auto 0;
+}
+.stage[data-layout="centered"] .site h2 { justify-content: center; }
+.stage[data-layout="centered"] .site h2::before {
+    content: ''; flex: 1; height: 1px; background: var(--rule);
+}
+.stage[data-layout="centered"] .m-side {
+    margin-top: 2.4rem;
+    text-align: center;
+}
+.stage[data-layout="centered"] .m-photo {
+    width: 9rem;
+    margin: 0 auto;
+}
+.stage[data-layout="centered"] .m-contact li { justify-content: center; }
+.stage[data-layout="centered"] .m-contact .k { min-width: 0; }
+.stage[data-layout="centered"] .m-foot { text-align: center; }
+
+/* ===================================================================
+   7. Layout C - LEFT RAIL
+   =================================================================== */
+
+.stage[data-layout="rail"] .site {
+    display: grid;
+    grid-template-columns: 12rem minmax(0, 1fr);
+    grid-template-areas:
+        "id   main"
+        "nav  main"
+        "side main"
+        "pad  foot";
+    gap: 0 2.8rem;
+    align-items: start;
+}
+.stage[data-layout="rail"] .m-head,
+.stage[data-layout="rail"] .m-body { display: contents; }
+.stage[data-layout="rail"] .m-id   { grid-area: id; }
+.stage[data-layout="rail"] .m-nav  { grid-area: nav; flex-direction: column; gap: 0.3rem; margin-top: 1.5rem; }
+.stage[data-layout="rail"] .m-main { grid-area: main; }
+.stage[data-layout="rail"] .m-side { grid-area: side; margin-top: 1.8rem; }
+.stage[data-layout="rail"] .m-foot { grid-area: foot; }
+.stage[data-layout="rail"] h1 { font-size: 1.55rem; }
+.stage[data-layout="rail"] .m-main > h2:first-child { margin-top: 0.2rem; }
+.stage[data-layout="rail"] .m-nav a { border-bottom: 0; border-left: 2px solid transparent; padding: 0.1rem 0 0.1rem 0.55rem; }
+.stage[data-layout="rail"] .m-nav a.on { border-left-color: var(--accent); }
+.stage[data-layout="rail"] .m-photo { width: 100%; }
+
+/* ===================================================================
+   8. Layout D - MASTHEAD BAND
+   =================================================================== */
+
+.stage[data-layout="band"] .site { padding-top: 0; }
+.stage[data-layout="band"] .m-head {
+    background: var(--paper2);
+    margin: 0 -2.8rem 2.2rem;
+    padding: 2.6rem 2.8rem 1.2rem;
+    border-bottom: 1px solid var(--rule);
+}
+.stage[data-layout="band"] h1 { font-size: 2.6rem; }
+.stage[data-layout="band"] .m-nav { margin-top: 1.5rem; }
+.stage[data-layout="band"] .m-body { max-width: 46rem; }
+.stage[data-layout="band"] .m-works {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.2rem;
+}
+.stage[data-layout="band"] .m-pub {
+    margin: 0;
+    padding: 1rem 1.1rem;
+    background: var(--paper2);
+    border: 1px solid var(--hairline);
+    border-radius: 3px;
+}
+.stage[data-layout="band"] .m-side {
+    display: grid;
+    grid-template-columns: 7rem minmax(0, 1fr);
+    gap: 1.4rem;
+    align-items: start;
+    margin-top: 2.4rem;
+    padding-top: 1.4rem;
+    border-top: 1px solid var(--rule);
+}
+.stage[data-layout="band"] .m-side h4 { margin-top: 0; }
+
+/* ===================================================================
+   9. Layout E - DENSE INDEX  (the CV-as-website)
+   =================================================================== */
+
+.stage[data-layout="dense"] .site { font-size: 0.92rem; line-height: 1.45; padding: 2.2rem 2.6rem; }
+.stage[data-layout="dense"] h1 { font-size: 1.5rem; }
+.stage[data-layout="dense"] .m-head {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.8rem;
+    padding-bottom: 0.7rem;
+    border-bottom: 1px solid var(--ink);
+}
+.stage[data-layout="dense"] .m-sub { margin-top: 0.2rem; }
+.stage[data-layout="dense"] .m-nav { margin-top: 0.2rem; }
+.stage[data-layout="dense"] .m-body { margin-top: 1.4rem; }
+.stage[data-layout="dense"] .site h2 { margin: 1.6rem 0 0.5rem; }
+.stage[data-layout="dense"] .m-pub {
+    display: grid;
+    grid-template-columns: 4.2rem minmax(0, 1fr);
+    gap: 0 1rem;
+    padding: 0.45rem 0;
+    margin: 0;
+    border-bottom: 1px solid var(--hairline);
+}
+.stage[data-layout="dense"] .m-year { grid-row: span 3; padding-top: 0.15rem; }
+.stage[data-layout="dense"] .m-abs { font-size: 0.88em; color: var(--muted); }
+.stage[data-layout="dense"] .m-photo { display: none; }
+.stage[data-layout="dense"] .m-side {
+    margin-top: 1.6rem;
+    padding-top: 0.9rem;
+    border-top: 1px solid var(--rule);
+}
+.stage[data-layout="dense"] .m-contact { display: flex; flex-wrap: wrap; gap: 0.2rem 1.6rem; }
+
+/* ==================================================================
+   10. Layout F - JOURNAL
+   =================================================================== */
+
+.stage[data-layout="journal"] .site { padding: 3rem 3.4rem 2.4rem; }
+.stage[data-layout="journal"] .m-head { text-align: center; }
+.stage[data-layout="journal"] h1 { font-size: 2rem; letter-spacing: 0.01em; }
+.stage[data-layout="journal"] .m-nav {
+    justify-content: center;
+    margin-top: 1.4rem;
+    padding: 0.5rem 0;
+    border-top: 3px double var(--rule);
+    border-bottom: 3px double var(--rule);
+}
+.stage[data-layout="journal"] .m-body {
+    max-width: 36rem;
+    margin: 2.2rem auto 0;
+}
+.stage[data-layout="journal"] .m-main p { text-align: justify; hyphens: auto; }
+.stage[data-layout="journal"] .m-lead::first-letter {
+    float: left;
+    font-family: var(--f-head);
+    font-size: 3.1em;
+    line-height: 0.82;
+    padding: 0.08em 0.1em 0 0;
+    color: var(--accent);
+}
+.stage[data-layout="journal"] .m-works { counter-reset: ref; }
+.stage[data-layout="journal"] .m-pub {
+    counter-increment: ref;
+    position: relative;
+    padding-left: 2.1rem;
+}
+.stage[data-layout="journal"] .m-pub::before {
+    content: "[" counter(ref) "]";
+    position: absolute;
+    left: 0;
+    top: 0.1rem;
+    font-family: var(--f-label);
+    font-size: 0.72rem;
+    color: var(--accent2);
+}
+.stage[data-layout="journal"] .m-side {
+    margin-top: 2.4rem;
+    padding-top: 1.4rem;
+    border-top: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: 6.5rem minmax(0, 1fr);
+    gap: 1.4rem;
+}
+.stage[data-layout="journal"] .m-side h4 { margin-top: 0; }
+.stage[data-layout="journal"] .m-foot { text-align: center; border-top-width: 3px; border-top-style: double; }
+
+/* ===================================================================
+   11. Narrow screens - every layout collapses to one column
+   =================================================================== */
+
+@media (max-width: 48rem) {
+    .site { padding: 1.6rem 1.2rem; }
+    .stage[data-layout="sidebar"] .m-body,
+    .stage[data-layout="band"] .m-side,
+    .stage[data-layout="band"] .m-works,
+    .stage[data-layout="journal"] .m-side { grid-template-columns: 1fr; }
+    .stage[data-layout="rail"] .site {
+        display: block;
+    }
+    .stage[data-layout="rail"] .m-head,
+    .stage[data-layout="rail"] .m-body { display: block; }
+    .stage[data-layout="rail"] .m-nav { flex-direction: row; }
+    .stage[data-layout="band"] .m-head { margin-left: -1.2rem; margin-right: -1.2rem; padding: 1.6rem 1.2rem 1rem; }
+    .stage[data-layout="dense"] .m-pub { grid-template-columns: 1fr; }
+    .readout { margin-left: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<header class="lab-head">
+    <h1>Design lab</h1>
+    <p>Six layouts &times; eight pastel palettes &times; three type pairings,
+    applied to your real content. <kbd>&larr;</kbd> <kbd>&rarr;</kbd> cycle
+    layouts, <kbd>&uarr;</kbd> <kbd>&darr;</kbd> cycle palettes. When you find
+    the one, press <b>Copy CSS</b> and paste the block over the top of
+    <code>main.css</code>.</p>
+</header>
+
+<div class="controls">
+<div class="controls-inner">
+
+    <div class="group">
+        <span>Layout</span>
+        <div class="chips" id="c-layout">
+            <button class="chip" data-set="layout" data-val="sidebar" aria-pressed="true">Sidebar</button>
+            <button class="chip" data-set="layout" data-val="centered" aria-pressed="false">Centered</button>
+            <button class="chip" data-set="layout" data-val="rail" aria-pressed="false">Left rail</button>
+            <button class="chip" data-set="layout" data-val="band" aria-pressed="false">Masthead band</button>
+            <button class="chip" data-set="layout" data-val="dense" aria-pressed="false">Dense index</button>
+            <button class="chip" data-set="layout" data-val="journal" aria-pressed="false">Journal</button>
+        </div>
+    </div>
+
+    <div class="group">
+        <span>Palette</span>
+        <div class="chips" id="c-palette">
+            <button class="chip" data-set="palette" data-val="oyster" aria-pressed="true"><i class="dot" style="background:#7f6353"></i>Oyster</button>
+            <button class="chip" data-set="palette" data-val="sage" aria-pressed="false"><i class="dot" style="background:#487059"></i>Sage</button>
+            <button class="chip" data-set="palette" data-val="lilac" aria-pressed="false"><i class="dot" style="background:#6a5a92"></i>Lilac</button>
+            <button class="chip" data-set="palette" data-val="cyanotype" aria-pressed="false"><i class="dot" style="background:#3d6a94"></i>Cyanotype</button>
+            <button class="chip" data-set="palette" data-val="rose" aria-pressed="false"><i class="dot" style="background:#955656"></i>Rose</button>
+            <button class="chip" data-set="palette" data-val="mint" aria-pressed="false"><i class="dot" style="background:#2f7a6e"></i>Mint</button>
+            <button class="chip" data-set="palette" data-val="buttercream" aria-pressed="false"><i class="dot" style="background:#7e681b"></i>Buttercream</button>
+            <button class="chip" data-set="palette" data-val="periwinkle" aria-pressed="false"><i class="dot" style="background:#545a9c"></i>Periwinkle</button>
+        </div>
+    </div>
+
+    <div class="group">
+        <span>Type</span>
+        <div class="chips" id="c-type">
+            <button class="chip" data-set="type" data-val="ruled" aria-pressed="true">Serif + mono</button>
+            <button class="chip" data-set="type" data-val="classic" aria-pressed="false">Garamond</button>
+            <button class="chip" data-set="type" data-val="modern" aria-pressed="false">Sans + serif</button>
+        </div>
+    </div>
+
+    <div class="group">
+        <span>Mode</span>
+        <div class="chips" id="c-mode">
+            <button class="chip" data-set="mode" data-val="light" aria-pressed="true">Light</button>
+            <button class="chip" data-set="mode" data-val="dark" aria-pressed="false">Dark</button>
+        </div>
+    </div>
+
+    <div class="group">
+        <span>Export</span>
+        <div class="chips">
+            <button class="chip" id="copy">Copy CSS</button>
+        </div>
+    </div>
+
+    <div class="readout">
+        <span>text <b id="r-ink">&mdash;</b></span>
+        <span class="badge" id="b-ink">&mdash;</span>
+        <span>link <b id="r-acc">&mdash;</b></span>
+        <span class="badge" id="b-acc">&mdash;</span>
+    </div>
+
+</div>
+</div>
+
+<div class="stage-wrap">
+
+    <p class="caption-bar">
+        <b id="cap-name">Sidebar</b>
+        <span class="why" id="cap-why"></span>
+        <span class="swatches" id="cap-swatches"></span>
+    </p>
+
+    <div class="stage" id="stage" data-layout="sidebar" data-palette="oyster" data-type="ruled" data-mode="light">
+    <div class="site">
+
+        <header class="m-head">
+            <div class="m-id">
+                <h1>Shivam Dubey</h1>
+                <p class="m-sub">AI safety &middot; Mechanistic interpretability &middot; Adversarial robustness</p>
+            </div>
+            <nav class="m-nav">
+                <a href="#" class="on">Home</a>
+                <a href="#">Research</a>
+                <a href="#">Writing</a>
+                <a href="#">CV</a>
+            </nav>
+        </header>
+
+        <div class="m-body">
+            <main class="m-main">
+                <h2>Bio</h2>
+                <p class="m-lead">I work on mechanistic interpretability and
+                adversarial robustness. Right now that mostly means white-box
+                monitoring for AI control: building monitors that read a
+                model's activations, and then attacking them with adaptive
+                attackers to find out what they are really measuring.</p>
+
+                <p>I am a fellow on the Lindley Lentati track at
+                <a href="#">MARS V</a> in Cambridge, a research fellow at
+                <a href="#">Apart Research</a>, and co-founder of Redarc Labs,
+                a small AI safety research fellowship in Delhi. I also do
+                capability research at Lexsi Labs. I study data science at
+                IIT Madras.</p>
+
+                <h2>Selected work</h2>
+                <div class="m-works">
+                    <article class="m-pub">
+                        <span class="m-year">2026</span>
+                        <h3>Isolating Refusal and Compliance Heads: Unconditional Bipolar Defenses</h3>
+                        <p class="m-authors">Shivam Dubey &middot; safety circuits, Qwen2.5-7B</p>
+                        <p class="m-abs">A compliance-score classifier reaches
+                        AUC 0.943 with zero false positives across five benign
+                        categories. The defence built on it holds attack success
+                        to 33% under nanoGCG against 66% undefended.</p>
+                    </article>
+                    <article class="m-pub">
+                        <span class="m-year">2026</span>
+                        <h3>Pre-commitment Probing in Open-Weight Reasoning Models</h3>
+                        <p class="m-authors">Shivam Dubey &middot; OLMo-3-7B-Think</p>
+                        <p class="m-abs">A linear probe predicts answer
+                        correctness before any reasoning token is emitted
+                        (AUC 0.780). The model commits before it reasons, which
+                        makes the chain of thought post-hoc rationalisation.</p>
+                    </article>
+                </div>
+            </main>
+
+            <aside class="m-side">
+                <div class="m-photo">PHOTO</div>
+                <h4>Contact</h4>
+                <ul class="m-contact">
+                    <li><span class="k">Email</span><a href="#">dubeyjiworks</a></li>
+                    <li><span class="k">GitHub</span><a href="#">punctual&shy;procrastinator</a></li>
+                    <li><span class="k">LinkedIn</span><a href="#">syntaxsavant</a></li>
+                </ul>
+            </aside>
+        </div>
+
+        <footer class="m-foot">
+            <p>Research &middot; CV &middot; GitHub &mdash; last updated October 2026.</p>
+        </footer>
+
+    </div>
+    </div>
+</div>
+
+<script>
+(function () {
+    'use strict';
+
+    var stage = document.getElementById('stage');
+
+    var NOTES = {
+        sidebar:  'What the site does now. Photo and contact stay visible while you read - best when the bio is the thing you want people to read first.',
+        centered: 'One narrow column, nothing in the margins. The most quietly confident option, and the easiest to keep tidy as the page grows.',
+        rail:     'Name, nav and contact pinned in a left column. Scales best once you have five or six pages; feels like a lab site.',
+        band:     'A tinted header band, then papers as cards in two columns. The most scannable for someone skimming for a result.',
+        dense:    'Your CV as a website: year gutters, tight leading, no photo. Says "read the work, not the person".',
+        journal:  'Justified text, double rules, a drop cap, numbered references. Leans hardest into the academic register.'
+    };
+
+    /* ---- preferences persist so the page survives a refresh ---- */
+    function store(k, v) { try { localStorage.setItem('lab-' + k, v); } catch (e) {} }
+    function load(k) { try { return localStorage.getItem('lab-' + k); } catch (e) { return null; } }
+
+    ['layout', 'palette', 'type', 'mode'].forEach(function (key) {
+        var saved = load(key);
+        if (saved) { stage.dataset[key] = saved; }
+    });
+
+    /* ---- contrast maths (WCAG 2.1 relative luminance) ---- */
+    function toRgb(value) {
+        value = (value || '').trim();
+        if (value.charAt(0) === '#') {
+            var h = value.slice(1);
+            if (h.length === 3) { h = h[0]+h[0]+h[1]+h[1]+h[2]+h[2]; }
+            return [parseInt(h.slice(0,2),16), parseInt(h.slice(2,4),16), parseInt(h.slice(4,6),16)];
+        }
+        var m = value.match(/(\d+(\.\d+)?)/g);
+        return m ? [+m[0], +m[1], +m[2]] : [0,0,0];
+    }
+    function lum(rgb) {
+        var c = rgb.map(function (v) {
+            v /= 255;
+            return v <= 0.03928 ? v/12.92 : Math.pow((v + 0.055)/1.055, 2.4);
+        });
+        return 0.2126*c[0] + 0.7152*c[1] + 0.0722*c[2];
+    }
+    function ratio(a, b) {
+        var la = lum(toRgb(a)), lb = lum(toRgb(b));
+        var hi = Math.max(la, lb), lo = Math.min(la, lb);
+        return (hi + 0.05) / (lo + 0.05);
+    }
+    function grade(r, el, out) {
+        out.textContent = r.toFixed(1) + ':1';
+        el.textContent = r >= 7 ? 'AAA' : r >= 4.5 ? 'AA' : r >= 3 ? 'AA LG' : 'FAIL';
+        el.className = 'badge ' + (r >= 7 ? 'ok' : r >= 4.5 ? 'mid' : 'bad');
+    }
+
+    function vars() {
+        var cs = getComputedStyle(stage);
+        return {
+            paper:   cs.getPropertyValue('--paper').trim(),
+            paper2:  cs.getPropertyValue('--paper2').trim(),
+            ink:     cs.getPropertyValue('--ink').trim(),
+            accent:  cs.getPropertyValue('--accent').trim(),
+            accent2: cs.getPropertyValue('--accent2').trim(),
+            hl:      cs.getPropertyValue('--hl').trim()
+        };
+    }
+
+    function refresh() {
+        var v = vars();
+        grade(ratio(v.ink, v.paper), document.getElementById('b-ink'), document.getElementById('r-ink'));
+        grade(ratio(v.accent, v.paper), document.getElementById('b-acc'), document.getElementById('r-acc'));
+
+        var layout = stage.dataset.layout;
+        document.getElementById('cap-name').textContent =
+            document.querySelector('[data-set="layout"][data-val="' + layout + '"]').textContent;
+        document.getElementById('cap-why').textContent = NOTES[layout];
+
+        var sw = document.getElementById('cap-swatches');
+        sw.innerHTML = '';
+        ['paper','paper2','hl','accent2','accent','ink'].forEach(function (k) {
+            var i = document.createElement('i');
+            i.style.background = v[k];
+            i.title = '--' + k + ': ' + v[k];
+            sw.appendChild(i);
+        });
+    }
+
+    /* ---- chips ---- */
+    document.querySelectorAll('.chip[data-set]').forEach(function (chip) {
+        chip.addEventListener('click', function () {
+            apply(chip.dataset.set, chip.dataset.val);
+        });
+    });
+
+    function apply(set, val) {
+        stage.dataset[set] = val;
+        store(set, val);
+        document.querySelectorAll('.chip[data-set="' + set + '"]').forEach(function (c) {
+            c.setAttribute('aria-pressed', c.dataset.val === val ? 'true' : 'false');
+        });
+        refresh();
+    }
+
+    function syncChips() {
+        ['layout','palette','type','mode'].forEach(function (set) {
+            document.querySelectorAll('.chip[data-set="' + set + '"]').forEach(function (c) {
+                c.setAttribute('aria-pressed', c.dataset.val === stage.dataset[set] ? 'true' : 'false');
+            });
+        });
+    }
+
+    /* ---- arrow keys cycle through the options ---- */
+    function cycle(set, step) {
+        var vals = Array.prototype.map.call(
+            document.querySelectorAll('.chip[data-set="' + set + '"]'),
+            function (c) { return c.dataset.val; });
+        var i = vals.indexOf(stage.dataset[set]);
+        apply(set, vals[(i + step + vals.length) % vals.length]);
+    }
+    document.addEventListener('keydown', function (e) {
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') { return; }
+        var map = { ArrowRight: ['layout', 1], ArrowLeft: ['layout', -1],
+                    ArrowDown: ['palette', 1], ArrowUp: ['palette', -1] };
+        if (map[e.key]) {
+            e.preventDefault();
+            cycle(map[e.key][0], map[e.key][1]);
+        }
+    });
+
+    /* ---- export the chosen palette as a main.css block ---- */
+    var TYPE_CSS = {
+        ruled: ["    --serif: 'Source Serif 4', 'Iowan Old Style', Georgia, serif;",
+                "    --mono:  'IBM Plex Mono', ui-monospace, Consolas, monospace;"],
+        classic: ["    --serif: 'EB Garamond', Garamond, 'Times New Roman', serif;",
+                  "    --mono:  'EB Garamond', Garamond, serif;  /* labels are letter-spaced caps */"],
+        modern: ["    --serif: 'Inter', system-ui, sans-serif;   /* body */",
+                 "    --mono:  'Inter', system-ui, sans-serif;   /* labels */"]
+    };
+
+    document.getElementById('copy').addEventListener('click', function () {
+        var v = vars();
+        var dark = stage.dataset.mode === 'dark';
+        var lines = [
+            '/* Palette: ' + stage.dataset.palette + ' (' + stage.dataset.mode + ')',
+            '   Layout: ' + stage.dataset.layout + ' - see design-lab.html */',
+            ':root {',
+            '    --paper:     ' + v.paper + ';',
+            '    --paper-2:   ' + v.paper2 + ';',
+            '    --ink:       ' + v.ink + ';',
+            '    --accent:    ' + v.accent + ';',
+            '    --accent-2:  ' + v.accent2 + ';',
+            '    --ochre:     ' + v.hl + ';',
+            '    --rule:      color-mix(in srgb, var(--ink) 18%, transparent);',
+            '    --hairline:  color-mix(in srgb, var(--ink) 10%, transparent);',
+            '    --muted:     color-mix(in srgb, var(--ink) 62%, var(--paper));',
+            ''
+        ].concat(TYPE_CSS[stage.dataset.type]).concat([
+            '',
+            '    --measure: 34rem;',
+            '    color-scheme: ' + (dark ? 'dark' : 'light') + ';',
+            '}'
+        ]);
+        var text = lines.join('\n');
+        var btn = this;
+        function done() {
+            btn.textContent = 'Copied';
+            setTimeout(function () { btn.textContent = 'Copy CSS'; }, 1400);
+        }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(done, fallback);
+        } else { fallback(); }
+        function fallback() {
+            var ta = document.createElement('textarea');
+            ta.value = text;
+            ta.style.position = 'fixed';
+            ta.style.opacity = '0';
+            document.body.appendChild(ta);
+            ta.select();
+            try { document.execCommand('copy'); done(); }
+            catch (e) { btn.textContent = 'Copy failed'; }
+            document.body.removeChild(ta);
+        }
+    });
+
+    syncChips();
+    refresh();
+}());
+</script>
+
+</body>
+</html>
