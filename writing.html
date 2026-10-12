@@ -53,20 +53,39 @@ if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)
          an article.log block and put it at the top. -->
 
     <article class="log">
+        <h3>Safety is a property of the harness, not only the model</h3>
+        <time class="when" datetime="2026-10-13">13 October 2026</time>
+        <p>Two things changed where I think the risk sits: the Hugging Face
+    attacks, and the Fable GitHub incident. Neither turned on a base model
+    deciding to do something harmful. Both turned on what the model was wired
+    into.</p>
+
+        <p>A model's safety is not defined by base model behavior alone. It is
+    also defined by the harness it runs in: the tools it can call, the
+    repositories it can reach, the credentials in its environment, the scaffold
+    that decides what it does next. We have spent the field's effort measuring
+    the first and comparatively little on the second.</p>
+
+        <p>So I am pivoting. The target is non-model capability gains, meaning
+    capability that comes from scaffolding rather than from weights, and the
+    question is what control and interpretability look like for that layer.
+    Our current tools read activations. A harness does not have any.</p>
+    </article>
+
+    <article class="log">
         <h3>Five workshop papers in one cycle</h3>
         <time class="when" datetime="2026-10-13">13 October 2026</time>
-        <p>Three at NeurIPS with Manan &mdash; New in ML, Interpretability as a
-    Science, Interpreting Agent Behavior &mdash; and two at ATTRIB from the
-    Lexsi side. All non-archival, which people sometimes read as a lesser
-    thing. It is not. Workshops are where you find out whether the result
-    survives contact with people who already know the area.</p>
+        <p>Three at NeurIPS with Manan (New in ML, Interpretability as a Science,
+    Interpreting Agent Behavior), and two at ATTRIB from the Lexsi side. All
+    non-archival, which people sometimes read as a lesser thing. It is not.
+    Workshops are where you find out whether a result survives contact with
+    people who already know the area.</p>
 
     <p>The one I am most pleased with is
-    <a href="safety.html">Known by Construction</a>, because it is the
-    least impressive-sounding. We built models where we already knew the
-    answer, ran the instruments at them, and none of them could tell the
-    models apart. That is a negative result about tools everybody is
-    currently trusting.</p>
+    <a href="safety.html">Known by Construction</a>, and it is the quietest of
+    them. We built models where we already knew the answer, then ran the
+    instruments at them. None of the instruments could tell the models apart.
+    That is a negative result about tools the field currently trusts.</p>
     </article>
 
     <article class="log">
@@ -79,25 +98,31 @@ if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)
     you can swap any of the three without rewriting the other two.</p>
 
     <p>Most of the work was not the attacks. It was making runs comparable to
-    each other &mdash; seeds, logging, a shared evaluation path &mdash; so
-    that when a number moves you know whether it moved for a reason.</p>
+    each other (seeds, logging, a shared evaluation path), so that when a
+    number moves you know whether it moved for a reason.</p>
     </article>
 
     <article class="log">
-        <h3>The result I wanted was not there</h3>
+        <h3>What the MARS result actually says</h3>
         <time class="when" datetime="2026-09-20">20 September 2026</time>
-        <p>At MARS I spent a while trying to break linear compliance probes with
-    adaptive attackers: suffix-gradient, discrete search, activation steering.
+        <p>At MARS we spent a while attacking linear compliance probes with
+    adaptive attackers (suffix-gradient, discrete search, activation steering).
     The expectation was that a determined attacker evades the monitor and
-    jailbreaks the model at the same time. That is the scenario that makes
-    white-box monitoring look fragile.</p>
+    jailbreaks the model at the same time. That did not happen. Across all
+    three families, the perturbations that evaded the probe also stopped the
+    jailbreak from working.</p>
 
-    <p>It did not happen. Across all three families, the perturbations that
-    evaded the probe also stopped the jailbreak from working &mdash; the two
-    were mutually exclusive. I have been careful about how I say this, because
-    it is easy to over-read. It constrains a narrow class of attacks. It is not
-    a guarantee, and the next step, trained attack policies, is exactly where
-    the constraint might stop holding.</p>
+        <p>People read this as "probes cannot find the jailbreak direction".
+    That is the wrong lesson, and I have been sloppy about saying so. The
+    probes find the direction: compliance is linearly decodable in every model
+    we tried. The real problem is the false positive rate. Every probe has one.
+    At deployment volume a small rate becomes a large number of false alarms,
+    and a monitor that cries wolf is turned off.</p>
+
+        <p>So the conclusion is about architecture, not about probes. A
+    deployed system needs a proper monitor cascade: cheap checks first,
+    expensive ones only on what survives, each stage tuned for a different
+    error. One probe is not a monitor. Neither is a handful of them.</p>
     </article>
 
     <article class="log">
@@ -106,13 +131,12 @@ if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)
         <p>Redarc Fellows runs on PyTorch hooks and Hugging Face, with no
     interpretability library in the stack. People ask why, usually politely.</p>
 
-    <p>Because the libraries are good, and that is the problem for eight weeks.
-    If your first contact with a residual stream is a function that returns it
-    to you, you learn the function. If you have to reach in and take it, you
-    learn where it is. After that, use whatever you like &mdash; the
-    <a href="teaching.html">curriculum</a> is only eight sessions, and the
-    point of them is to make the abstractions legible rather than
-    load-bearing.</p>
+    <p>Because the libraries are good, and that is the problem for eight
+    weeks. If your first contact with a residual stream is a function that
+    returns it to you, you learn the function. If you have to reach in and take
+    it, you learn where it is. After that, use whatever you like. The
+    <a href="teaching.html">curriculum</a> runs eight sessions, and their point
+    is to make the abstractions legible rather than load-bearing.</p>
     </article>
 
     <h2>Longer pieces, in progress</h2>

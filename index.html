@@ -58,15 +58,15 @@ if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)
         </div>
         <div class="intro-side">
             <p>My work is mechanistic interpretability and adversarial
-            robustness: building monitors that read a model's activations, then
-            attacking them with adaptive attackers to find out what they really
+            robustness. We build monitors that read a model's activations, then
+            attack them with adaptive attackers to find out what they really
             measure. At <strong>Lexsi Labs</strong> the same question points the
-            other way &mdash; tracing what a tabular foundation model can do
-            back to the synthetic data that taught it.</p>
+            other way: we trace what a tabular foundation model can do back to
+            the synthetic data that taught it.</p>
 
-            <p>A defence that has not survived someone optimising against it is
-            a hypothesis, not a result. So most of these projects end with an
-            attempt to break the thing just built, and the findings worth
+            <p>A defense that has not survived someone optimizing against it is a
+            hypothesis, not a result. So most of these projects end with an
+            attempt to break the thing we just built. The findings worth
             trusting are often the negative ones.</p>
 
             <ul class="facts">
@@ -97,7 +97,7 @@ if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)
         <button class="more" type="button" data-dialog="p1">Summary</button>
         <dialog id="p1" class="paper-dialog" aria-labelledby="p1-t">
             <h3 id="p1-t">Known by Construction: Calibrating Model-State Instruments Against Models Whose State Was Installed, Hidden, or Never Present</h3>
-            <p>People increasingly ask whether an AI system has hidden goals, preferences or something like feelings. The tools for checking are mostly tested by seeing whether they agree with each other, and never against a case where the true answer is known. We built small AI models where we controlled the answer so that some were trained to have a hidden habit, and some were not. None of the tools we tested could reliably tell those models apart, signalling that agreement between tools is not a reliable verdict.</p>
+            <p>People increasingly ask whether an AI system has hidden goals, preferences or something like feelings. The tools for checking are mostly tested by seeing whether they agree with each other, and never against a case where the true answer is known. We built small AI models where we controlled the answer so that some were trained to have a hidden habit, and some were not. None of the tools we tested could reliably tell those models apart, signaling that agreement between tools is not a reliable verdict.</p>
             <button class="close" type="button" autofocus>Close</button>
         </dialog>
     </article>
@@ -135,7 +135,7 @@ if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)
         <button class="more" type="button" data-dialog="p4">Summary</button>
         <dialog id="p4" class="paper-dialog" aria-labelledby="p4-t">
             <h3 id="p4-t">Toxin Circuits in ESM-2: Mechanistic Interpretability for Biosecurity Screening</h3>
-            <p>BLAST detects 0% of 643 ProteinMPNN redesigns; a frozen ESM-2 linear probe detects 93.9% with no retraining. SAE analysis shows why: redesign amplifies toxin structural features rather than obscuring them. A four-tier attack taxonomy places the security boundary at gradient access &mdash; 6.1% evasion black-box against 100% white-box &mdash; and direct probe attribution pinpoints Layer 32 as the detection bottleneck (<em>r</em> = 0.992).</p>
+            <p>BLAST detects 0% of 643 ProteinMPNN redesigns; a frozen ESM-2 linear probe detects 93.9% with no retraining. SAE analysis shows why: redesign amplifies toxin structural features rather than obscuring them. A four-tier attack taxonomy places the security boundary at gradient access (6.1% evasion black-box against 100% white-box), and direct probe attribution pinpoints Layer 32 as the detection bottleneck (<em>r</em> = 0.992).</p>
             <button class="close" type="button" autofocus>Close</button>
         </dialog>
     </article>
@@ -168,7 +168,7 @@ if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)
 
     <article class="pub compact" data-cat="safety">
         <h3>AMBEDKAR: fairness-aware speculative decoding</h3>
-        <span class="venue">arXiv:2509.02133 <span class="status">&mdash; cited by MIT Technology Review</span></span>
+        <span class="venue">arXiv:2509.02133 <span class="status">&middot; cited by MIT Technology Review</span></span>
         <p class="authors">with the Artificial Intelligence Institute of South Carolina</p>
         <p class="links"><a href="https://arxiv.org/abs/2509.02133" target="_blank" rel="noopener">arXiv</a></p>
         <button class="more" type="button" data-dialog="p7">Summary</button>
@@ -181,7 +181,7 @@ if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)
 
     <article class="pub compact" data-cat="safety">
         <h3>Distance to the Boundary Is Not Steering Resistance</h3>
-        <span class="venue"><span class="status">Under review &mdash; UniReps</span></span>
+        <span class="venue"><span class="status">Under review &middot; UniReps</span></span>
         <p class="authors">Manan Wadhwa<span class="eq">*</span>, <span class="me">Shivam Dubey</span><span class="eq">*</span></p>
         <button class="more" type="button" data-dialog="p8">Summary</button>
         <dialog id="p8" class="paper-dialog" aria-labelledby="p8-t">
@@ -193,7 +193,7 @@ if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)
 
     <article class="pub compact" data-cat="safety">
         <h3>Doubt Is a Decision: A Sparse Circuit Commits Language Models to &ldquo;I Don&rsquo;t Know&rdquo;</h3>
-        <span class="venue"><span class="status">arXiv preprint &mdash; coming soon</span></span>
+        <span class="venue"><span class="status">arXiv preprint &middot; coming soon</span></span>
         <p class="authors">Sheryl Mehta<span class="eq">*</span>, Shagun Chadha<span class="eq">*</span>, Kanika Singhal<span class="eq">*</span>, Manan Wadhwa, <span class="me">Shivam Dubey</span></p>
         <button class="more" type="button" data-dialog="p9">Summary</button>
         <dialog id="p9" class="paper-dialog" aria-labelledby="p9-t">
@@ -205,26 +205,26 @@ if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)
 
     <article class="pub compact" data-cat="safety">
         <h3>Isolating Refusal and Compliance Heads: Unconditional Bipolar Defenses</h3>
-        <span class="venue"><span class="status">2026 &mdash; safety circuits, Qwen2.5-7B</span></span>
+        <span class="venue"><span class="status">2026 &middot; safety circuits, Qwen2.5-7B</span></span>
         <p class="authors"><span class="me">Shivam Dubey</span></p>
         <p class="links"><a href="https://github.com/punctualprocrastinator" target="_blank" rel="noopener">Code</a></p>
         <button class="more" type="button" data-dialog="p10">Summary</button>
         <dialog id="p10" class="paper-dialog" aria-labelledby="p10-t">
             <h3 id="p10-t">Isolating Refusal and Compliance Heads: Unconditional Bipolar Defenses</h3>
-            <p>A compliance-score classifier reaches AUC 0.943 (Cohen's <em>d</em> = 2.636) with zero false positives across five benign categories &mdash; a working zero-shot white-box harm detector. Unconditional bipolar assertion, amplifying refusal heads while zero-ablating compliance heads at L25-H4, holds attack success to 33% under nanoGCG against 36&ndash;42% for conditional gating and 66% undefended: the precision of conditional gating is itself a structural vulnerability under white-box optimisation. Layer 25 shows extreme intra-layer antagonism between the two head types.</p>
+            <p>A compliance-score classifier reaches AUC 0.943 (Cohen's <em>d</em> = 2.636) with zero false positives across five benign categories: a working zero-shot white-box harm detector. Unconditional bipolar assertion, amplifying refusal heads while zero-ablating compliance heads at L25-H4, holds attack success to 33% under nanoGCG against 36&ndash;42% for conditional gating and 66% undefended: the precision of conditional gating is itself a structural vulnerability under white-box optimization. Layer 25 shows extreme intra-layer antagonism between the two head types.</p>
             <button class="close" type="button" autofocus>Close</button>
         </dialog>
     </article>
 
     <article class="pub compact" data-cat="safety">
         <h3>Pre-commitment Probing in Open-Weight Reasoning Models</h3>
-        <span class="venue"><span class="status">2026 &mdash; OLMo-3-7B-Think</span></span>
+        <span class="venue"><span class="status">2026 &middot; OLMo-3-7B-Think</span></span>
         <p class="authors"><span class="me">Shivam Dubey</span></p>
         <p class="links"><a href="https://github.com/punctualprocrastinator" target="_blank" rel="noopener">Code</a></p>
         <button class="more" type="button" data-dialog="p11">Summary</button>
         <dialog id="p11" class="paper-dialog" aria-labelledby="p11-t">
             <h3 id="p11-t">Pre-commitment Probing in Open-Weight Reasoning Models</h3>
-            <p>A linear probe on the residual stream predicts answer correctness before any reasoning token is emitted (AUC 0.780, 5-fold CV) &mdash; the model commits before it reasons, which makes the chain of thought post-hoc rationalisation rather than deliberation. A functional frustration direction at Layer 15 transfers cross-lingually across six languages (<em>p</em> = 0.0017): a sub-linguistic computational state invisible in the output but readable mechanistically, usable either as a monitor or as an attack surface.</p>
+            <p>A linear probe on the residual stream predicts answer correctness before any reasoning token is emitted (AUC 0.780, 5-fold CV). The model commits before it reasons, which makes the chain of thought post-hoc rationalization rather than deliberation. A functional frustration direction at Layer 15 transfers cross-lingually across six languages (<em>p</em> = 0.0017): a sub-linguistic computational state invisible in the output but readable mechanistically, usable either as a monitor or as an attack surface.</p>
             <button class="close" type="button" autofocus>Close</button>
         </dialog>
     </article>
@@ -236,7 +236,7 @@ if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)
         <button class="more" type="button" data-dialog="p12">Summary</button>
         <dialog id="p12" class="paper-dialog" aria-labelledby="p12-t">
             <h3 id="p12-t">When Does Synthetic Relational Data Teach Models to Use Relations? Tracing Predictive Structure from Pretraining Data to Model Behavior</h3>
-            <p>Synthetic relational pretraining data is supposed to teach a tabular foundation model to use relations. This traces the predictive structure from the pretraining distribution through to model behaviour, and separates the cases where the model genuinely learns to use relations from the cases where it only appears to.</p>
+            <p>Synthetic relational pretraining data is supposed to teach a tabular foundation model to use relations. This traces the predictive structure from the pretraining distribution through to model behavior, and separates the cases where the model genuinely learns to use relations from the cases where it only appears to.</p>
             <button class="close" type="button" autofocus>Close</button>
         </dialog>
     </article>
@@ -248,20 +248,20 @@ if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)
         <button class="more" type="button" data-dialog="p13">Summary</button>
         <dialog id="p13" class="paper-dialog" aria-labelledby="p13-t">
             <h3 id="p13-t">From Behavior to Provenance: Attributing Tabular Foundation Models to Synthetic Pretraining Data</h3>
-            <p>Attributing what a tabular foundation model does at inference back to the synthetic data it was pretrained on &mdash; behaviour to provenance, rather than the usual direction.</p>
+            <p>Attributing what a tabular foundation model does at inference back to the synthetic data it was pretrained on: behavior to provenance, rather than the usual direction.</p>
             <button class="close" type="button" autofocus>Close</button>
         </dialog>
     </article>
 
     <article class="pub compact" data-cat="tabular">
         <h3>Context Poisoning in Tabular ICL: Geometric Hijacking and Inverse Scaling</h3>
-        <span class="venue"><span class="status">2026 &mdash; mechanistic interpretability</span></span>
+        <span class="venue"><span class="status">2026 &middot; mechanistic interpretability</span></span>
         <p class="authors"><span class="me">Shivam Dubey</span></p>
         <p class="links"><a href="https://github.com/punctualprocrastinator" target="_blank" rel="noopener">Code</a></p>
         <button class="more" type="button" data-dialog="p14">Summary</button>
         <dialog id="p14" class="paper-dialog" aria-labelledby="p14-t">
             <h3 id="p14-t">Context Poisoning in Tabular ICL: Geometric Hijacking and Inverse Scaling</h3>
-            <p>The first logit-lens implementation for tabular in-context learning: a classification phase transition at Layer 8, representation hijacking as early as Layer 4, and total hijacking from 1.2% poisoned context. Larger models are more vulnerable, not less. QK/OV decomposition and direct logit attribution show that mechanistically-informed defences &mdash; PCA subspace scrubbing, head ablation &mdash; fail because of manifold redundancy.</p>
+            <p>The first logit-lens implementation for tabular in-context learning: a classification phase transition at Layer 8, representation hijacking as early as Layer 4, and total hijacking from 1.2% poisoned context. Larger models are more vulnerable, not less. QK/OV decomposition and direct logit attribution show that mechanistically-informed defenses (PCA subspace scrubbing, head ablation) fail because of manifold redundancy.</p>
             <button class="close" type="button" autofocus>Close</button>
         </dialog>
     </article>
