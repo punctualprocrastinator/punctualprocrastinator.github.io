@@ -229,11 +229,62 @@ body {
     body[data-art="teaching"] .artwork { --sp: 1; }   /* show it fully grown */
 }
 
-/* Text sits above it. */
+/* Text sits above it. The drawing is a child of .wrap, so its siblings
+   need their own layer above it. */
 .wrap { position: relative; z-index: 1; }
+.wrap > :not(.artwork) { position: relative; z-index: 1; }
 
-/* No margin to put it in on narrow screens. */
-@media (max-width: 64rem) { .artwork { display: none; } }
+/* Narrow screens have no margin. Each page gets the drawing as a band in
+   the flow, between the nav and the content, framed on that page's
+   subject (--focus is where the band starts, as a share of the drawing's
+   height). Nothing ever sits behind the text. Home keeps it in the corner
+   beside the photo, where there is room. */
+@media (max-width: 64rem) {
+    .artwork {
+        position: relative;
+        top: auto;
+        right: auto;
+        width: auto;
+        height: var(--band-h, 15rem);
+        margin: 0.4rem -16px -0.6rem;
+        overflow: hidden;
+        transform: none;
+        opacity: var(--art-opacity);
+        -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 14%, #000 80%, transparent 100%);
+                mask-image: linear-gradient(to bottom, transparent 0%, #000 14%, #000 80%, transparent 100%);
+    }
+    .artwork svg {
+        width: min(100%, 26rem);
+        height: auto;
+        aspect-ratio: 420 / 960;
+        margin: 0 auto;
+        transform: translateY(calc(var(--focus, 30) * -1%));
+    }
+    body[data-art="safety"]     { --focus: 20; }
+    body[data-art="capability"] { --focus: 15; }
+    body[data-art="resume"]     { --focus: 31; --band-h: 16rem; }
+    body[data-art="teaching"]   { --focus: 48; --band-h: 16rem; }
+    body[data-art="writing"]    { --focus: 50; --band-h: 17rem; }
+
+    body[data-art="home"] .artwork {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: min(58vw, 17rem);
+        height: auto;
+        aspect-ratio: 420 / 960;
+        margin: 0;
+        overflow: visible;
+        opacity: calc(var(--art-opacity) * 0.8);
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 55%),
+                            linear-gradient(to bottom, #000 55%, transparent 100%);
+        -webkit-mask-composite: source-in;
+                mask-image: linear-gradient(to right, transparent 0%, #000 55%),
+                            linear-gradient(to bottom, #000 55%, transparent 100%);
+                mask-composite: intersect;
+    }
+    body[data-art="home"] .artwork svg { width: 100%; height: 100%; transform: none; }
+}
 @media print { .artwork { display: none; } }
 
 /* ------------------------------ masthead ---------------------- */
@@ -808,6 +859,53 @@ footer {
     padding: 0.5rem 0.8rem;
     background-color: var(--paper);
     border: 2px solid var(--accent);
+}
+
+/* ------------------------------ phones ------------------------ */
+
+@media (max-width: 40rem) {
+    /* Justified text on a narrow measure leaves rivers of space. */
+    main p, .log p { text-align: left; hyphens: manual; }
+
+    /* Nav: short labels, and links tall enough to hit with a thumb. The
+       dropped word stays readable to screen readers. */
+    .nav-long {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip-path: inset(50%);
+        white-space: nowrap;
+    }
+    #sitenav ul { gap: 0 1.1rem; padding: 0.15rem 0; }
+    #sitenav a:link, #sitenav a:visited {
+        display: inline-block;
+        padding: 0.7rem 0.1rem 0.6rem;
+    }
+
+    /* The topic filter becomes one row of chips you swipe, fading at the
+       right edge to show there is more. */
+    .filterbar {
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        overflow-x: auto;
+        scrollbar-width: none;
+        margin: 2.2rem -16px 1.4rem;
+        padding: 0 16px 0.9rem;
+        -webkit-mask-image: linear-gradient(to right, #000 82%, transparent);
+                mask-image: linear-gradient(to right, #000 82%, transparent);
+    }
+    .filterbar::-webkit-scrollbar { display: none; }
+    .filterbar button { flex: none; padding: 0.62rem 0.85rem; }
+
+    /* Other small targets. */
+    .more { padding: 0.5rem 0.8rem; }
+    #theme-toggle { top: 0.35rem; right: -0.45rem; padding: 0.7rem 0.6rem; }
+    .contact { gap: 0.15rem; }
+    .contact li a { display: inline-block; padding: 0.3rem 0; }
+
+    /* Dialogs use the screen. */
+    .paper-dialog { padding: 1.3rem 1.2rem 1.1rem; width: calc(100% - 1.5rem); }
 }
 
 /* ------------------------------ print ------------------------- */
