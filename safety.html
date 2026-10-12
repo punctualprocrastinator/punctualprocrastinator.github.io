@@ -50,9 +50,43 @@ if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)
     <h2>Published and accepted</h2>
 
     <article class="pub">
-        <h3>Toxin Feature Hierarchy in ESM-2: Why Frozen Probes Resist ProteinMPNN Redesign</h3>
-        <span class="venue">GenBio 2026 &middot; Poster</span>
-        <p class="authors"><span class="me">Shivam Dubey</span>, Manan Wadhwa</p>
+        <h3>Known by Construction: Calibrating Model-State Instruments Against Models Whose State Was Installed, Hidden, or Never Present</h3>
+        <span class="venue">NeurIPS 2026 &middot; New in ML</span>
+        <p class="authors">Manan Wadhwa<span class="eq">*</span>, <span class="me">Shivam Dubey</span><span class="eq">*</span></p>
+        <p class="abstract">Calibrating model-state instruments against models
+        whose state was installed, hidden, or never present &mdash; so that a
+        reading from the instrument still means something when you do not
+        already know the answer.</p>
+    </article>
+
+    <article class="pub">
+        <h3>Dead Salmons Have a False-Positive Rate: A Calibrated Null-Model Test for Interpretability</h3>
+        <span class="venue">NeurIPS 2026 &middot; Interpretability as a Science <span class="status">&mdash; non-archival</span></span>
+        <p class="authors">Manan Wadhwa<span class="eq">*</span>, <span class="me">Shivam Dubey</span><span class="eq">*</span></p>
+        <p class="abstract">Naive significance testing flags up to 100% of
+        findings on untrained models. A K&nbsp;&ge;&nbsp;8&ndash;12 null
+        distribution corrects the false-positive rate, which gives
+        interpretability claims a calibrated null to be tested against.</p>
+        <p class="links">
+            <a href="https://github.com/punctualprocrastinator" target="_blank" rel="noopener">Code</a>
+        </p>
+    </article>
+
+    <article class="pub">
+        <h3>Steered Affect Moves a Partner Agent&rsquo;s Activations, and the Logistic Probe That Reads It Returns a Tie-Break, Not an Estimate</h3>
+        <span class="venue">NeurIPS 2026 &middot; Interpreting Agent Behavior <span class="status">&mdash; non-archival</span></span>
+        <p class="authors">Manan Wadhwa<span class="eq">*</span>, <span class="me">Shivam Dubey</span><span class="eq">*</span>, Debojeet Ghosh,
+        Shreyansh Kumar, Ayushman Garg</p>
+        <p class="abstract">Steering one agent&rsquo;s affect moves its
+        partner&rsquo;s activations. The logistic probe that reads that signal
+        is doing less than it appears to: what comes back is a tie-break, not
+        an estimate.</p>
+    </article>
+
+    <article class="pub">
+        <h3>Toxin Circuits in ESM-2: Mechanistic Interpretability for Biosecurity Screening</h3>
+        <span class="venue">ICML 2026 &middot; GenBio Workshop</span>
+        <p class="authors">Manan Wadhwa<span class="eq">*</span>, <span class="me">Shivam Dubey</span><span class="eq">*</span></p>
         <p class="abstract">BLAST detects 0% of 643 ProteinMPNN redesigns; a
         frozen ESM-2 linear probe detects 93.9% with no retraining. SAE
         analysis shows why: redesign amplifies toxin structural features rather
@@ -61,6 +95,7 @@ if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)
         white-box &mdash; and direct probe attribution pinpoints Layer 32 as
         the detection bottleneck (<em>r</em> = 0.992).</p>
         <p class="links">
+            <a href="https://openreview.net/forum?id=Nb3y9BzCOi" target="_blank" rel="noopener">OpenReview</a>
             <a href="https://github.com/punctualprocrastinator" target="_blank" rel="noopener">Code</a>
         </p>
     </article>
@@ -70,10 +105,10 @@ if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)
         <span class="venue">TAIS 2026 &middot; Oxford <span class="status">&mdash; lead author</span></span>
         <p class="authors"><span class="me">Shivam Dubey</span>, Jason Hoelscher-Obermaier</p>
         <p class="abstract">Geometric divergence of ViTs and ResNets under seven
-        adversarial attack algorithms, measured with Hutchinson's stochastic
-        Hessian trace estimator. Input-space and parameter-space curvature
-        differ by five orders of magnitude, which means standard robustness
-        metrics misclassify internal model instability.</p>
+        adversarial attack algorithms, measured with Hutchinson&rsquo;s
+        stochastic Hessian trace estimator. Input-space and parameter-space
+        curvature differ by five orders of magnitude, which means standard
+        robustness metrics misclassify internal model instability.</p>
         <p class="links">
             <a href="https://github.com/punctualprocrastinator" target="_blank" rel="noopener">Code</a>
         </p>
@@ -105,6 +140,33 @@ if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)
         </p>
     </article>
 
+    <p class="footnote">* equal contribution.</p>
+
+    <h2>Under review</h2>
+
+    <article class="pub">
+        <h3>Distance to the Boundary Is Not Steering Resistance</h3>
+        <span class="venue"><span class="status">Under review &mdash; UniReps</span></span>
+        <p class="authors">Manan Wadhwa<span class="eq">*</span>, <span class="me">Shivam Dubey</span><span class="eq">*</span></p>
+        <p class="abstract">How far a representation sits from a decision
+        boundary is not the same quantity as how hard it is to steer, and
+        treating the first as a proxy for the second gives the wrong
+        answer.</p>
+    </article>
+
+    <article class="pub">
+        <h3>Doubt Is a Decision: A Sparse Circuit Commits Language Models to &ldquo;I Don&rsquo;t Know&rdquo;</h3>
+        <span class="venue"><span class="status">arXiv preprint &mdash; coming soon</span></span>
+        <p class="authors">Sheryl Mehta<span class="eq">*</span>, Shagun Chadha<span class="eq">*</span>, Kanika Singhal<span class="eq">*</span>,
+        Manan Wadhwa, <span class="me">Shivam Dubey</span></p>
+        <p class="abstract">Abstention is not the absence of an answer. A sparse
+        circuit commits the model to &ldquo;I don&rsquo;t know&rdquo;, which
+        makes doubt a decision the model takes rather than a state it falls
+        into.</p>
+    </article>
+
+    <p class="footnote">* equal contribution.</p>
+
     <h2>Work in progress</h2>
 
     <h4>White-box monitoring under adaptive attack &middot; MARS V</h4>
@@ -116,7 +178,9 @@ if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)
 
     <p>I then ran a red-team/blue-team co-evolution loop against those probes
     across three attack families: suffix-gradient, discrete search, and
-    activation steering. <strong>The headline result is negative.</strong>
+    activation steering. The harness that runs it is
+    <a href="https://punctualprocrastinator.github.io/whetstone/" target="_blank" rel="noopener">Whetstone</a>,
+    which is open source. <strong>The headline result is negative.</strong>
     Jailbreak success and probe evasion turned out to be mutually exclusive:
     the perturbations that evade the monitor also stop the jailbreak
     working.</p>
@@ -128,6 +192,11 @@ if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)
     model's behaviour or merely the instructions it was given. The ablation
     that separates the two is designed.</p>
 
+    <p class="links">
+        <a href="https://punctualprocrastinator.github.io/whetstone/" target="_blank" rel="noopener">Whetstone docs</a>
+        <a href="https://github.com/punctualprocrastinator/whetstone" target="_blank" rel="noopener">Whetstone repo</a>
+    </p>
+
     <h4>Confidence as a separable channel &middot; Redarc Labs</h4>
     <p>Cohort 01 is built around one thesis: expressed confidence in LLMs is
     separable from internal knowledge, implemented partly through entropy
@@ -138,16 +207,6 @@ if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)
     types and survives post-training; and whether white-box monitors for that
     channel can be evaded. Two papers are under review at NeurIPS 2026
     workshops.</p>
-
-    <h2>Under review</h2>
-
-    <article class="pub">
-        <h3>Known by Construction</h3>
-        <span class="venue"><span class="status">Submitted &mdash; equal co-contributor</span></span>
-        <p class="authors"><span class="me">Shivam Dubey</span></p>
-        <p class="abstract">Model-state instrument calibration.
-        <!-- EDIT: a sentence or two on what this one does, once it is public. --></p>
-    </article>
 
     <h2>Preprints and projects</h2>
 
@@ -206,6 +265,13 @@ if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)
     <h2>Open-source tooling</h2>
     <ul class="entries">
         <li>
+            <span class="date">Harness</span>
+            <span class="what"><a href="https://github.com/punctualprocrastinator/whetstone" target="_blank" rel="noopener">whetstone</a>
+                <span class="note">A Red&times;Blue harness for adversarial safety-monitor
+                research: the infrastructure behind the MARS co-evolution experiments.
+                <a href="https://punctualprocrastinator.github.io/whetstone/" target="_blank" rel="noopener">Documentation</a>.</span></span>
+        </li>
+        <li>
             <span class="date">Package</span>
             <span class="what"><a href="https://github.com/punctualprocrastinator" target="_blank" rel="noopener">neuron_autolabel</a>
                 <span class="note">Auto-interpretability for LLaMA-style models. A
@@ -216,10 +282,8 @@ if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)
         <li>
             <span class="date">Method</span>
             <span class="what"><a href="https://github.com/punctualprocrastinator" target="_blank" rel="noopener">dead-salmon-fpr</a>
-                <span class="note">A calibrated null-model test for interpretability
-                claims. Naive significance testing flags up to 100% of findings on
-                untrained models; a K &ge; 8&ndash;12 null distribution corrects the
-                false-positive rate.</span></span>
+                <span class="note">Implementation of the calibrated null-model
+                test. The paper is listed above.</span></span>
         </li>
         <li>
             <span class="date">Tool</span>

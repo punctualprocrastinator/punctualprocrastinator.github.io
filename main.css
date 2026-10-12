@@ -370,6 +370,18 @@ hr { margin: 3rem auto; border: 0; border-top: 1px solid var(--rule); max-width:
 /* Unrefereed items: no venue line, so the title carries less weight. */
 .pub.informal h3 { font-weight: 500; font-size: 1.05rem; }
 
+/* Equal-contribution footnote under a publication list. */
+.footnote {
+    margin: -0.6rem auto 0;
+    max-width: var(--measure);
+    font-family: var(--mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+    text-align: left;
+}
+.pub .authors .eq { color: var(--accent); font-weight: 600; }
+
 /* ------------------------------ entry lists ------------------- */
 
 .entries { list-style: none; padding: 0; }
