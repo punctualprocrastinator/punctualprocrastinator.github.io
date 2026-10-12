@@ -10,7 +10,32 @@
    are deliberately quiet.
    --------------------------------------------------------------- */
 
-@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300..700;1,8..60,300..700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+/* Libron, by Nico Verbruggen: a reading serif tuned for screens, a
+   refinement of Readerly, itself based on Production Type's Newsreader.
+   SIL Open Font License 1.1; the license ships beside the files in
+   fonts/OFL.txt. https://github.com/nicoverbruggen/libron (v0.31) */
+@font-face {
+    font-family: 'Libron';
+    src: url('fonts/Libron-Regular.woff2') format('woff2');
+    font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+    font-family: 'Libron';
+    src: url('fonts/Libron-Italic.woff2') format('woff2');
+    font-weight: 400; font-style: italic; font-display: swap;
+}
+@font-face {
+    font-family: 'Libron';
+    src: url('fonts/Libron-Bold.woff2') format('woff2');
+    font-weight: 700; font-style: normal; font-display: swap;
+}
+@font-face {
+    font-family: 'Libron';
+    src: url('fonts/Libron-BoldItalic.woff2') format('woff2');
+    font-weight: 700; font-style: italic; font-display: swap;
+}
 
 :root {
     --paper:     #f0f1fa;
@@ -23,7 +48,7 @@
     --hairline:  rgba(38, 40, 63, 0.10);
     --muted:     rgba(38, 40, 63, 0.68);
 
-    --serif: 'Source Serif 4', 'Iowan Old Style', Georgia, 'Times New Roman', serif;
+    --serif: 'Libron', 'Iowan Old Style', Georgia, 'Times New Roman', serif;
     --mono:  'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Consolas, monospace;
 
     --measure: 36rem;              /* the reading column */
@@ -443,7 +468,7 @@ main p { text-align: justify; hyphens: auto; }
     line-height: 0.82;
     padding: 0.08em 0.09em 0 0;
     color: var(--accent);
-    font-weight: 600;
+    font-weight: 400;     /* Libron has 400 and 700 only; at this size regular carries it */
 }
 
 ul, ol { padding-left: 1.2rem; }

@@ -9,6 +9,7 @@ index.html      the whole site: intro, Selected Work, AI Safety,
 cv.html         full CV (linked, not in the section nav)
 404.html        shown by GitHub Pages for bad URLs
 main.css        the whole design
+fonts/          Libron webfonts (SIL OFL 1.1, license in fonts/OFL.txt)
 app.js          light/dark toggle + email obfuscation
 portrait.jpg    the photo beside the bio
 favicon.svg     site icon
