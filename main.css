@@ -33,24 +33,24 @@
 
 @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
-        --paper:    #15161f;
-        --paper-2:  #1d1f2b;
+        --paper:    #111326;
+        --paper-2:  #191c32;
         --ink:      #e4e6f4;
         --accent:   #a6abe8;
         --accent-2: #7f85b8;
-        --wash:     #2a2d3f;
+        --wash:     #272b49;
         --rule:     rgba(228, 230, 244, 0.24);
         --hairline: rgba(228, 230, 244, 0.13);
         --muted:    rgba(228, 230, 244, 0.62);
     }
 }
 :root[data-theme="dark"] {
-    --paper:    #15161f;
-    --paper-2:  #1d1f2b;
+    --paper:    #111326;
+    --paper-2:  #191c32;
     --ink:      #e4e6f4;
     --accent:   #a6abe8;
     --accent-2: #7f85b8;
-    --wash:     #2a2d3f;
+    --wash:     #272b49;
     --rule:     rgba(228, 230, 244, 0.24);
     --hairline: rgba(228, 230, 244, 0.13);
     --muted:    rgba(228, 230, 244, 0.62);
@@ -75,81 +75,161 @@ body {
 
 .wrap { max-width: var(--page); margin: 0 auto; }
 
-/* ------------------------------ page artwork ------------------ */
+/* ------------------------------ atmosphere -------------------- */
 
-/* One abstract drawing per page, bleeding off the top-right corner and
-   sitting behind the text. The strokes reference palette variables, so a
-   single drawing works in both themes. Decorative only: aria-hidden in
-   the markup, no pointer events, gone in print. */
+/* A soft wash fixed behind every page, so the color stays with you as you
+   scroll rather than sitting above the fold. Five blobs on analogous hues:
+   neighbors on the color wheel blend into color, while complementary pairs
+   (gold against periwinkle, say) pass through gray where they meet. Each
+   page sets its own hues with data-art. Scrolling drifts the blobs and
+   fades a fifth hue in, so the page changes mood a little as you read.
+
+   Contrast was checked over the strongest point of every blob: body text
+   stays above 11:1 in light and 12:1 in dark. */
 
 :root {
-    --art-a: #4a5196;          /* periwinkle: grounds the line work */
-    --art-b: #8b91c8;
-    --art-c: #c08a28;          /* gold: carries the wash */
-    --art-d: #a9552c;          /* terracotta: the deep note */
-    --art-opacity: 0.85;
+    --atm-L: 0.85;
+    --atm-C: 0.095;
+    --atm-alpha: 0.95;
+    --atm-veil: 50%;
+    --grain: 0.05;
+    --h1: 272; --h2: 300; --h3: 335; --h4: 232; --h5: 200;
+    --sp: 0;                         /* scroll progress, set by app.js */
+
+    --art-a: #505ba7;                /* line work: periwinkle */
+    --art-b: #a18cc8;                /* lavender */
+    --art-c: #bf6291;                /* rose, the one accent */
+    --art-opacity: 0.55;
 }
 @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
-        --art-a: #9aa0e8;
-        --art-b: #6f76b4;
-        --art-c: #e8b75e;      /* gold holds up against the dark ground */
-        --art-d: #d4825a;
-        --art-opacity: 0.70;
+        --atm-L: 0.42;
+        --atm-C: 0.115;
+        --atm-alpha: 0.85;
+        --atm-veil: 48%;
+        --grain: 0.07;
+        --art-a: #98a6ea;
+        --art-b: #8874ae;
+        --art-c: #e694bb;
+        --art-opacity: 0.5;
     }
 }
 :root[data-theme="dark"] {
-    --art-a: #9aa0e8;
-    --art-b: #6f76b4;
-    --art-c: #e8b75e;
-    --art-d: #d4825a;
-    --art-opacity: 0.70;
+    --atm-L: 0.42;
+    --atm-C: 0.115;
+    --atm-alpha: 0.85;
+    --atm-veil: 48%;
+    --grain: 0.07;
+    --art-a: #98a6ea;
+    --art-b: #8874ae;
+    --art-c: #e694bb;
+    --art-opacity: 0.5;
 }
 
-.artwork {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: clamp(22rem, 58vw, 52rem);
-    height: clamp(26rem, 70vh, 46rem);
-    overflow: hidden;
+/* Each page gets its own arrangement of the same family. */
+body[data-art="safety"]     { --h1: 258; --h2: 288; --h3: 322; --h4: 222; --h5: 345; }
+body[data-art="capability"] { --h1: 285; --h2: 315; --h3: 248; --h4: 205; --h5: 338; }
+body[data-art="resume"]     { --h1: 268; --h2: 288; --h3: 306; --h4: 246; --h5: 322; }
+body[data-art="writing"]    { --h1: 300; --h2: 330; --h3: 352; --h4: 268; --h5: 236; }
+body[data-art="teaching"]   { --h1: 240; --h2: 270; --h3: 202; --h4: 300; --h5: 182; }
+
+.backdrop {
+    position: fixed;
+    inset: 0;
     z-index: 0;
-    opacity: var(--art-opacity);
+    overflow: hidden;
     pointer-events: none;
-    user-select: none;
 }
-.artwork svg { display: block; width: 100%; height: 100%; }
-
-/* The drawing fades out before it reaches the reading column. */
-.artwork::after {
+.backdrop .blob {
+    position: absolute;
+    width: 64vmax;
+    height: 64vmax;
+    border-radius: 50%;
+    /* fading to the same hue at zero alpha, not to "transparent", avoids
+       the stray tint a fade to a neutral can pick up */
+    background: radial-gradient(closest-side,
+        oklch(var(--atm-L) var(--atm-C) var(--h)) 0%,
+        oklch(var(--atm-L) var(--atm-C) var(--h) / 0.55) 45%,
+        oklch(var(--atm-L) var(--atm-C) var(--h) / 0) 100%);
+    opacity: var(--atm-alpha);
+    will-change: transform, opacity;
+}
+.backdrop .b1 {
+    --h: var(--h1);
+    top: -26vmax; right: -18vmax;
+    opacity: calc(var(--atm-alpha) * (1 - var(--sp) * 0.4));
+    transform: translate3d(calc(var(--sp) * -9vw), calc(var(--sp) * 16vh), 0)
+               scale(calc(1 + var(--sp) * 0.18));
+}
+.backdrop .b2 {
+    --h: var(--h2);
+    width: 58vmax; height: 58vmax;
+    top: 14vh; right: -16vmax;
+    transform: translate3d(calc(var(--sp) * 12vw), calc(var(--sp) * -10vh), 0);
+}
+.backdrop .b3 {
+    --h: var(--h3);
+    bottom: -30vmax; left: -22vmax;
+    transform: translate3d(calc(var(--sp) * 8vw), calc(var(--sp) * -18vh), 0)
+               scale(calc(1 + var(--sp) * 0.12));
+}
+.backdrop .b4 {
+    --h: var(--h4);
+    width: 52vmax; height: 52vmax;
+    top: 4vh; left: -28vmax;
+    transform: translate3d(calc(var(--sp) * 6vw), calc(var(--sp) * 12vh), 0);
+}
+.backdrop .b5 {
+    --h: var(--h5);
+    width: 58vmax; height: 58vmax;
+    bottom: -24vmax; right: -14vmax;
+    opacity: calc(var(--atm-alpha) * var(--sp));      /* arrives as you read */
+    transform: translate3d(calc(var(--sp) * -6vw), calc(var(--sp) * -14vh), 0);
+}
+.backdrop .grain {
+    position: absolute;
+    inset: 0;
+    opacity: var(--grain);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.5  0 0 0 0 0.5  0 0 0 0 0.5  0 0 0 1.4 -0.3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url%28%23n%29'/%3E%3C/svg%3E");
+    background-size: 180px 180px;
+}
+/* A calm band behind the reading column; the color lives in the margins. */
+.backdrop::after {
     content: '';
     position: absolute;
     inset: 0;
-    background:
-        linear-gradient(to right,
-            var(--paper) 0%,
-            color-mix(in srgb, var(--paper) 70%, transparent) 30%,
-            transparent 72%),
-        linear-gradient(to bottom,
-            transparent 45%,
-            color-mix(in srgb, var(--paper) 72%, transparent) 80%,
-            var(--paper) 100%);
+    background: linear-gradient(to right,
+        transparent 0%,
+        color-mix(in srgb, var(--paper) var(--atm-veil), transparent) calc(50% - 30rem),
+        color-mix(in srgb, var(--paper) var(--atm-veil), transparent) calc(50% + 30rem),
+        transparent 100%);
 }
 
-/* Text sits above it, always. */
+/* The page's line drawing, in the right margin, drifting up slower than
+   the text so it reads as depth rather than as a stain on the glass. */
+.artwork {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: clamp(16rem, 26vw, 34rem);
+    height: 100vh;
+    z-index: 0;
+    opacity: var(--art-opacity);
+    pointer-events: none;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 60%);
+            mask-image: linear-gradient(to right, transparent 0%, #000 60%);
+    transform: translate3d(0, calc(var(--sp) * -8vh), 0);
+    will-change: transform;
+}
+.artwork svg { display: block; width: 100%; height: 100%; }
+
+/* Text sits above all of it. */
 .wrap { position: relative; z-index: 1; }
 
-@media (max-width: 52rem) {
-    .artwork {
-        width: 130%;
-        height: 22rem;
-        opacity: calc(var(--art-opacity) * 0.55);
-    }
-}
-@media (prefers-reduced-motion: no-preference) {
-    .artwork { transition: opacity 0.4s ease; }
-}
-@media print { .artwork { display: none; } }
+/* No room in the margins on narrow screens: keep the wash, drop the lines. */
+@media (max-width: 64rem) { .artwork { display: none; } }
+
+@media print { .backdrop, .artwork { display: none; } }
 
 /* ------------------------------ masthead ---------------------- */
 
@@ -431,6 +511,7 @@ hr { margin: 3rem auto; border: 0; border-top: 1px solid var(--rule); max-width:
     margin: 2.4rem auto 0;
 }
 .intro p { text-align: left; margin-bottom: 0; }
+.intro-side p + p { margin-top: 0.9rem; }
 .intro .intro-side h4:first-child { margin-top: 0; }
 @media (max-width: 34rem) {
     .intro { grid-template-columns: 1fr; gap: 1.2rem; }

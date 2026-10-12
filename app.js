@@ -77,6 +77,38 @@
     }
 
     /* ---------------------------------------------------------------
+       Atmosphere. Writes scroll progress (0 at the top, 1 at the end) to
+       --sp; the stylesheet turns that into a slow drift of the wash and
+       the line art. Only transform and opacity change, so the browser
+       composites it without repainting. Skipped entirely for anyone who
+       has asked their system for reduced motion.
+       --------------------------------------------------------------- */
+
+    var reduceMotion = window.matchMedia &&
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!reduceMotion) {
+        var root = document.documentElement;
+        var pending = false;
+
+        function updateScroll() {
+            var room = root.scrollHeight - window.innerHeight;
+            var p = room > 0 ? window.scrollY / room : 0;
+            root.style.setProperty('--sp', Math.min(1, Math.max(0, p)).toFixed(4));
+            pending = false;
+        }
+
+        window.addEventListener('scroll', function () {
+            if (!pending) {
+                pending = true;
+                window.requestAnimationFrame(updateScroll);
+            }
+        }, { passive: true });
+        window.addEventListener('resize', updateScroll);
+        updateScroll();
+    }
+
+    /* ---------------------------------------------------------------
        The filter bar under the bio. Papers carry a data-cat; pressing a
        button shows only that tag. Everything is in the HTML, so with JS
        off the visitor simply sees all of them.
