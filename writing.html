@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Writing &mdash; Shivam Dubey</title>
+<meta name="description" content="Notes and explainers by Shivam Dubey on interpretability, probing and adversarial robustness.">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Writing &mdash; Shivam Dubey">
+<meta property="og:url" content="https://punctualprocrastinator.github.io/writing.html">
+
+<link rel="canonical" href="https://punctualprocrastinator.github.io/writing.html">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="main.css">
+<!-- Applies a stored theme override before first paint, so there is no flash. -->
+<script>try{var t=localStorage.getItem("theme");
+if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+<script src="app.js" defer></script>
+</head>
+
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="wrap">
+
+<header id="masthead">
+    <button id="theme-toggle" type="button" aria-live="polite">Dark</button>
+    <h1><a href="index.html">Shivam Dubey<span class="subtitle">AI safety &middot; Mechanistic interpretability &middot; Adversarial robustness</span></a></h1>
+</header>
+
+<nav id="sitenav" aria-label="Main">
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="safety.html">AI Safety Research</a></li>
+        <li><a href="capability.html">AI Capability Research</a></li>
+        <li><a href="writing.html" aria-current="page">Writing</a></li>
+        <li><a href="cv.html">CV</a></li>
+    </ul>
+</nav>
+
+<main id="main">
+
+    <p class="lead">Things that are not papers: explainers, arguments I am
+    still working out, and notes I wanted somewhere I could link to. The first
+    few are being written now.</p>
+
+    <h2>In progress</h2>
+
+    <!-- EDIT: as each piece goes up, give it a date and a link, or move it
+         into the .entries list below. Both styles are ready to use. -->
+
+    <h4>Why interpretability findings need a calibrated null</h4>
+    <p>Naive significance testing flags up to 100% of findings on
+    <em>untrained</em> models. A K&nbsp;&ge;&nbsp;8&ndash;12 null distribution
+    corrects the false-positive rate. This is the argument behind
+    <a href="safety.html">dead-salmon-fpr</a>, written out properly for people
+    who have not read the code.</p>
+
+    <h4>Reading a residual stream with nothing but PyTorch hooks</h4>
+    <p>The week-one material from the Redarc Fellows cohort: how to get at
+    activations without a wrapper library, why that is worth doing once, and
+    what the libraries are actually saving you from afterwards.</p>
+
+    <h4>What a negative result rules out, and what it does not</h4>
+    <p>At MARS I found that jailbreak success and probe evasion were mutually
+    exclusive across three attack families. That is a real constraint on a
+    narrow class of attacks, and it is not a safety guarantee. The gap between
+    those two readings is where most of the interesting disagreement sits.</p>
+
+    <h2>Elsewhere</h2>
+    <!-- EDIT: external writing, talks or threads as they appear. -->
+    <ul class="entries">
+        <li>
+            <span class="date">Code</span>
+            <span class="what"><a href="https://github.com/punctualprocrastinator" target="_blank" rel="noopener">GitHub</a>
+                <span class="note">Tooling and replication code, documented where it is
+                meant to be read by someone other than me.</span></span>
+        </li>
+    </ul>
+
+</main>
+
+<footer>
+    <p><a href="index.html">Home</a> &middot;
+       <a href="safety.html">AI Safety Research</a> &middot;
+       <a href="cv.html">CV</a></p>
+    <p>Last updated <time datetime="2026-10">October 2026</time>.</p>
+</footer>
+
+</div>
+</body>
+</html>
