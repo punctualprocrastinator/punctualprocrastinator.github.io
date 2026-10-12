@@ -77,9 +77,9 @@
     }
 
     /* ---------------------------------------------------------------
-       Atmosphere. Writes scroll progress (0 at the top, 1 at the end) to
-       --sp; the stylesheet turns that into a slow drift of the wash and
-       the line art. Only transform and opacity change, so the browser
+       Botanical art. Writes scroll progress (0 at the top, 1 at the end)
+       to --sp; the stylesheet turns that into the dandelion seeds blowing
+       away, petals falling and steam rising. Only transform and opacity change, so the browser
        composites it without repainting. Skipped entirely for anyone who
        has asked their system for reduced motion.
        --------------------------------------------------------------- */

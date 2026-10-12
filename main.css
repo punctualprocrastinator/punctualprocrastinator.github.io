@@ -75,161 +75,67 @@ body {
 
 .wrap { max-width: var(--page); margin: 0 auto; }
 
-/* ------------------------------ atmosphere -------------------- */
+/* ------------------------------ botanical art ----------------- */
 
-/* A soft wash fixed behind every page, so the color stays with you as you
-   scroll rather than sitting above the fold. Five blobs on analogous hues:
-   neighbors on the color wheel blend into color, while complementary pairs
-   (gold against periwinkle, say) pass through gray where they meet. Each
-   page sets its own hues with data-art. Scrolling drifts the blobs and
-   fades a fifth hue in, so the page changes mood a little as you read.
-
-   Contrast was checked over the strongest point of every blob: body text
-   stays above 11:1 in light and 12:1 in dark. */
+/* One plant per page, drawn in fine ink with soft fills, sitting in the
+   right margin on plain paper. Pieces marked .drift move with scroll
+   progress (--sp, set by app.js): the dandelion's seeds blow away, petals
+   fall and steam rises as you read. Transform only, so it composites
+   without repainting; nothing moves for reduced-motion users. */
 
 :root {
-    --atm-L: 0.86;
-    --atm-C: 0.070;
-    --atm-alpha: 0.60;
-    --atm-veil: 52%;
-    --grain: 0.025;
-    --h1: 272; --h2: 300; --h3: 335; --h4: 232; --h5: 200;
-    --sp: 0;                         /* scroll progress, set by app.js */
-
-    --art-a: #505ba7;                /* line work: periwinkle */
-    --art-b: #a18cc8;                /* lavender */
-    --art-c: #bf6291;                /* rose, the one accent */
-    --art-opacity: 0.55;
+    --sp: 0;
+    --art-a: #505ba7;        /* ink: stems, outlines */
+    --art-b: #a18cc8;        /* lavender: steam, roots */
+    --art-c: #c46a95;        /* rose: blossoms */
+    --art-leaf: #5f8f80;     /* sage: leaves */
+    --art-opacity: 0.9;
 }
 @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
-        --atm-L: 0.36;
-        --atm-C: 0.045;      /* in gamut: the limit here is 0.061 */
-        --atm-alpha: 0.50;
-        --atm-veil: 52%;
-        --grain: 0.03;
-        --art-a: #98a6ea;
-        --art-b: #8874ae;
-        --art-c: #e694bb;
-        --art-opacity: 0.5;
+        --art-a: #a3aee8;
+        --art-b: #9a86c4;
+        --art-c: #e597bb;
+        --art-leaf: #8cbcab;
+        --art-opacity: 0.8;
     }
 }
 :root[data-theme="dark"] {
-    --atm-L: 0.36;
-    --atm-C: 0.045;
-    --atm-alpha: 0.50;
-    --atm-veil: 52%;
-    --grain: 0.03;
-    --art-a: #98a6ea;
-    --art-b: #8874ae;
-    --art-c: #e694bb;
-    --art-opacity: 0.5;
+    --art-a: #a3aee8;
+    --art-b: #9a86c4;
+    --art-c: #e597bb;
+    --art-leaf: #8cbcab;
+    --art-opacity: 0.8;
 }
 
-/* Each page gets its own arrangement of the same family. */
-body[data-art="safety"]     { --h1: 258; --h2: 288; --h3: 322; --h4: 222; --h5: 345; }
-body[data-art="capability"] { --h1: 285; --h2: 315; --h3: 248; --h4: 205; --h5: 338; }
-body[data-art="resume"]     { --h1: 268; --h2: 288; --h3: 306; --h4: 246; --h5: 322; }
-body[data-art="writing"]    { --h1: 300; --h2: 330; --h3: 352; --h4: 268; --h5: 236; }
-body[data-art="teaching"]   { --h1: 240; --h2: 270; --h3: 202; --h4: 300; --h5: 182; }
-
-.backdrop {
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    overflow: hidden;
-    pointer-events: none;
-}
-.backdrop .blob {
-    position: absolute;
-    width: 64vmax;
-    height: 64vmax;
-    border-radius: 50%;
-    /* fading to the same hue at zero alpha, not to "transparent", avoids
-       the stray tint a fade to a neutral can pick up */
-    background: radial-gradient(closest-side,
-        oklch(var(--atm-L) var(--atm-C) var(--h)) 0%,
-        oklch(var(--atm-L) var(--atm-C) var(--h) / 0.55) 45%,
-        oklch(var(--atm-L) var(--atm-C) var(--h) / 0) 100%);
-    opacity: var(--atm-alpha);
-    will-change: transform, opacity;
-}
-.backdrop .b1 {
-    --h: var(--h1);
-    top: -26vmax; right: -18vmax;
-    opacity: calc(var(--atm-alpha) * (1 - var(--sp) * 0.25));
-    transform: translate3d(calc(var(--sp) * -4vw), calc(var(--sp) * 8vh), 0)
-               scale(calc(1 + var(--sp) * 0.08));
-}
-.backdrop .b2 {
-    --h: var(--h2);
-    width: 58vmax; height: 58vmax;
-    top: 14vh; right: -16vmax;
-    transform: translate3d(calc(var(--sp) * 5vw), calc(var(--sp) * -5vh), 0);
-}
-.backdrop .b3 {
-    --h: var(--h3);
-    bottom: -30vmax; left: -22vmax;
-    transform: translate3d(calc(var(--sp) * 4vw), calc(var(--sp) * -8vh), 0)
-               scale(calc(1 + var(--sp) * 0.06));
-}
-.backdrop .b4 {
-    --h: var(--h4);
-    width: 52vmax; height: 52vmax;
-    top: 4vh; left: -28vmax;
-    transform: translate3d(calc(var(--sp) * 3vw), calc(var(--sp) * 6vh), 0);
-}
-.backdrop .b5 {
-    --h: var(--h5);
-    width: 58vmax; height: 58vmax;
-    bottom: -24vmax; right: -14vmax;
-    opacity: calc(var(--atm-alpha) * var(--sp) * 0.6);      /* arrives as you read */
-    transform: translate3d(calc(var(--sp) * -3vw), calc(var(--sp) * -7vh), 0);
-}
-.backdrop .grain {
-    position: absolute;
-    inset: 0;
-    opacity: var(--grain);
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.5  0 0 0 0 0.5  0 0 0 0 0.5  0 0 0 1.4 -0.3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url%28%23n%29'/%3E%3C/svg%3E");
-    background-size: 180px 180px;
-}
-/* A calm band behind the reading column; the color lives in the margins. */
-.backdrop::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to right,
-        transparent 0%,
-        color-mix(in srgb, var(--paper) var(--atm-veil), transparent) calc(50% - 30rem),
-        color-mix(in srgb, var(--paper) var(--atm-veil), transparent) calc(50% + 30rem),
-        transparent 100%);
-}
-
-/* The page's line drawing, in the right margin, drifting up slower than
-   the text so it reads as depth rather than as a stain on the glass. */
 .artwork {
     position: fixed;
     top: 0;
     right: 0;
-    width: clamp(16rem, 26vw, 34rem);
+    width: clamp(18rem, 30vw, 40rem);
     height: 100vh;
     z-index: 0;
     opacity: var(--art-opacity);
     pointer-events: none;
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 60%);
-            mask-image: linear-gradient(to right, transparent 0%, #000 60%);
-    transform: translate3d(0, calc(var(--sp) * -4vh), 0);
-    will-change: transform;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 40%);
+            mask-image: linear-gradient(to right, transparent 0%, #000 40%);
+    transform: translate3d(0, calc(var(--sp) * -3vh), 0);
 }
-.artwork svg { display: block; width: 100%; height: 100%; }
+.artwork svg { display: block; width: 100%; height: 100%; overflow: visible; }
+.artwork .drift {
+    transform-box: fill-box;
+    transform-origin: center;
+    transform: translate(calc(var(--sp) * var(--dx, 0) * 1px),
+                         calc(var(--sp) * var(--dy, 0) * 1px))
+               rotate(calc(var(--sp) * var(--dr, 0) * 1deg));
+}
 
-/* Text sits above all of it. */
+/* Text sits above it. */
 .wrap { position: relative; z-index: 1; }
 
-/* No room in the margins on narrow screens: keep the wash, drop the lines. */
+/* No margin to put it in on narrow screens. */
 @media (max-width: 64rem) { .artwork { display: none; } }
-
-@media print { .backdrop, .artwork { display: none; } }
+@media print { .artwork { display: none; } }
 
 /* ------------------------------ masthead ---------------------- */
 
