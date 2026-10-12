@@ -130,6 +130,105 @@ body {
                rotate(calc(var(--sp) * var(--dr, 0) * 1deg));
 }
 
+/* ------------------------------ motion ------------------------ */
+
+/* The vocabulary the drawings use. Each element's resting style is its
+   finished state; time-based animations run from a start state toward it,
+   so turning animation off simply shows the drawing complete. Origins are
+   in the drawing's own coordinates (--ox, --oy). */
+
+.artwork .sway, .artwork .float, .artwork .unfold, .artwork .crack,
+.artwork .grow, .artwork .spin {
+    transform-box: view-box;
+    transform-origin: calc(var(--ox, 0) * 1px) calc(var(--oy, 0) * 1px);
+}
+
+/* Plants moving in a light wind. */
+.artwork .sway {
+    animation: art-sway var(--dur, 7s) ease-in-out var(--delay, 0s) infinite alternate;
+}
+@keyframes art-sway {
+    from { transform: rotate(calc(var(--amp, 1) * -1deg)); }
+    to   { transform: rotate(calc(var(--amp, 1) * 1deg)); }
+}
+
+/* Seeds, leaves and petals letting go: drift away, fade, return. */
+.artwork .float {
+    opacity: 0;
+    animation: art-float var(--dur, 16s) cubic-bezier(0.35, 0.05, 0.6, 1) var(--delay, 0s) infinite;
+}
+@keyframes art-float {
+    0%   { transform: translate(0, 0) rotate(0deg); opacity: 0; }
+    10%  { opacity: var(--op, 0.7); }
+    72%  { opacity: var(--op, 0.7); }
+    100% { transform: translate(calc(var(--fx, 0) * 1px), calc(var(--fy, 0) * 1px))
+                      rotate(calc(var(--fr, 0) * 1deg)); opacity: 0; }
+}
+.artwork .bob {
+    animation: art-bob var(--bdur, 3s) ease-in-out infinite alternate;
+}
+@keyframes art-bob {
+    from { transform: translate(-7px, 2px); }
+    to   { transform: translate(7px, -2px); }
+}
+
+/* Strokes that draw themselves in, once (paths carry pathLength="1"). */
+.artwork .draw {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 0;
+    animation: art-draw var(--dur, 2s) cubic-bezier(0.4, 0.1, 0.3, 1) var(--delay, 0s) backwards;
+}
+@keyframes art-draw { from { stroke-dashoffset: 1; opacity: 0; } }
+
+/* Leaves and petals opening from their base, once. */
+.artwork .unfold {
+    animation: art-unfold var(--dur, 1.4s) cubic-bezier(0.2, 0.8, 0.25, 1.15) var(--delay, 0s) backwards;
+}
+@keyframes art-unfold { from { transform: scale(0.001) rotate(calc(var(--r0, 0) * 1deg)); opacity: 0; } }
+
+/* A seed coat splitting open, once. */
+.artwork .crack {
+    transform: rotate(calc(var(--rot, 0) * 1deg));
+    animation: art-crack 1.1s cubic-bezier(0.3, 0.6, 0.3, 1) var(--delay, 0s) backwards;
+}
+@keyframes art-crack { from { transform: rotate(0deg); } }
+
+/* Steam: rises and thins out, over and over. */
+.artwork .rise {
+    animation: art-rise var(--dur, 7s) ease-in-out var(--delay, 0s) infinite;
+}
+@keyframes art-rise {
+    0%   { transform: translateY(18px); opacity: 0; }
+    35%  { opacity: 1; }
+    100% { transform: translateY(-48px); opacity: 0; }
+}
+
+/* Rings spreading across water, over and over. */
+.artwork .ripple {
+    transform-box: view-box;
+    transform-origin: calc(var(--ox, 0) * 1px) calc(var(--oy, 0) * 1px);
+    animation: art-ripple var(--dur, 6s) ease-out var(--delay, 0s) infinite;
+}
+@keyframes art-ripple {
+    0%   { transform: scale(0.2); opacity: 0; }
+    15%  { opacity: 1; }
+    100% { transform: scale(1.7); opacity: 0; }
+}
+
+/* Scroll-driven: appears between --a and --a + --w of the way down. */
+.artwork .grow { --g: clamp(0, calc((var(--sp) - var(--a, 0)) / var(--w, 0.2)), 1); }
+.artwork path.grow { stroke-dasharray: 1; stroke-dashoffset: calc(1 - var(--g)); }
+.artwork g.grow { transform: scale(var(--g)); opacity: min(1, calc(var(--g) * 3)); }
+
+/* Scroll-driven: the coneflower spirals turn as you read. */
+.artwork .spin { transform: rotate(calc(var(--sp) * 50deg)); }
+
+@media (prefers-reduced-motion: reduce) {
+    .artwork, .artwork * { animation: none !important; }
+    .artwork .float { display: none; }
+    body[data-art="teaching"] .artwork { --sp: 1; }   /* show it fully grown */
+}
+
 /* Text sits above it. */
 .wrap { position: relative; z-index: 1; }
 
