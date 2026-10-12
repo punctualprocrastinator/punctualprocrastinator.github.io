@@ -120,10 +120,6 @@ h1 a:hover { background: none; }
 /* ------------------------------ nav --------------------------- */
 
 #sitenav {
-    position: sticky;
-    top: 0;
-    z-index: 5;
-    background-color: var(--paper);
     margin: 1.8rem 0 0;
     border-top: 3px double var(--rule);
     border-bottom: 3px double var(--rule);
@@ -362,6 +358,42 @@ hr { margin: 3rem auto; border: 0; border-top: 1px solid var(--rule); max-width:
     .intro { grid-template-columns: 1fr; gap: 1.2rem; }
     .intro-photo { max-width: 12rem; }
 }
+
+/* ------------------------------ filter bar -------------------- */
+
+/* Nav bar two. It sits under the bio and toggles which papers show,
+   so the page stays short instead of running on for sixteen entries. */
+.filterbar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.4rem 0.5rem;
+    max-width: 44rem;
+    margin: 2.8rem auto 1.6rem;
+    padding-bottom: 0.9rem;
+    border-bottom: 1px solid var(--rule);
+}
+.filterbar button {
+    font-family: var(--mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: none;
+    border: 1px solid var(--hairline);
+    border-radius: 2px;
+    padding: 0.28rem 0.6rem;
+    cursor: pointer;
+}
+.filterbar button:hover { color: var(--ink); border-color: var(--rule); }
+.filterbar button[aria-pressed="true"] {
+    color: var(--paper);
+    background-color: var(--accent);
+    border-color: var(--accent);
+}
+.filterbar button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.pub[hidden] { display: none; }
 
 /* ------------------------------ paper dialogs ----------------- */
 

@@ -77,40 +77,44 @@
     }
 
     /* ---------------------------------------------------------------
-       One page, four sections: mark the nav link for whichever section
-       you are reading. Falls back to doing nothing on browsers without
-       IntersectionObserver - the links still jump.
+       The filter bar under the bio. Papers carry a data-cat; pressing a
+       button shows only that tag. Everything is in the HTML, so with JS
+       off the visitor simply sees all of them.
        --------------------------------------------------------------- */
 
-    var navLinks = Array.prototype.slice.call(
-        document.querySelectorAll('#sitenav a[href^="#"]'));
+    var filterbar = document.querySelector('.filterbar');
+    if (filterbar) {
+        var buttons = Array.prototype.slice.call(filterbar.querySelectorAll('button'));
+        var papers = Array.prototype.slice.call(document.querySelectorAll('#papers .pub'));
+        var empty = document.getElementById('no-papers');
 
-    if (navLinks.length && 'IntersectionObserver' in window) {
-        var byId = {};
-        navLinks.forEach(function (a) { byId[a.getAttribute('href').slice(1)] = a; });
-
-        var seen = {};
-        var observer = new IntersectionObserver(function (entries) {
-            entries.forEach(function (e) { seen[e.target.id] = e.isIntersecting; });
-
-            // The topmost visible section wins, so scrolling up and down
-            // both land on something sensible.
-            var current = null;
-            Object.keys(byId).forEach(function (id) {
-                if (!current && seen[id]) { current = id; }
+        function applyFilter(tag) {
+            var shown = 0;
+            papers.forEach(function (p) {
+                var on = tag === 'all' || p.getAttribute('data-cat') === tag;
+                p.hidden = !on;
+                if (on) { shown += 1; }
             });
-
-            navLinks.forEach(function (a) {
-                var on = a.getAttribute('href') === '#' + current;
-                if (on) { a.setAttribute('aria-current', 'true'); }
-                else { a.removeAttribute('aria-current'); }
+            buttons.forEach(function (b) {
+                b.setAttribute('aria-pressed',
+                    b.getAttribute('data-filter') === tag ? 'true' : 'false');
             });
-        }, { rootMargin: '-10% 0px -70% 0px' });
+            if (empty) { empty.hidden = shown !== 0; }
+        }
 
-        Object.keys(byId).forEach(function (id) {
-            var section = document.getElementById(id);
-            if (section) { observer.observe(section); }
+        buttons.forEach(function (b) {
+            b.addEventListener('click', function () {
+                var tag = b.getAttribute('data-filter');
+                applyFilter(tag);
+                history.replaceState(null, '', tag === 'all' ? '#papers' : '#' + tag);
+            });
         });
+
+        // A link like index.html#tabular opens on that tag.
+        var wanted = window.location.hash.slice(1);
+        if (wanted && buttons.some(function (b) { return b.getAttribute('data-filter') === wanted; })) {
+            applyFilter(wanted);
+        }
     }
 
     /* ---------------------------------------------------------------
