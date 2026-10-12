@@ -17,11 +17,11 @@
 <link rel="canonical" href="https://punctualprocrastinator.github.io/resume.html">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preload" href="fonts/Libron-Regular.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="main.css?v=15">
+<link rel="stylesheet" href="main.css?v=16">
 <!-- Applies a stored theme override before first paint, so there is no flash. -->
 <script>try{var t=localStorage.getItem("theme");
 if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
-<script src="app.js?v=15" defer></script>
+<script src="app.js?v=16" defer></script>
 </head>
 
 <body data-art="resume">
@@ -64,11 +64,6 @@ if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)
 
     <p class="lead">AI researcher working on mechanistic interpretability,
     adversarial robustness and white-box AI control.</p>
-
-
-    <!-- This page prints cleanly - nav, toggle and photo are hidden in the
-         print styles - so Ctrl+P to PDF gives a serviceable copy. Drop your
-         LaTeX PDF in as cv.pdf and the link below starts working. -->
     <h2>Research experience</h2>
 
     <div class="cv-item">
@@ -80,7 +75,9 @@ if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)
             across four instruction-tuned models from three labs. Ran a
             red-team/blue-team co-evolution loop against them across three
             attack families; the main result is negative: jailbreak
-            success and probe evasion are mutually exclusive. Extending into
+            success and probe evasion are mutually exclusive. The deployment lesson is the false positive rate: probes do find
+            the jailbreak direction, but every probe keeps a false positive rate, so deployment needs
+            a monitor cascade rather than one probe. Extending into
             trained attack policies behind a six-stage de-risking protocol.
             Multi-GPU SLURM cluster (8&times;B200), shared codebase with one
             collaborator. The harness is open source:
@@ -183,7 +180,7 @@ if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)
         <li>
             <span class="date">2026</span>
             <span class="what"><a href="capability.html">What You Pretrain On Matters: Synthetic Task Distributions Determine Tabular Foundation Model Quality</a>
-                <span class="note">FMSD Workshop, ICML 2026, accepted poster. With Bouadi, Bouarour, Kulkarni, Tanna, Sankarapu</span></span>
+                <span class="note">FMSD Workshop, ICML 2026, accepted poster. Bouadi, Bouarour, Kulkarni, Dubey, Tanna, Sankarapu; arXiv:2605.18971</span></span>
         </li>
         <li>
             <span class="date">2026</span>
@@ -202,8 +199,8 @@ if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)
         </li>
         <li>
             <span class="date">2025</span>
-            <span class="what"><a href="https://arxiv.org/abs/2509.02133" target="_blank" rel="noopener">AMBEDKAR: fairness-aware speculative decoding</a>
-                <span class="note">arXiv:2509.02133. Co-author. Cited by MIT Technology Review</span></span>
+            <span class="what"><a href="https://arxiv.org/abs/2509.02133" target="_blank" rel="noopener">AMBEDKAR: A Multi-level Bias Elimination through a Decoding Approach with Knowledge Augmentation for Robust Constitutional Alignment of Language Models</a>
+                <span class="note">arXiv:2509.02133. Mukhopadhyay, Kasat, Dubey, et al. Cited by MIT Technology Review</span></span>
         </li>
     </ul>
 
@@ -310,7 +307,7 @@ if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)
 </main>
 
 <footer>
-    <p><a href="cv.pdf">Download as PDF</a> &middot;
+    <p><a href="cv.pdf">Full CV (PDF)</a> &middot; <a href="resume-one-page.pdf">One-page resume (PDF)</a> &middot;
        <a href="https://github.com/punctualprocrastinator" target="_blank" rel="noopener">GitHub</a> &middot;
        <a href="https://linkedin.com/in/syntaxsavant" rel="me">LinkedIn</a></p>
     <p class="keywords">Shivam Dubey &middot; AI safety &middot; mechanistic interpretability &middot; adversarial robustness &middot; tabular foundation models &middot; Lexsi Labs &middot; IIT Madras</p>

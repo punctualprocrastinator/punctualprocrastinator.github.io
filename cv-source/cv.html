@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Shivam Dubey &middot; CV</title>
+<link rel="stylesheet" href="cv.css">
+</head>
+<body>
+
+<header>
+    <h1>Shivam Dubey</h1>
+    <div class="contact">
+        <a href="mailto:dubeyjiworks@gmail.com">dubeyjiworks@gmail.com</a><span class="sep">|</span>
+        <a href="https://punctualprocrastinator.github.io">punctualprocrastinator.github.io</a><span class="sep">|</span>
+        <a href="https://linkedin.com/in/syntaxsavant">linkedin.com/in/syntaxsavant</a><span class="sep">|</span>
+        <a href="https://github.com/punctualprocrastinator">github.com/punctualprocrastinator</a>
+    </div>
+    <div class="tagline">AI Safety, Mechanistic Interpretability, Adversarial Robustness, White-Box AI Control</div>
+</header>
+
+<h2>Research Focus</h2>
+<p>AI safety researcher working on mechanistic interpretability and adversarial robustness. Current
+focus is white-box monitoring for AI control: building activation-level monitors, then attacking them
+with adaptive attackers. Core methods are QK/OV circuit decomposition, direct logit attribution,
+activation patching, steering vectors, SAE feature attribution and spectral dynamics. Now extending
+this to non-model capability gains: what control and interpretability look like for the harness a
+model runs in, not only the model. The approach throughout is understand, exploit, then defend.</p>
+
+<h2>Education</h2>
+<div class="entry">
+    <div class="row"><span class="org">Indian Institute of Technology Madras</span><span class="when">2023 &ndash; 2027</span></div>
+    <div class="role">BS in Data Science. Focus: AI safety, interpretability, fairness, governance</div>
+</div>
+<div class="entry">
+    <div class="row"><span class="org">Maharaja Agrasen Institute of Technology, Delhi</span><span class="when">2022 &ndash; 2026</span></div>
+    <div class="role">B.Tech in Mechanical and Automation Engineering</div>
+</div>
+
+<h2>Research Experience</h2>
+
+<div class="entry">
+    <div class="row"><span class="org">MARS V, Meridian AI Research Summer</span><span class="when">Jul 2026 &ndash; Present</span></div>
+    <div class="role">Fellow, Lindley Lentati Track: White-Box Techniques for AI Control. Cambridge</div>
+    <ul>
+        <li>Trained linear compliance probes on residual-stream activations across four instruction-tuned
+        models from three labs (Qwen2.5-7B, Llama-3.1-8B, Gemma-2-9B, abliterated Llama-3). Compliance
+        is linearly decodable and tracks refusal itself rather than surface phrasing.</li>
+        <li>Ran a red-team/blue-team co-evolution loop against the probes across three attack families
+        (suffix-gradient, discrete search, activation steering). <b>Jailbreak success and probe evasion
+        came out mutually exclusive</b>: perturbations that evade the monitor also stop jailbreaking.</li>
+        <li>The deployment lesson is the false positive rate, not detection: probes do find the jailbreak
+        direction, but every probe keeps a false positive rate, so deployment needs a monitor cascade
+        rather than one probe or a handful.</li>
+        <li>Extending into trained attack policies (Redwood open problem: stress-testing white-box
+        monitors) behind a six-stage de-risking protocol, with an ablation that separates behavior from
+        instruction-following. Built <a href="https://github.com/punctualprocrastinator/whetstone">Whetstone</a>,
+        the open-source Red&times;Blue harness behind it. Multi-GPU SLURM cluster (8&times;B200).</li>
+    </ul>
+</div>
+
+<div class="entry">
+    <div class="row"><span class="org">Lexsi Labs</span><span class="when">2026 &ndash; Present</span></div>
+    <div class="role">AI Researcher, Tabular Foundation Models Lab</div>
+    <ul>
+        <li>Capability research on tabular foundation models: attributing model behavior to synthetic
+        pretraining data. Two papers at the ATTRIB workshop at NeurIPS 2026 (first author on one) and
+        one at FMSD at ICML 2026.</li>
+    </ul>
+</div>
+
+<div class="entry">
+    <div class="row"><span class="org">Redarc Labs</span><span class="when">2026 &ndash; Present</span></div>
+    <div class="role">Co-founder and Research Lead. Delhi</div>
+    <ul>
+        <li>Founded and run a six-person AI safety research fellowship. Cohort 01 is built around one
+        thesis: expressed confidence in LLMs is separable from internal knowledge, implemented partly
+        through entropy neurons that modulate output entropy without changing token predictions.</li>
+        <li>Mentoring three first-author workshop projects; two papers under review at NeurIPS 2026 workshops.</li>
+        <li>Wrote and teach <i>Redarc Fellows</i>, an eight-session mechanistic interpretability curriculum
+        taught with PyTorch hooks and Hugging Face directly, with no interpretability library in the stack.</li>
+    </ul>
+</div>
+
+<div class="entry">
+    <div class="row"><span class="org">Apart Research</span><span class="when">Nov 2025 &ndash; Present</span></div>
+    <div class="role">Research Fellow. Mentor: Jason Hoelscher-Obermaier</div>
+    <ul>
+        <li>Measured geometric divergence of ViTs and ResNets under seven adversarial attack algorithms
+        using Hutchinson&rsquo;s stochastic Hessian trace estimator. Found a five-order-of-magnitude gap
+        between input-space and parameter-space curvature: standard robustness metrics misclassify
+        internal model instability. Lead author, TAIS 2026.</li>
+    </ul>
+</div>
+
+<div class="entry">
+    <div class="row"><span class="org">Artificial Intelligence Institute of South Carolina</span><span class="when">Jan 2025 &ndash; Apr 2026</span></div>
+    <div class="role">Research Intern. Mentor: Dr. Amitava Das</div>
+    <ul>
+        <li>Co-author of AMBEDKAR (arXiv:2509.02133, cited by MIT Technology Review). Designed the
+        fairness-aware speculative decoding algorithm, which reduces religion bias by 77% and caste
+        bias by 23% at 6% latency overhead.</li>
+    </ul>
+</div>
+
+<h2 class="new-page">Publications</h2>
+<p class="note">* equal contribution. NeurIPS workshop papers are non-archival.</p>
+
+<h3>Accepted</h3>
+<ol class="pubs">
+    <li><span class="t">Known by Construction: Calibrating Model-State Instruments Against Models Whose State Was Installed, Hidden, or Never Present.</span>
+        <span class="au">M. Wadhwa*, <span class="me">S. Dubey*</span>.</span> <span class="v">New in ML, NeurIPS 2026.</span></li>
+    <li><span class="t">Dead Salmons Have a False-Positive Rate: A Calibrated Null-Model Test for Interpretability.</span>
+        <span class="au">M. Wadhwa*, <span class="me">S. Dubey*</span>.</span> <span class="v">Interpretability as a Science, NeurIPS 2026.</span></li>
+    <li><span class="t">Steered Affect Moves a Partner Agent&rsquo;s Activations, and the Logistic Probe That Reads It Returns a Tie-Break, Not an Estimate.</span>
+        <span class="au">M. Wadhwa*, <span class="me">S. Dubey*</span>, D. Ghosh, S. Kumar, A. Garg.</span> <span class="v">Interpreting Agent Behavior, NeurIPS 2026.</span></li>
+    <li><span class="t">When Does Synthetic Relational Data Teach Models to Use Relations? Tracing Predictive Structure from Pretraining Data to Model Behavior.</span>
+        <span class="au"><span class="me">S. Dubey</span>, M. Bouadi, N. Bouarour, V. Kulkarni, A. Tanna, V. K. Sankarapu.</span> <span class="v">ATTRIB Workshop, NeurIPS 2026.</span></li>
+    <li><span class="t">From Behavior to Provenance: Attributing Tabular Foundation Models to Synthetic Pretraining Data.</span>
+        <span class="au">M. Bouadi, N. Bouarour, <span class="me">S. Dubey</span>, A. Tanna, V. K. Sankarapu.</span> <span class="v">ATTRIB Workshop, NeurIPS 2026.</span></li>
+    <li><span class="t">Toxin Circuits in ESM-2: Mechanistic Interpretability for Biosecurity Screening.</span>
+        <span class="au">M. Wadhwa*, <span class="me">S. Dubey*</span>.</span> <span class="v">GenBio Workshop, ICML 2026.</span></li>
+    <li><span class="t">What You Pretrain On Matters: Synthetic Task Distributions Determine Tabular Foundation Model Quality.</span>
+        <span class="au">M. Bouadi, N. Bouarour, V. Kulkarni, <span class="me">S. Dubey</span>, A. Tanna, V. K. Sankarapu.</span>
+        <span class="v">FMSD Workshop, ICML 2026.</span> arXiv:2605.18971, as &ldquo;Shaping the Prior&rdquo;.</li>
+    <li><span class="t">Loss Landscape Response to Adversarial Perturbation Is Architecture-Dependent: Comparing ViT and ResNet.</span>
+        <span class="au"><span class="me">S. Dubey</span>, J. Hoelscher-Obermaier.</span> <span class="v">TAIS 2026, Oxford.</span></li>
+    <li><span class="t">Physics-Informed Neural Operators with Multi-Method Explainability for Ocean Temperature Prediction.</span>
+        <span class="au"><span class="me">S. Dubey</span>.</span> <span class="v">XAI4Science Workshop, AAAI 2026.</span></li>
+    <li><span class="t">Spectral Regularization as a Safety-Critical Inductive Bias.</span>
+        <span class="au"><span class="me">S. Dubey</span>.</span> <span class="v">Reliable ML Workshop, NeurIPS 2025.</span></li>
+</ol>
+
+<h3>Under Review and Preprints</h3>
+<ol class="pubs" start="11">
+    <li><span class="t">AMBEDKAR: A Multi-level Bias Elimination through a Decoding Approach with Knowledge Augmentation for Robust Constitutional Alignment of Language Models.</span>
+        <span class="au">S. Mukhopadhyay, A. Kasat, <span class="me">S. Dubey</span>, R. Karthikeyan, D. Sood, V. Jain, A. Chadha, A. Das.</span>
+        <span class="v">arXiv:2509.02133, 2025.</span> Cited by MIT Technology Review.</li>
+    <li><span class="t">Distance to the Boundary Is Not Steering Resistance.</span>
+        <span class="au">M. Wadhwa*, <span class="me">S. Dubey*</span>.</span> <span class="v">Under review, UniReps.</span></li>
+    <li><span class="t">Doubt Is a Decision: A Sparse Circuit Commits Language Models to &ldquo;I Don&rsquo;t Know&rdquo;.</span>
+        <span class="au">S. Mehta*, S. Chadha*, K. Singhal*, M. Wadhwa, <span class="me">S. Dubey</span>.</span> <span class="v">arXiv preprint, forthcoming.</span></li>
+</ol>
+
+<h3>Selected Projects</h3>
+<ul>
+    <li><b>Isolating Refusal and Compliance Heads</b> (Qwen2.5-7B): a zero-shot harm classifier at AUC 0.943 with zero false
+    positives; unconditional bipolar assertion holds nanoGCG attack success to 33%, against 66% undefended.</li>
+    <li><b>Pre-commitment Probing</b> (OLMo-3-7B-Think): a residual-stream probe predicts answer correctness before any
+    reasoning token (AUC 0.780); a Layer 15 direction transfers across six languages (<i>p</i> = 0.0017).</li>
+    <li><b>Context Poisoning in Tabular ICL</b>: the first logit lens for tabular in-context learning; 1.2% poisoned
+    context hijacks it completely, and larger models are more vulnerable, not less.</li>
+</ul>
+
+<h2>Open-Source Tooling</h2>
+<ul>
+    <li><b>whetstone</b>: Red&times;Blue harness for adversarial safety-monitor research, built for MARS.</li>
+    <li><b>neuron_autolabel</b>: auto-interpretability for LLaMA-style models, scored by detection AUC rather than simulation.</li>
+    <li><b>dead-salmon-fpr</b>: calibrated null-model test; corrects interpretability false positives on untrained models.</li>
+    <li><b>mechanistic-tamper-verification</b>: detects tampered model updates by where weight change concentrates.</li>
+</ul>
+
+<h2>Technical Skills</h2>
+<div class="cols">
+    <span class="k">Languages</span><span>Python, CUDA, MATLAB, Bash, JavaScript</span>
+    <span class="k">Frameworks</span><span>PyTorch, JAX, TransformerLens, NNsight, Hugging Face, DevInterp, LangChain, Docker, SLURM (multi-node, 8&times;B200)</span>
+    <span class="k">Methods</span><span>QK/OV circuit decomposition, direct logit attribution, activation patching, steering vectors (CAA), logit lens, linear probing, SAE feature attribution, nanoGCG and suffix-gradient attacks, Hutchinson Hessian trace, SVD and spectral dynamics</span>
+</div>
+
+</body>
+</html>

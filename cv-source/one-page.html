@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Shivam Dubey &middot; Resume</title>
+<link rel="stylesheet" href="cv.css">
+</head>
+<body class="compact">
+
+<header>
+    <h1>Shivam Dubey</h1>
+    <div class="contact">
+        <a href="mailto:dubeyjiworks@gmail.com">dubeyjiworks@gmail.com</a><span class="sep">|</span>
+        <a href="https://punctualprocrastinator.github.io">punctualprocrastinator.github.io</a><span class="sep">|</span>
+        <a href="https://linkedin.com/in/syntaxsavant">linkedin.com/in/syntaxsavant</a><span class="sep">|</span>
+        <a href="https://github.com/punctualprocrastinator">github.com/punctualprocrastinator</a>
+    </div>
+</header>
+
+<h2>Summary</h2>
+<p>AI safety researcher working on mechanistic interpretability and adversarial robustness: building
+white-box monitors for AI control, then attacking them with adaptive attackers. Ten accepted papers
+in 2025&ndash;26, including three at NeurIPS 2026 workshops with Manan Wadhwa and a first-author paper at
+ATTRIB (NeurIPS 2026). Now working on control and interpretability for non-model capability gains.</p>
+
+<h2>Experience</h2>
+
+<div class="entry">
+    <div class="row"><span class="org">MARS V, Meridian AI Research Summer &middot; <span class="role">Fellow, White-Box Techniques for AI Control</span></span><span class="when">Jul 2026 &ndash; Present</span></div>
+    <ul>
+        <li>Compliance probes on four instruction-tuned models from three labs; a red/blue co-evolution loop across three
+        attack families found jailbreak success and probe evasion mutually exclusive.</li>
+        <li>Deployment lesson: every probe keeps a false positive rate, so monitoring needs a cascade, not one probe.
+        Built <a href="https://github.com/punctualprocrastinator/whetstone">Whetstone</a>, the open-source harness. 8&times;B200 SLURM cluster.</li>
+    </ul>
+</div>
+<div class="entry">
+    <div class="row"><span class="org">Lexsi Labs &middot; <span class="role">AI Researcher, Tabular Foundation Models Lab</span></span><span class="when">2026 &ndash; Present</span></div>
+    <ul><li>Attributing tabular foundation model behavior to synthetic pretraining data. Three workshop papers (NeurIPS, ICML 2026).</li></ul>
+</div>
+<div class="entry">
+    <div class="row"><span class="org">Redarc Labs &middot; <span class="role">Co-founder and Research Lead, Delhi</span></span><span class="when">2026 &ndash; Present</span></div>
+    <ul><li>Run a six-person AI safety fellowship; mentor three first-author projects (two under review at NeurIPS 2026
+    workshops); wrote and teach an eight-session mechanistic interpretability curriculum.</li></ul>
+</div>
+<div class="entry">
+    <div class="row"><span class="org">Apart Research &middot; <span class="role">Research Fellow</span></span><span class="when">Nov 2025 &ndash; Present</span></div>
+    <ul><li>Hessian-trace analysis of ViTs and ResNets under seven attacks: a five-order-of-magnitude gap between input- and
+    parameter-space curvature. Lead author, TAIS 2026.</li></ul>
+</div>
+<div class="entry">
+    <div class="row"><span class="org">AI Institute of South Carolina &middot; <span class="role">Research Intern</span></span><span class="when">Jan 2025 &ndash; Apr 2026</span></div>
+    <ul><li>Designed the fairness-aware speculative decoding in AMBEDKAR: religion bias down 77%, caste bias down 23%, at 6% latency.</li></ul>
+</div>
+
+<h2>Selected Publications</h2>
+<p class="note">* equal contribution. Full list of 13 at punctualprocrastinator.github.io.</p>
+<ol class="pubs">
+    <li><span class="t">Known by Construction: Calibrating Model-State Instruments Against Models Whose State Was Installed, Hidden, or Never Present.</span>
+        <span class="au">Wadhwa*, <span class="me">Dubey*</span>.</span> <span class="v">New in ML, NeurIPS 2026.</span></li>
+    <li><span class="t">When Does Synthetic Relational Data Teach Models to Use Relations?</span>
+        <span class="au"><span class="me">Dubey</span>, Bouadi, Bouarour, Kulkarni, Tanna, Sankarapu.</span> <span class="v">ATTRIB, NeurIPS 2026.</span></li>
+    <li><span class="t">Dead Salmons Have a False-Positive Rate: A Calibrated Null-Model Test for Interpretability.</span>
+        <span class="au">Wadhwa*, <span class="me">Dubey*</span>.</span> <span class="v">Interpretability as a Science, NeurIPS 2026.</span></li>
+    <li><span class="t">Steered Affect Moves a Partner Agent&rsquo;s Activations, and the Logistic Probe That Reads It Returns a Tie-Break.</span>
+        <span class="au">Wadhwa*, <span class="me">Dubey*</span>, et al.</span> <span class="v">Interpreting Agent Behavior, NeurIPS 2026.</span></li>
+    <li><span class="t">Toxin Circuits in ESM-2: Mechanistic Interpretability for Biosecurity Screening.</span>
+        <span class="au">Wadhwa*, <span class="me">Dubey*</span>.</span> <span class="v">GenBio, ICML 2026.</span></li>
+    <li><span class="t">Loss Landscape Response to Adversarial Perturbation Is Architecture-Dependent.</span>
+        <span class="au"><span class="me">Dubey</span>, Hoelscher-Obermaier.</span> <span class="v">TAIS 2026.</span></li>
+    <li><span class="t">Spectral Regularization as a Safety-Critical Inductive Bias.</span>
+        <span class="au"><span class="me">Dubey</span>.</span> <span class="v">Reliable ML, NeurIPS 2025.</span></li>
+</ol>
+
+<h2>Open Source</h2>
+<ul>
+    <li><b>whetstone</b>: Red&times;Blue harness for adversarial safety-monitor research.
+    <b>dead-salmon-fpr</b>: a calibrated null for interpretability claims.
+    <b>neuron_autolabel</b>: auto-interpretability scored by detection AUC.</li>
+</ul>
+
+<h2>Education</h2>
+<div class="row"><span><span class="org">IIT Madras</span>, BS in Data Science</span><span class="when">2023 &ndash; 2027</span></div>
+<div class="row"><span><span class="org">Maharaja Agrasen Institute of Technology</span>, B.Tech, Mechanical and Automation Engineering</span><span class="when">2022 &ndash; 2026</span></div>
+
+<h2>Skills</h2>
+<div class="cols">
+    <span class="k">Methods</span><span>QK/OV decomposition, direct logit attribution, activation patching, steering vectors, linear probing, SAE feature attribution, nanoGCG attacks, Hessian trace</span>
+    <span class="k">Stack</span><span>Python, CUDA, PyTorch, JAX, TransformerLens, NNsight, Hugging Face, SLURM (multi-node)</span>
+</div>
+
+</body>
+</html>
