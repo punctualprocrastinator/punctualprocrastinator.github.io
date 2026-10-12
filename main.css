@@ -89,8 +89,8 @@ body {
 
 :root {
     --atm-L: 0.86;
-    --atm-C: 0.085;
-    --atm-alpha: 0.85;
+    --atm-C: 0.070;
+    --atm-alpha: 0.60;
     --atm-veil: 52%;
     --grain: 0.025;
     --h1: 272; --h2: 300; --h3: 335; --h4: 232; --h5: 200;
@@ -104,8 +104,8 @@ body {
 @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
         --atm-L: 0.36;
-        --atm-C: 0.055;      /* in gamut: the limit here is 0.061 */
-        --atm-alpha: 0.70;
+        --atm-C: 0.045;      /* in gamut: the limit here is 0.061 */
+        --atm-alpha: 0.50;
         --atm-veil: 52%;
         --grain: 0.03;
         --art-a: #98a6ea;
@@ -116,8 +116,8 @@ body {
 }
 :root[data-theme="dark"] {
     --atm-L: 0.36;
-    --atm-C: 0.055;
-    --atm-alpha: 0.70;
+    --atm-C: 0.045;
+    --atm-alpha: 0.50;
     --atm-veil: 52%;
     --grain: 0.03;
     --art-a: #98a6ea;
