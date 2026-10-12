@@ -77,6 +77,39 @@
     }
 
     /* ---------------------------------------------------------------
+       Paper dialogs. Each index entry has a button and a <dialog>; the
+       button is hidden until this runs, so with JS off the page still
+       works and the titles still link to the full entry.
+       --------------------------------------------------------------- */
+
+    document.documentElement.classList.add('js');
+
+    document.querySelectorAll('.more[data-dialog]').forEach(function (button) {
+        var dialog = document.getElementById(button.getAttribute('data-dialog'));
+        if (!dialog || typeof dialog.showModal !== 'function') {
+            button.hidden = true;        // very old browser: leave the links
+            return;
+        }
+
+        button.addEventListener('click', function () { dialog.showModal(); });
+
+        var close = dialog.querySelector('.close');
+        if (close) {
+            close.addEventListener('click', function () { dialog.close(); });
+        }
+
+        // Clicking the backdrop closes it. The dialog element covers the
+        // whole viewport, so compare against the inner box.
+        dialog.addEventListener('click', function (e) {
+            if (e.target !== dialog) { return; }
+            var box = dialog.getBoundingClientRect();
+            var outside = e.clientX < box.left || e.clientX > box.right ||
+                          e.clientY < box.top  || e.clientY > box.bottom;
+            if (outside) { dialog.close(); }
+        });
+    });
+
+    /* ---------------------------------------------------------------
        Email. The address lives in data- attributes and is joined here,
        which stops the simplest harvesters without hiding it from a
        person. Anyone with JS off sees the fallback text in the HTML.

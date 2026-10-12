@@ -31,7 +31,7 @@ if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)
 <!-- ===== header: identical on every page, keep them in sync ===== -->
 <header id="masthead">
     <button id="theme-toggle" type="button" aria-live="polite">Dark</button>
-    <h1><a href="index.html">Shivam Dubey<span class="subtitle">AI safety &middot; Mechanistic interpretability &middot; Adversarial robustness</span></a></h1>
+    <h1><a href="index.html">Shivam Dubey<span class="subtitle">AI Researcher at Lexsi Labs</span></a></h1>
 </header>
 
 <nav id="sitenav" aria-label="Main">
@@ -47,106 +47,202 @@ if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)
 
 <main id="main">
 
-    <h2>Bio</h2>
-
-    <div class="bio">
-        <div class="bio-text">
-            <p class="lead">I work on mechanistic interpretability and
-            adversarial robustness. Right now that mostly means white-box
-            monitoring for AI control: building monitors that read a model's
-            activations, and then attacking them with adaptive attackers to
-            find out what they are really measuring.</p>
-
-            <p>I am a fellow on the Lindley Lentati track at
-            <a href="https://www.meridiancambridge.org/" target="_blank" rel="noopener">MARS V</a>
-            in Cambridge, a research fellow at
-            <a href="https://www.apartresearch.com/" target="_blank" rel="noopener">Apart Research</a>,
-            and co-founder of <strong>Redarc Labs</strong>, a small AI safety
-            research fellowship in Delhi. I also do capability research on
-            tabular foundation models at <strong>Lexsi Labs</strong>. I study
-            data science at IIT Madras.</p>
-
-            <p>The order I try to work in is understand, exploit, then defend.
-            A defence that has not survived someone optimising against it is a
-            hypothesis, not a result &mdash; so most of my projects end with me
-            trying to break the thing I just built. Sometimes that works and
-            the headline result is negative. I would rather publish those than
-            not.</p>
-        </div>
-
-        <div class="bio-side">
-            <img id="portrait" src="portrait.jpg"
-                 alt="Shivam Dubey standing by the Thames, with the Palace of Westminster behind"
-                 width="560" height="560">
-            <!-- EDIT: a caption if you want one, or delete this line. -->
-            <p class="caption">London, 2026.</p>
-
+    <div class="intro">
+        <img id="portrait" src="portrait.jpg"
+             alt="Shivam Dubey standing by the Thames, with the Palace of Westminster behind"
+             width="560" height="560">
+        <div class="intro-side">
+            <h4>Contact</h4>
             <ul class="contact">
                 <li><span class="label">Email</span><a id="email-link" href="#"
                        data-user="dubeyjiworks" data-domain="gmail.com">[enable JS]</a></li>
                 <li><span class="label">GitHub</span><a href="https://github.com/punctualprocrastinator" rel="me">punctualprocrastinator</a></li>
                 <li><span class="label">LinkedIn</span><a href="https://linkedin.com/in/syntaxsavant" rel="me">syntaxsavant</a></li>
+                <li><span class="label">Research</span><a href="safety.html">AI safety</a> &middot; <a href="capability.html">AI capability</a></li>
             </ul>
         </div>
     </div>
 
-    <h2>Selected work</h2>
+    <h2>Papers</h2>
+    <p class="footnote">* equal contribution. NeurIPS workshop papers are non-archival.</p>
 
-    <article class="pub">
-        <h3>When Does Synthetic Relational Data Teach Models to Use Relations? Tracing Predictive Structure from Pretraining Data to Model Behavior</h3>
-        <span class="venue">NeurIPS 2026 &middot; ATTRIB Workshop <span class="status">&mdash; first author</span></span>
-        <p class="authors"><span class="me">Shivam Dubey</span>, Mohamed Bouadi,
-        Nassim Bouarour, Varun Kulkarni, Aditya Tanna, Vinay Kumar Sankarapu</p>
-        <p class="abstract">When synthetic relational pretraining data actually
-        teaches a tabular foundation model to use relations, and when it only
-        looks like it does &mdash; traced from the pretraining distribution
-        through to model behaviour.</p>
-    </article>
-
-    <article class="pub">
-        <h3>Known by Construction: Calibrating Model-State Instruments Against Models Whose State Was Installed, Hidden, or Never Present</h3>
+    <article class="pub compact">
+        <h3><a href="safety.html">Known by Construction: Calibrating Model-State Instruments Against Models Whose State Was Installed, Hidden, or Never Present</a></h3>
         <span class="venue">NeurIPS 2026 &middot; New in ML</span>
         <p class="authors">Manan Wadhwa<span class="eq">*</span>, <span class="me">Shivam Dubey</span><span class="eq">*</span></p>
-        <p class="abstract">Calibrating model-state instruments against models
-        whose state was installed, hidden, or never present &mdash; so that a
-        reading from the instrument still means something when you do not
-        already know the answer.</p>
+        <button class="more" type="button" data-dialog="paper-1">Summary</button>
+        <dialog id="paper-1" class="paper-dialog" aria-labelledby="paper-1-t">
+            <h3 id="paper-1-t">Known by Construction: Calibrating Model-State Instruments Against Models Whose State Was Installed, Hidden, or Never Present</h3>
+            <p>People increasingly ask whether an AI system has hidden goals, preferences or something like feelings. The tools for checking are mostly tested by seeing whether they agree with each other, and never against a case where the true answer is known. We built small AI models where we controlled the answer so that some were trained to have a hidden habit, and some were not. None of the tools we tested could reliably tell those models apart, signalling that agreement between tools is not a reliable verdict.</p>
+            <p class="links"><a href="safety.html">Full entry</a></p>
+            <button class="close" type="button" autofocus>Close</button>
+        </dialog>
     </article>
 
-    <article class="pub">
-        <h3>Toxin Circuits in ESM-2: Mechanistic Interpretability for Biosecurity Screening</h3>
+    <article class="pub compact">
+        <h3><a href="safety.html">Dead Salmons Have a False-Positive Rate: A Calibrated Null-Model Test for Interpretability</a></h3>
+        <span class="venue">NeurIPS 2026 &middot; Interpretability as a Science</span>
+        <p class="authors">Manan Wadhwa<span class="eq">*</span>, <span class="me">Shivam Dubey</span><span class="eq">*</span></p>
+        <button class="more" type="button" data-dialog="paper-2">Summary</button>
+        <dialog id="paper-2" class="paper-dialog" aria-labelledby="paper-2-t">
+            <h3 id="paper-2-t">Dead Salmons Have a False-Positive Rate: A Calibrated Null-Model Test for Interpretability</h3>
+            <p>When we look inside a model to see what it has learned, say if it has picked up something like sentiment, we use methods like linear probes, SAEs and concept directions. This paper runs those methods on untrained models, which have learned nothing at all, and finds they report the same confident results. The proposed fix is simple: check every finding against an untrained baseline before trusting it.</p>
+            <p class="links"><a href="safety.html">Full entry</a></p>
+            <button class="close" type="button" autofocus>Close</button>
+        </dialog>
+    </article>
+
+    <article class="pub compact">
+        <h3><a href="safety.html">Steered Affect Moves a Partner Agent&rsquo;s Activations, and the Logistic Probe That Reads It Returns a Tie-Break, Not an Estimate</a></h3>
+        <span class="venue">NeurIPS 2026 &middot; Interpreting Agent Behavior</span>
+        <p class="authors">Manan Wadhwa<span class="eq">*</span>, <span class="me">Shivam Dubey</span><span class="eq">*</span>, Debojeet Ghosh, Shreyansh Kumar, Ayushman Garg</p>
+        <button class="more" type="button" data-dialog="paper-3">Summary</button>
+        <dialog id="paper-3" class="paper-dialog" aria-labelledby="paper-3-t">
+            <h3 id="paper-3-t">Steered Affect Moves a Partner Agent&rsquo;s Activations, and the Logistic Probe That Reads It Returns a Tie-Break, Not an Estimate</h3>
+            <p>As AI agents become progressively more talkative around each other, it matters whether one agent&rsquo;s emotional tone can carry over into another. We pushed one AI agent into an emotional state such as sadness or fear, and found measurable changes inside the agent it was talking to. We also found a common method for detecting these changes gives different answers when run twice on similar data. Once we accounted for that, only the effect for sadness held up clearly. The broader point is that some standard tools for inspecting AI systems need stronger checks before people rely on their results.</p>
+            <p class="links"><a href="safety.html">Full entry</a></p>
+            <button class="close" type="button" autofocus>Close</button>
+        </dialog>
+    </article>
+
+    <article class="pub compact">
+        <h3><a href="capability.html">When Does Synthetic Relational Data Teach Models to Use Relations? Tracing Predictive Structure from Pretraining Data to Model Behavior</a></h3>
+        <span class="venue">NeurIPS 2026 &middot; ATTRIB Workshop</span>
+        <p class="authors"><span class="me">Shivam Dubey</span>, Mohamed Bouadi, Nassim Bouarour, Varun Kulkarni, Aditya Tanna, Vinay Kumar Sankarapu</p>
+        <button class="more" type="button" data-dialog="paper-4">Summary</button>
+        <dialog id="paper-4" class="paper-dialog" aria-labelledby="paper-4-t">
+            <h3 id="paper-4-t">When Does Synthetic Relational Data Teach Models to Use Relations? Tracing Predictive Structure from Pretraining Data to Model Behavior</h3>
+            <p>Synthetic relational pretraining data is supposed to teach a tabular foundation model to use relations. This traces the predictive structure from the pretraining distribution through to model behaviour, and separates the cases where the model genuinely learns to use relations from the cases where it only appears to.</p>
+            <p class="links"><a href="capability.html">Full entry</a></p>
+            <button class="close" type="button" autofocus>Close</button>
+        </dialog>
+    </article>
+
+    <article class="pub compact">
+        <h3><a href="capability.html">From Behavior to Provenance: Attributing Tabular Foundation Models to Synthetic Pretraining Data</a></h3>
+        <span class="venue">NeurIPS 2026 &middot; ATTRIB Workshop</span>
+        <p class="authors">Mohamed Bouadi, Nassim Bouarour, <span class="me">Shivam Dubey</span>, Aditya Tanna, Vinay Kumar Sankarapu</p>
+        <button class="more" type="button" data-dialog="paper-5">Summary</button>
+        <dialog id="paper-5" class="paper-dialog" aria-labelledby="paper-5-t">
+            <h3 id="paper-5-t">From Behavior to Provenance: Attributing Tabular Foundation Models to Synthetic Pretraining Data</h3>
+            <p>Attributing what a tabular foundation model does at inference back to the synthetic data it was pretrained on &mdash; behaviour to provenance, rather than the usual direction.</p>
+            <p class="links"><a href="capability.html">Full entry</a></p>
+            <button class="close" type="button" autofocus>Close</button>
+        </dialog>
+    </article>
+
+    <article class="pub compact">
+        <h3><a href="safety.html">Toxin Circuits in ESM-2: Mechanistic Interpretability for Biosecurity Screening</a></h3>
         <span class="venue">ICML 2026 &middot; GenBio Workshop</span>
         <p class="authors">Manan Wadhwa<span class="eq">*</span>, <span class="me">Shivam Dubey</span><span class="eq">*</span></p>
-        <p class="abstract">BLAST catches none of 643 redesigned toxins; a
-        frozen ESM-2 probe catches 93.9% without retraining. Redesign amplifies
-        the structural features it was meant to hide. The security boundary
-        sits at gradient access: 6.1% evasion black-box, 100% white-box.</p>
+        <button class="more" type="button" data-dialog="paper-6">Summary</button>
+        <dialog id="paper-6" class="paper-dialog" aria-labelledby="paper-6-t">
+            <h3 id="paper-6-t">Toxin Circuits in ESM-2: Mechanistic Interpretability for Biosecurity Screening</h3>
+            <p>BLAST detects 0% of 643 ProteinMPNN redesigns; a frozen ESM-2 linear probe detects 93.9% with no retraining. SAE analysis shows why: redesign amplifies toxin structural features rather than obscuring them. A four-tier attack taxonomy places the security boundary at gradient access &mdash; 6.1% evasion black-box against 100% white-box &mdash; and direct probe attribution pinpoints Layer 32 as the detection bottleneck (<em>r</em> = 0.992).</p>
+            <p class="links"><a href="safety.html">Full entry</a></p>
+            <button class="close" type="button" autofocus>Close</button>
+        </dialog>
     </article>
 
-    <p class="footnote">* equal contribution.</p>
+    <article class="pub compact">
+        <h3><a href="capability.html">What You Pretrain On Matters: Synthetic Task Distributions Determine Tabular Foundation Model Quality</a></h3>
+        <span class="venue">ICML 2026 &middot; FMSD Workshop</span>
+        <p class="authors">Mohamed Bouadi, Nassim Bouarour, Varun Kulkarni, Aditya Tanna, <span class="me">Shivam Dubey</span>, Vinay Kumar Sankarapu</p>
+        <button class="more" type="button" data-dialog="paper-7">Summary</button>
+        <dialog id="paper-7" class="paper-dialog" aria-labelledby="paper-7-t">
+            <h3 id="paper-7-t">What You Pretrain On Matters: Synthetic Task Distributions Determine Tabular Foundation Model Quality</h3>
+            <p>Introduces O'Prior, a compositional realism prior for synthetic pretraining of tabular foundation models. I ran the interpretability and data-quality ablations, which confirm that mechanism diversity, realism composition, and shift-aware stress each contribute independently to downstream quality.</p>
+            <p class="links"><a href="capability.html">Full entry</a></p>
+            <button class="close" type="button" autofocus>Close</button>
+        </dialog>
+    </article>
 
-    <p><a href="safety.html">AI safety research &rarr;</a><br>
-       <a href="capability.html">AI capability research at Lexsi Labs &rarr;</a></p>
+    <article class="pub compact">
+        <h3><a href="safety.html">Loss Landscape Response to Adversarial Perturbation Is Architecture-Dependent</a></h3>
+        <span class="venue">TAIS 2026 &middot; Oxford</span>
+        <p class="authors"><span class="me">Shivam Dubey</span>, Jason Hoelscher-Obermaier</p>
+        <button class="more" type="button" data-dialog="paper-8">Summary</button>
+        <dialog id="paper-8" class="paper-dialog" aria-labelledby="paper-8-t">
+            <h3 id="paper-8-t">Loss Landscape Response to Adversarial Perturbation Is Architecture-Dependent</h3>
+            <p>Geometric divergence of ViTs and ResNets under seven adversarial attack algorithms, measured with Hutchinson&rsquo;s stochastic Hessian trace estimator. Input-space and parameter-space curvature differ by five orders of magnitude, which means standard robustness metrics misclassify internal model instability.</p>
+            <p class="links"><a href="safety.html">Full entry</a></p>
+            <button class="close" type="button" autofocus>Close</button>
+        </dialog>
+    </article>
 
-    <h2>More about me</h2>
-    <p>I am doing two degrees at once &mdash; a BS in data science at IIT
-    Madras and a B.Tech in mechanical and automation engineering in Delhi
-    &mdash; which was a worse idea than it sounded in 2022 and a better one
-    than it felt in 2024.</p>
+    <article class="pub compact">
+        <h3><a href="capability.html">Physics-Informed Neural Operators with Multi-Method Explainability for Ocean Temperature Prediction</a></h3>
+        <span class="venue">AAAI 2026 &middot; XAI4Science Workshop</span>
+        <p class="authors"><span class="me">Shivam Dubey</span></p>
+        <button class="more" type="button" data-dialog="paper-9">Summary</button>
+        <dialog id="paper-9" class="paper-dialog" aria-labelledby="paper-9-t">
+            <h3 id="paper-9-t">Physics-Informed Neural Operators with Multi-Method Explainability for Ocean Temperature Prediction</h3>
+            <p>Neural operators for ocean temperature prediction, with the physics constraint and the explanation methods carrying equal weight: a forecast you cannot interrogate is not much use to the people who have to act on it.</p>
+            <p class="links"><a href="capability.html">Full entry</a></p>
+            <button class="close" type="button" autofocus>Close</button>
+        </dialog>
+    </article>
 
-    <p>I teach the Redarc Fellows cohort, eight weeks of mechanistic
-    interpretability written with PyTorch hooks and Hugging Face directly, no
-    wrapper libraries. People learn the thing faster when nothing is hidden
-    from them. Most of what I know I learned by reimplementing somebody's
-    result and watching it not reproduce.</p>
+    <article class="pub compact">
+        <h3><a href="safety.html">Spectral Regularization as a Safety-Critical Inductive Bias</a></h3>
+        <span class="venue">NeurIPS 2025 &middot; Reliable ML Workshop</span>
+        <p class="authors"><span class="me">Shivam Dubey</span></p>
+        <button class="more" type="button" data-dialog="paper-10">Summary</button>
+        <dialog id="paper-10" class="paper-dialog" aria-labelledby="paper-10-t">
+            <h3 id="paper-10-t">Spectral Regularization as a Safety-Critical Inductive Bias</h3>
+            <p>Fourier Gradient Regularization penalises high-frequency input-gradients during training, doubling adversarial robustness on ResNet-18 with CIFAR-10 at minimal cost to clean accuracy.</p>
+            <p class="links"><a href="safety.html">Full entry</a></p>
+            <button class="close" type="button" autofocus>Close</button>
+        </dialog>
+    </article>
 
-    <!-- EDIT: a couple of lines about life outside research - what you read,
-         where you are from, what you do on weekends. This is the paragraph
-         people remember. Delete this comment when you have written it. -->
+    <article class="pub compact">
+        <h3><a href="safety.html">AMBEDKAR: fairness-aware speculative decoding</a></h3>
+        <span class="venue">arXiv:2509.02133 <span class="status">&mdash; cited by MIT Technology Review</span></span>
+        <p class="authors">with the Artificial Intelligence Institute of South Carolina</p>
+        <button class="more" type="button" data-dialog="paper-11">Summary</button>
+        <dialog id="paper-11" class="paper-dialog" aria-labelledby="paper-11-t">
+            <h3 id="paper-11-t">AMBEDKAR: fairness-aware speculative decoding</h3>
+            <p>I designed the fairness-aware speculative decoding algorithm, which reduces religion bias by 77% and caste bias by 23% at 6% latency overhead.</p>
+            <p class="links"><a href="safety.html">Full entry</a></p>
+            <button class="close" type="button" autofocus>Close</button>
+        </dialog>
+    </article>
 
-    <p>If you are an undergraduate wondering whether you can do
-    interpretability research without a PhD or a lab: email me. The answer is
-    yes and the first step is smaller than it looks.</p>
+    <h2>Under review</h2>
+
+    <article class="pub compact">
+        <h3><a href="safety.html">Distance to the Boundary Is Not Steering Resistance</a></h3>
+        <span class="venue"><span class="status">Under review &mdash; UniReps</span></span>
+        <p class="authors">Manan Wadhwa<span class="eq">*</span>, <span class="me">Shivam Dubey</span><span class="eq">*</span></p>
+        <button class="more" type="button" data-dialog="paper-12">Summary</button>
+        <dialog id="paper-12" class="paper-dialog" aria-labelledby="paper-12-t">
+            <h3 id="paper-12-t">Distance to the Boundary Is Not Steering Resistance</h3>
+            <p>How far a representation sits from a decision boundary is not the same quantity as how hard it is to steer, and treating the first as a proxy for the second gives the wrong answer.</p>
+            <p class="links"><a href="safety.html">Full entry</a></p>
+            <button class="close" type="button" autofocus>Close</button>
+        </dialog>
+    </article>
+
+    <article class="pub compact">
+        <h3><a href="safety.html">Doubt Is a Decision: A Sparse Circuit Commits Language Models to &ldquo;I Don&rsquo;t Know&rdquo;</a></h3>
+        <span class="venue"><span class="status">arXiv preprint &mdash; coming soon</span></span>
+        <p class="authors">Sheryl Mehta<span class="eq">*</span>, Shagun Chadha<span class="eq">*</span>, Kanika Singhal<span class="eq">*</span>, Manan Wadhwa, <span class="me">Shivam Dubey</span></p>
+        <button class="more" type="button" data-dialog="paper-13">Summary</button>
+        <dialog id="paper-13" class="paper-dialog" aria-labelledby="paper-13-t">
+            <h3 id="paper-13-t">Doubt Is a Decision: A Sparse Circuit Commits Language Models to &ldquo;I Don&rsquo;t Know&rdquo;</h3>
+            <p>Abstention is not the absence of an answer. A sparse circuit commits the model to &ldquo;I don&rsquo;t know&rdquo;, which makes doubt a decision the model takes rather than a state it falls into.</p>
+            <p class="links"><a href="safety.html">Full entry</a></p>
+            <button class="close" type="button" autofocus>Close</button>
+        </dialog>
+    </article>
+
+    <h2>Also</h2>
+    <p><a href="https://punctualprocrastinator.github.io/whetstone/" target="_blank" rel="noopener">Whetstone</a>,
+    a Red&times;Blue harness for adversarial safety-monitor research, built for
+    the MARS fellowship. Tooling and work in progress are on the
+    <a href="safety.html">AI safety</a> and <a href="capability.html">AI capability</a>
+    pages; the <a href="cv.html">CV</a> has everything else.</p>
 
 </main>
 

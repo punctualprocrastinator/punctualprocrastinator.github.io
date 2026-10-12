@@ -26,7 +26,7 @@ if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)
 
 <header id="masthead">
     <button id="theme-toggle" type="button" aria-live="polite">Dark</button>
-    <h1><a href="index.html">Shivam Dubey<span class="subtitle">AI safety &middot; Mechanistic interpretability &middot; Adversarial robustness</span></a></h1>
+    <h1><a href="index.html">Shivam Dubey<span class="subtitle">AI Researcher at Lexsi Labs</span></a></h1>
 </header>
 
 <nav id="sitenav" aria-label="Main">
@@ -53,20 +53,14 @@ if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)
         <h3>Known by Construction: Calibrating Model-State Instruments Against Models Whose State Was Installed, Hidden, or Never Present</h3>
         <span class="venue">NeurIPS 2026 &middot; New in ML</span>
         <p class="authors">Manan Wadhwa<span class="eq">*</span>, <span class="me">Shivam Dubey</span><span class="eq">*</span></p>
-        <p class="abstract">Calibrating model-state instruments against models
-        whose state was installed, hidden, or never present &mdash; so that a
-        reading from the instrument still means something when you do not
-        already know the answer.</p>
+        <p class="abstract">People increasingly ask whether an AI system has hidden goals, preferences or something like feelings. The tools for checking are mostly tested by seeing whether they agree with each other, and never against a case where the true answer is known. We built small AI models where we controlled the answer so that some were trained to have a hidden habit, and some were not. None of the tools we tested could reliably tell those models apart, signalling that agreement between tools is not a reliable verdict.</p>
     </article>
 
     <article class="pub">
         <h3>Dead Salmons Have a False-Positive Rate: A Calibrated Null-Model Test for Interpretability</h3>
         <span class="venue">NeurIPS 2026 &middot; Interpretability as a Science <span class="status">&mdash; non-archival</span></span>
         <p class="authors">Manan Wadhwa<span class="eq">*</span>, <span class="me">Shivam Dubey</span><span class="eq">*</span></p>
-        <p class="abstract">Naive significance testing flags up to 100% of
-        findings on untrained models. A K&nbsp;&ge;&nbsp;8&ndash;12 null
-        distribution corrects the false-positive rate, which gives
-        interpretability claims a calibrated null to be tested against.</p>
+        <p class="abstract">When we look inside a model to see what it has learned, say if it has picked up something like sentiment, we use methods like linear probes, SAEs and concept directions. This paper runs those methods on untrained models, which have learned nothing at all, and finds they report the same confident results. The proposed fix is simple: check every finding against an untrained baseline before trusting it.</p>
         <p class="links">
             <a href="https://github.com/punctualprocrastinator" target="_blank" rel="noopener">Code</a>
         </p>
@@ -77,10 +71,7 @@ if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)
         <span class="venue">NeurIPS 2026 &middot; Interpreting Agent Behavior <span class="status">&mdash; non-archival</span></span>
         <p class="authors">Manan Wadhwa<span class="eq">*</span>, <span class="me">Shivam Dubey</span><span class="eq">*</span>, Debojeet Ghosh,
         Shreyansh Kumar, Ayushman Garg</p>
-        <p class="abstract">Steering one agent&rsquo;s affect moves its
-        partner&rsquo;s activations. The logistic probe that reads that signal
-        is doing less than it appears to: what comes back is a tie-break, not
-        an estimate.</p>
+        <p class="abstract">As AI agents become progressively more talkative around each other, it matters whether one agent&rsquo;s emotional tone can carry over into another. We pushed one AI agent into an emotional state such as sadness or fear, and found measurable changes inside the agent it was talking to. We also found a common method for detecting these changes gives different answers when run twice on similar data. Once we accounted for that, only the effect for sadness held up clearly. The broader point is that some standard tools for inspecting AI systems need stronger checks before people rely on their results.</p>
     </article>
 
     <article class="pub">
