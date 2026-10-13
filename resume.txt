@@ -6,7 +6,7 @@ GitHub: https://github.com/punctualprocrastinator
 LinkedIn: https://linkedin.com/in/syntaxsavant
 
 SUMMARY
-AI safety researcher working on mechanistic interpretability and adversarial robustness. Builds white-box monitors for AI control, then attacks them with adaptive attackers to find out what they really measure. Ten accepted papers in 2025-2026, including three NeurIPS 2026 workshop papers as co-first author with Manan Wadhwa and a first-author paper at the ATTRIB workshop (NeurIPS 2026). Now working on control and interpretability for non-model capability gains: what a model can do depends on the harness it runs in, not only on its weights.
+AI safety researcher working on mechanistic interpretability and adversarial robustness. Builds white-box monitors for AI control, then attacks them with adaptive attackers to find out what they really measure. Ten accepted papers in 2025-2026, including three NeurIPS 2026 workshop papers as co-first author with Manan Wadhwa and a first-author paper at the ATTRIB workshop (NeurIPS 2026). Now working at Redarc Labs on control and interpretability for non-model capability gains: what a model can do depends on the harness it runs in, not only on its weights.
 
 EDUCATION
 
@@ -42,8 +42,9 @@ Co-founder and Research Lead
 Redarc Labs, Delhi
 2026 - Present
 Website: https://redarclabs.com
-- Founded and run a six-person AI safety research fellowship. Cohort 01 is built around one thesis: expressed confidence in LLMs is separable from internal knowledge, implemented partly through entropy neurons.
-- Mentoring three first-author workshop projects; two papers under review at NeurIPS 2026 workshops.
+- AI safety research lab, co-founded with Manan Wadhwa; all our joint papers come from it.
+- Started with interpretability for existential risk (four accepted workshop papers in 2026, one under review). Now focused on control and interpretability for non-model capability gains: what an agent can do because of its harness rather than its weights.
+- Run a six-person research fellowship. Cohort 01 thesis: expressed confidence in LLMs is separable from internal knowledge. Mentoring three first-author projects; two papers under review at NeurIPS 2026 workshops.
 - Wrote and teach Redarc Fellows, an eight-session mechanistic interpretability curriculum taught with PyTorch hooks and Hugging Face directly, with no interpretability library in the stack.
 
 Special Projects Fellow
@@ -65,7 +66,7 @@ Website: https://aiisc.ai
 - Co-author of AMBEDKAR (arXiv:2509.02133, cited by MIT Technology Review). Designed the fairness-aware speculative decoding algorithm, which reduces religion bias by 77% and caste bias by 23% at 6% latency overhead.
 
 PUBLICATIONS
-(* equal contribution)
+(* equal contribution. Papers with M. Wadhwa come from Redarc Labs.)
 
 Accepted
 1. Known by Construction: Calibrating Model-State Instruments Against Models Whose State Was Installed, Hidden, or Never Present. M. Wadhwa*, S. Dubey*. New in ML, NeurIPS 2026.

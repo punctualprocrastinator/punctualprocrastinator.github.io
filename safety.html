@@ -17,11 +17,11 @@
 <link rel="canonical" href="https://punctualprocrastinator.github.io/safety.html">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preload" href="fonts/Libron-Regular.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="main.css?v=25">
+<link rel="stylesheet" href="main.css?v=26">
 <!-- Applies a stored theme override before first paint, so there is no flash. -->
 <script>try{var t=localStorage.getItem("theme");
 if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
-<script src="app.js?v=25" defer></script>
+<script src="app.js?v=26" defer></script>
 </head>
 
 <body data-art="safety">
@@ -61,7 +61,7 @@ if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)
     <p class="lead">Mechanistic interpretability and adversarial robustness, pointed at AI control. We build monitors that read a model&rsquo;s activations, then attack them to find out what they really measure. The order is understand, exploit, then defend.</p>
 
     <h2>Papers</h2>
-    <p class="footnote">* equal contribution.</p>
+    <p class="footnote">* equal contribution. Papers with Manan Wadhwa come from Redarc Labs.</p>
 
     <article class="pub" data-cat="safety">
         <h3>Known by Construction: Calibrating Model-State Instruments Against Models Whose State Was Installed, Hidden, or Never Present</h3>
@@ -159,6 +159,20 @@ if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)
 
     <h2>Work in progress</h2>
 
+    <h4>Control for non-model capability gains &middot; <a href="https://redarclabs.com" title="The AI safety lab I co-founded with Manan Wadhwa. Our joint papers come from it; the focus now is control for non-model capability gains." target="_blank" rel="noopener">Redarc Labs</a></h4>
+    <p><strong>The Pivot.</strong> Our papers with Manan Wadhwa started as
+    interpretability for existential risk: testing whether the tools that read
+    models can be trusted (null-model tests, known-answer models, probes in
+    agents). The 2026 agent incidents moved the risk. The failures sat in the
+    harness as much as in the weights.</p>
+
+    <p><strong>The Problem.</strong> Agents gain capability outside the
+    weights: scaffolds, tools, memory, credentials. Safety tools, including
+    ours, read activations; a harness has none. We want control and
+    interpretability for that layer. It needs standing infrastructure: harness
+    testbeds with planted failures, red teams that co-evolve with monitors, and
+    runs at deployment volume.</p>
+
     <h4>White-box monitoring under adaptive attack &middot; <a href="https://caish.org/mars" title="Run by the Cambridge AI Safety Hub. Lindley Lentati's track on white-box techniques for AI control." target="_blank" rel="noopener">MARS V</a></h4>
     <p><strong>Compliance.</strong> We train linear probes on
     residual-stream activations across four instruction-tuned models from three
@@ -190,7 +204,7 @@ if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)
     behavior or merely the instructions it was given. The ablation that
     separates them is written.</p>
 
-    <h4>Confidence as a separable channel &middot; <a href="https://redarclabs.com" title="The AI safety research lab I co-founded with Manan Wadhwa." target="_blank" rel="noopener">Redarc Labs</a></h4>
+    <h4>Confidence as a separable channel &middot; <a href="https://redarclabs.com" title="The AI safety lab I co-founded with Manan Wadhwa. Our joint papers come from it; the focus now is control for non-model capability gains." target="_blank" rel="noopener">Redarc Labs</a></h4>
     <p>Cohort 01 is built around one thesis: expressed confidence in LLMs is
     separable from internal knowledge, implemented partly through entropy
     neurons that modulate output entropy without changing token predictions. I
