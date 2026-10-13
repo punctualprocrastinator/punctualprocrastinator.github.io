@@ -17,11 +17,11 @@
 <link rel="canonical" href="https://punctualprocrastinator.github.io/safety.html">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preload" href="fonts/Libron-Regular.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="main.css?v=17">
+<link rel="stylesheet" href="main.css?v=18">
 <!-- Applies a stored theme override before first paint, so there is no flash. -->
 <script>try{var t=localStorage.getItem("theme");
 if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
-<script src="app.js?v=17" defer></script>
+<script src="app.js?v=18" defer></script>
 </head>
 
 <body data-art="safety">
@@ -147,6 +147,14 @@ if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)
         <p class="authors"><span class="me">Shivam Dubey</span></p>
         <p class="abstract">A linear probe on the residual stream predicts answer correctness before any reasoning token is emitted (AUC 0.780, 5-fold CV). The model commits before it reasons, which makes the chain of thought post-hoc rationalization rather than deliberation. A functional frustration direction at Layer 15 transfers cross-lingually across six languages (<em>p</em> = 0.0017): a sub-linguistic computational state invisible in the output but readable mechanistically, usable either as a monitor or as an attack surface.</p>
         <p class="links"><a href="https://github.com/punctualprocrastinator/thinking-model-emotions" target="_blank" rel="noopener">Code</a></p>
+    </article>
+
+    <article class="pub" data-cat="safety">
+        <h3>The Geometry of Control: Spectral Attractors as Low-Dimensional Projections in Large Language Models</h3>
+        <span class="venue"><span class="status">2026 &middot; Llama-3.2-3B, Qwen-2.5-3B</span></span>
+        <p class="authors"><span class="me">Shivam Dubey</span></p>
+        <p class="abstract">Why do models lock into refusals, biases or reasoning routines even when the context argues against them? This project measures spectral rigidity, an FFT over the mean residual-stream trajectory along the token axis, and finds each behavior in its own rigid, low-dimensional subspace. Safety refusals are distributed across several heads at Layer 16 (about 120 of 3,072 dimensions); bias is driven by a single head at Layer 27 (about 60); arithmetic and logic fit in 3 to 4. Injecting noise at the peak layer breaks refusals, and forcing low entropy at Layer 27 induces stereotypes (+38%). Projecting directly into the safety subspace yields glitch tokens rather than refusals, which suggests the refusal subspace sits off the manifold of normal generation. Primary results on Llama-3.2-3B-Instruct, with cross-model checks on Qwen-2.5-3B-Instruct.</p>
+        <p class="links"><a href="https://github.com/punctualprocrastinator/Attractor-Framework" target="_blank" rel="noopener">Code</a></p>
     </article>
 
     <h2>Work in progress</h2>

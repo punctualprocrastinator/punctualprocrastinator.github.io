@@ -17,11 +17,11 @@
 <link rel="canonical" href="https://punctualprocrastinator.github.io/">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preload" href="fonts/Libron-Regular.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="main.css?v=17">
+<link rel="stylesheet" href="main.css?v=18">
 <!-- Applies a stored theme override before first paint, so there is no flash. -->
 <script>try{var t=localStorage.getItem("theme");
 if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
-<script src="app.js?v=17" defer></script>
+<script src="app.js?v=18" defer></script>
 </head>
 
 <body data-art="home">
@@ -251,10 +251,24 @@ if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)
         </dialog>
     </article>
 
+    <article class="pub compact" data-cat="safety">
+        <h3>The Geometry of Control: Spectral Attractors as Low-Dimensional Projections in Large Language Models</h3>
+        <span class="venue"><span class="status">2026 &middot; Llama-3.2-3B, Qwen-2.5-3B</span></span>
+        <p class="authors"><span class="me">Shivam Dubey</span></p>
+        <p class="links"><a href="https://github.com/punctualprocrastinator/Attractor-Framework" target="_blank" rel="noopener">Code</a></p>
+        <button class="more" type="button" data-dialog="p17">Summary</button>
+        <dialog id="p17" class="paper-dialog" aria-labelledby="p17-t">
+            <h3 id="p17-t">The Geometry of Control: Spectral Attractors as Low-Dimensional Projections in Large Language Models</h3>
+            <p>Why do models lock into refusals, biases or reasoning routines even when the context argues against them? This project measures spectral rigidity, an FFT over the mean residual-stream trajectory along the token axis, and finds each behavior in its own rigid, low-dimensional subspace. Safety refusals are distributed across several heads at Layer 16 (about 120 of 3,072 dimensions); bias is driven by a single head at Layer 27 (about 60); arithmetic and logic fit in 3 to 4. Injecting noise at the peak layer breaks refusals, and forcing low entropy at Layer 27 induces stereotypes (+38%). Projecting directly into the safety subspace yields glitch tokens rather than refusals, which suggests the refusal subspace sits off the manifold of normal generation. Primary results on Llama-3.2-3B-Instruct, with cross-model checks on Qwen-2.5-3B-Instruct.</p>
+            <button class="close" type="button" autofocus>Close</button>
+        </dialog>
+    </article>
+
     <article class="pub compact" data-cat="tabular">
         <h3>When Does Synthetic Relational Data Teach Models to Use Relations? Tracing Predictive Structure from Pretraining Data to Model Behavior</h3>
         <span class="venue">NeurIPS 2026 &middot; ATTRIB Workshop</span>
         <p class="authors"><span class="me">Shivam Dubey</span>, Mohamed Bouadi, Nassim Bouarour, Varun Kulkarni, Aditya Tanna, Vinay Kumar Sankarapu</p>
+        <p class="links"><a href="https://github.com/punctualprocrastinator/rt-generator-attribution" target="_blank" rel="noopener">Code</a></p>
         <button class="more" type="button" data-dialog="p12">Summary</button>
         <dialog id="p12" class="paper-dialog" aria-labelledby="p12-t">
             <h3 id="p12-t">When Does Synthetic Relational Data Teach Models to Use Relations? Tracing Predictive Structure from Pretraining Data to Model Behavior</h3>
