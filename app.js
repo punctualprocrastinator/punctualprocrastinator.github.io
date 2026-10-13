@@ -183,6 +183,51 @@
     });
 
     /* ---------------------------------------------------------------
+       Link notes. A link's title becomes a small bubble on hover and on
+       keyboard focus. The title moves to data-tip so the browser's own
+       slower tooltip does not appear on top of it.
+       --------------------------------------------------------------- */
+
+    var tipLinks = document.querySelectorAll('a[title]');
+    if (tipLinks.length) {
+        var tip = document.createElement('div');
+        tip.className = 'tip';
+        tip.id = 'link-tip';
+        tip.setAttribute('role', 'tooltip');
+        document.body.appendChild(tip);
+
+        function placeTip(el) {
+            var r = el.getBoundingClientRect();
+            var tw = tip.offsetWidth, th = tip.offsetHeight;
+            var left = Math.min(Math.max(8, r.left), window.innerWidth - tw - 8);
+            var top = r.bottom + 8;
+            if (top + th > window.innerHeight - 8) { top = r.top - th - 8; }
+            tip.style.left = left + 'px';
+            tip.style.top = top + 'px';
+        }
+        function showTip(el) {
+            tip.textContent = el.getAttribute('data-tip');
+            el.setAttribute('aria-describedby', 'link-tip');
+            placeTip(el);
+            tip.classList.add('on');
+        }
+        function hideTip(el) {
+            tip.classList.remove('on');
+            if (el) { el.removeAttribute('aria-describedby'); }
+        }
+
+        Array.prototype.forEach.call(tipLinks, function (el) {
+            el.setAttribute('data-tip', el.getAttribute('title'));
+            el.removeAttribute('title');
+            el.addEventListener('mouseenter', function () { showTip(el); });
+            el.addEventListener('mouseleave', function () { hideTip(el); });
+            el.addEventListener('focus', function () { showTip(el); });
+            el.addEventListener('blur', function () { hideTip(el); });
+        });
+        window.addEventListener('scroll', function () { hideTip(null); }, { passive: true });
+    }
+
+    /* ---------------------------------------------------------------
        Email. The address lives in data- attributes and is joined here,
        which stops the simplest harvesters without hiding it from a
        person. Anyone with JS off sees the fallback text in the HTML.

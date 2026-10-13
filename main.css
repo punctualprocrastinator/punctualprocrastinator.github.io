@@ -863,6 +863,44 @@ hr { margin: 3rem auto; border: 0; border-top: 1px solid var(--rule); max-width:
 .cv-item .milestone { font-size: 0.88rem; }
 .cv-item .when { line-height: 1.5; }
 
+/* ------------------------------ link notes -------------------- */
+
+/* Links carry a short note in their title; app.js shows it as this
+   bubble on hover and on keyboard focus. Colors invert the page, so it
+   reads in both themes. */
+.tip {
+    position: fixed;
+    z-index: 60;
+    max-width: 17rem;
+    padding: 0.45rem 0.65rem;
+    border-radius: 4px;
+    background: var(--ink);
+    color: var(--paper);
+    font-family: var(--serif);
+    font-size: 0.86rem;
+    line-height: 1.38;
+    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.22);
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(3px);
+    transition: opacity 0.14s ease, transform 0.14s ease;
+}
+.tip.on { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .tip { transition: none; } }
+@media print { .tip { display: none; } }
+
+/* Linked paper titles and labels: quieter than body links. */
+.pub h3 a:link, .pub h3 a:visited {
+    color: inherit;
+    text-decoration-color: var(--rule);
+}
+.pub h3 a:hover { color: var(--accent); background: none; }
+.facts .k a:link, .facts .k a:visited, h4 a:link, h4 a:visited {
+    color: inherit;
+    text-decoration-color: var(--rule);
+}
+.facts .k a:hover, h4 a:hover { color: var(--accent); background: none; }
+
 /* ------------------------------ footer ------------------------ */
 
 footer {

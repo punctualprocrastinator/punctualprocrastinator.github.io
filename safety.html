@@ -17,11 +17,11 @@
 <link rel="canonical" href="https://punctualprocrastinator.github.io/safety.html">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preload" href="fonts/Libron-Regular.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="main.css?v=21">
+<link rel="stylesheet" href="main.css?v=22">
 <!-- Applies a stored theme override before first paint, so there is no flash. -->
 <script>try{var t=localStorage.getItem("theme");
 if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
-<script src="app.js?v=21" defer></script>
+<script src="app.js?v=22" defer></script>
 </head>
 
 <body data-art="safety">
@@ -87,7 +87,7 @@ if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)
     </article>
 
     <article class="pub" data-cat="safety">
-        <h3>Toxin Circuits in ESM-2: Mechanistic Interpretability for Biosecurity Screening</h3>
+        <h3><a href="https://openreview.net/forum?id=Nb3y9BzCOi" title="On OpenReview." target="_blank" rel="noopener">Toxin Circuits in ESM-2: Mechanistic Interpretability for Biosecurity Screening</a></h3>
         <span class="venue">ICML 2026 &middot; GenBio Workshop</span>
         <p class="authors">Manan Wadhwa<span class="eq">*</span>, <span class="me">Shivam Dubey</span><span class="eq">*</span></p>
         <p class="abstract">BLAST detects 0% of 643 ProteinMPNN redesigns; a frozen ESM-2 linear probe detects 93.9% with no retraining. SAE analysis shows why: redesign amplifies toxin structural features rather than obscuring them. A four-tier attack taxonomy places the security boundary at gradient access (6.1% evasion black-box against 100% white-box), and direct probe attribution pinpoints Layer 32 as the detection bottleneck (<em>r</em> = 0.992).</p>
@@ -111,7 +111,7 @@ if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)
     </article>
 
     <article class="pub" data-cat="safety">
-        <h3>AMBEDKAR: A Multi-level Bias Elimination through a Decoding Approach with Knowledge Augmentation for Robust Constitutional Alignment of Language Models</h3>
+        <h3><a href="https://arxiv.org/abs/2509.02133" title="On arXiv." target="_blank" rel="noopener">AMBEDKAR: A Multi-level Bias Elimination through a Decoding Approach with Knowledge Augmentation for Robust Constitutional Alignment of Language Models</a></h3>
         <span class="venue">arXiv:2509.02133 <span class="status">&middot; cited by MIT Technology Review</span></span>
         <p class="authors">Snehasis Mukhopadhyay, Aryan Kasat, <span class="me">Shivam Dubey</span>, Rahul Karthikeyan, Dhruv Sood, Vinija Jain, Aman Chadha, Amitava Das</p>
         <p class="abstract">I designed the fairness-aware speculative decoding algorithm, which reduces religion bias by 77% and caste bias by 23% at 6% latency overhead.</p>
@@ -159,7 +159,7 @@ if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)
 
     <h2>Work in progress</h2>
 
-    <h4>White-box monitoring under adaptive attack &middot; MARS V</h4>
+    <h4>White-box monitoring under adaptive attack &middot; <a href="https://caish.org/mars" title="Run by the Cambridge AI Safety Hub. Lindley Lentati's track on white-box techniques for AI control." target="_blank" rel="noopener">MARS V</a></h4>
     <p><strong>Compliance.</strong> We train linear probes on
     residual-stream activations across four instruction-tuned models from three
     labs (Qwen2.5-7B, Llama-3.1-8B, Gemma-2-9B, abliterated Llama-3).
@@ -184,13 +184,13 @@ if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)
     not a handful of them.</p>
 
     <p><strong>Next.</strong> We are extending this into trained attack
-    policies (Redwood&rsquo;s open problem on stress-testing white-box
+    policies (<a href="https://www.redwoodresearch.org" title="Redwood Research, an AI safety lab working on AI control." target="_blank" rel="noopener">Redwood</a>&rsquo;s open problem on stress-testing white-box
     monitors), gated behind a six-stage empirical de-risking protocol. One
     confound dominates the design: whether the probe reads the model&rsquo;s
     behavior or merely the instructions it was given. The ablation that
     separates them is written.</p>
 
-    <h4>Confidence as a separable channel &middot; Redarc Labs</h4>
+    <h4>Confidence as a separable channel &middot; <a href="https://redarclabs.com" title="The AI safety research lab I co-founded with Manan Wadhwa." target="_blank" rel="noopener">Redarc Labs</a></h4>
     <p>Cohort 01 is built around one thesis: expressed confidence in LLMs is
     separable from internal knowledge, implemented partly through entropy
     neurons that modulate output entropy without changing token predictions. I
@@ -234,7 +234,7 @@ if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)
        <a href="https://github.com/punctualprocrastinator" target="_blank" rel="noopener">GitHub</a> &middot;
        <a href="https://linkedin.com/in/syntaxsavant" rel="me">LinkedIn</a></p>
     <p class="keywords">Shivam Dubey &middot; AI safety &middot; mechanistic interpretability &middot; adversarial robustness &middot; tabular foundation models &middot; Lexsi Labs &middot; IIT Madras</p>
-    <p>Last updated <time datetime="2026-10">October 2026</time>.</p>
+    <p>Last updated <time datetime="2026-10">October 2026</time>. Set in <a href="https://github.com/nicoverbruggen/libron" title="Libron by Nico Verbruggen, a reading serif built on Readerly and Production Type's Newsreader." target="_blank" rel="noopener">Libron</a>.</p>
 </footer>
 
 </div><!-- /.wrap -->
