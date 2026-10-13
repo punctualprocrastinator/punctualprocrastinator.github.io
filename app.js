@@ -109,9 +109,10 @@
     }
 
     /* ---------------------------------------------------------------
-       The filter bar under the bio. Papers carry a data-cat; pressing a
-       button shows only that tag. Everything is in the HTML, so with JS
-       off the visitor simply sees all of them.
+       The filter bar under the bio. Papers carry a data-cat, and the
+       handful worth reading first also carry data-selected; pressing a
+       button shows only that set. The page opens on Selected. Everything
+       is in the HTML, so with JS off the visitor simply sees all of them.
        --------------------------------------------------------------- */
 
     var filterbar = document.querySelector('.filterbar');
@@ -123,7 +124,9 @@
         function applyFilter(tag) {
             var shown = 0;
             papers.forEach(function (p) {
-                var on = tag === 'all' || p.getAttribute('data-cat') === tag;
+                var on = tag === 'all' ||
+                    (tag === 'selected' ? p.hasAttribute('data-selected')
+                                        : p.getAttribute('data-cat') === tag);
                 p.hidden = !on;
                 if (on) { shown += 1; }
             });
@@ -138,15 +141,15 @@
             b.addEventListener('click', function () {
                 var tag = b.getAttribute('data-filter');
                 applyFilter(tag);
-                history.replaceState(null, '', tag === 'all' ? '#papers' : '#' + tag);
+                history.replaceState(null, '', tag === 'selected' ? '#papers' : '#' + tag);
             });
         });
 
-        // A link like index.html#tabular opens on that tag.
+        // A link like index.html#tabular opens on that tag; anything else
+        // opens on Selected.
         var wanted = window.location.hash.slice(1);
-        if (wanted && buttons.some(function (b) { return b.getAttribute('data-filter') === wanted; })) {
-            applyFilter(wanted);
-        }
+        var known = buttons.some(function (b) { return b.getAttribute('data-filter') === wanted; });
+        applyFilter(wanted && known ? wanted : 'selected');
     }
 
     /* ---------------------------------------------------------------

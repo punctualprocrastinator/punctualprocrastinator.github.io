@@ -17,11 +17,11 @@
 <link rel="canonical" href="https://punctualprocrastinator.github.io/">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preload" href="fonts/Libron-Regular.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="main.css?v=24">
+<link rel="stylesheet" href="main.css?v=25">
 <!-- Applies a stored theme override before first paint, so there is no flash. -->
 <script>try{var t=localStorage.getItem("theme");
 if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
-<script src="app.js?v=24" defer></script>
+<script src="app.js?v=25" defer></script>
 </head>
 
 <body data-art="home">
@@ -105,7 +105,8 @@ if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)
     </div>
 
     <nav class="filterbar" aria-label="Filter papers by topic">
-        <button type="button" data-filter="all" aria-pressed="true">All</button>
+        <button type="button" data-filter="selected" aria-pressed="true">Selected</button>
+        <button type="button" data-filter="all" aria-pressed="false">All</button>
         <button type="button" data-filter="safety" aria-pressed="false">AI Safety Research</button>
         <button type="button" data-filter="tabular" aria-pressed="false">Tabular Foundation Model</button>
         <button type="button" data-filter="capability" aria-pressed="false">AI Capability Research</button>
@@ -115,7 +116,7 @@ if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)
     <p class="footnote">* equal contribution.</p>
 
     <div id="papers">
-    <article class="pub compact" data-cat="safety">
+    <article class="pub compact" data-selected data-cat="safety">
         <h3>Known by Construction: Calibrating Model-State Instruments Against Models Whose State Was Installed, Hidden, or Never Present</h3>
         <span class="venue">NeurIPS 2026 &middot; New in ML</span>
         <p class="authors">Manan Wadhwa<span class="eq">*</span>, <span class="me">Shivam Dubey</span><span class="eq">*</span></p>
@@ -127,7 +128,7 @@ if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)
         </dialog>
     </article>
 
-    <article class="pub compact" data-cat="safety">
+    <article class="pub compact" data-selected data-cat="safety">
         <h3>Dead Salmons Have a False-Positive Rate: A Calibrated Null-Model Test for Interpretability</h3>
         <span class="venue">NeurIPS 2026 &middot; Interpretability as a Science</span>
         <p class="authors">Manan Wadhwa<span class="eq">*</span>, <span class="me">Shivam Dubey</span><span class="eq">*</span></p>
@@ -140,7 +141,7 @@ if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)
         </dialog>
     </article>
 
-    <article class="pub compact" data-cat="safety">
+    <article class="pub compact" data-selected data-cat="safety">
         <h3>Steered Affect Moves a Partner Agent&rsquo;s Activations, and the Logistic Probe That Reads It Returns a Tie-Break, Not an Estimate</h3>
         <span class="venue">NeurIPS 2026 &middot; Interpreting Agent Behavior</span>
         <p class="authors">Manan Wadhwa<span class="eq">*</span>, <span class="me">Shivam Dubey</span><span class="eq">*</span>, Debojeet Ghosh, Shreyansh Kumar, Ayushman Garg</p>
@@ -153,7 +154,7 @@ if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)
         </dialog>
     </article>
 
-    <article class="pub compact" data-cat="safety">
+    <article class="pub compact" data-selected data-cat="safety">
         <h3><a href="https://openreview.net/forum?id=Nb3y9BzCOi" title="On OpenReview." target="_blank" rel="noopener">Toxin Circuits in ESM-2: Mechanistic Interpretability for Biosecurity Screening</a></h3>
         <span class="venue">ICML 2026 &middot; GenBio Workshop</span>
         <p class="authors">Manan Wadhwa<span class="eq">*</span>, <span class="me">Shivam Dubey</span><span class="eq">*</span></p>
@@ -166,7 +167,7 @@ if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)
         </dialog>
     </article>
 
-    <article class="pub compact" data-cat="safety">
+    <article class="pub compact" data-selected data-cat="safety">
         <h3>Loss Landscape Response to Adversarial Perturbation Is Architecture-Dependent</h3>
         <span class="venue">TAIS 2026 &middot; Oxford</span>
         <p class="authors"><span class="me">Shivam Dubey</span>, Jason Hoelscher-Obermaier</p>
@@ -269,7 +270,7 @@ if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)
         </dialog>
     </article>
 
-    <article class="pub compact" data-cat="tabular">
+    <article class="pub compact" data-selected data-cat="tabular">
         <h3>When Does Synthetic Relational Data Teach Models to Use Relations? Tracing Predictive Structure from Pretraining Data to Model Behavior</h3>
         <span class="venue">NeurIPS 2026 &middot; ATTRIB Workshop</span>
         <p class="authors"><span class="me">Shivam Dubey</span>, Mohamed Bouadi, Nassim Bouarour, Varun Kulkarni, Aditya Tanna, Vinay Kumar Sankarapu</p>
