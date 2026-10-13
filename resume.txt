@@ -1,0 +1,103 @@
+SHIVAM DUBEY
+AI Safety Researcher | Mechanistic Interpretability | Adversarial Robustness | White-Box AI Control
+Email: dubeyjiworks@gmail.com
+Website: https://punctualprocrastinator.github.io
+GitHub: https://github.com/punctualprocrastinator
+LinkedIn: https://linkedin.com/in/syntaxsavant
+
+SUMMARY
+AI safety researcher working on mechanistic interpretability and adversarial robustness. Builds white-box monitors for AI control, then attacks them with adaptive attackers to find out what they really measure. Ten accepted papers in 2025-2026, including three NeurIPS 2026 workshop papers as co-first author with Manan Wadhwa and a first-author paper at the ATTRIB workshop (NeurIPS 2026). Now working on control and interpretability for non-model capability gains: what a model can do depends on the harness it runs in, not only on its weights.
+
+EDUCATION
+
+BS in Data Science
+Indian Institute of Technology Madras
+2023 - 2027
+Focus: AI safety, interpretability, fairness, governance
+Website: https://study.iitm.ac.in/ds/
+
+B.Tech in Mechanical and Automation Engineering
+Maharaja Agrasen Institute of Technology, Delhi
+2022 - 2026
+Website: https://mait.ac.in
+
+EXPERIENCE
+
+Fellow, Lindley Lentati Track: White-Box Techniques for AI Control
+MARS V, Meridian AI Research Summer (Cambridge AI Safety Hub), Cambridge
+Jul 2026 - Present
+Website: https://caish.org/mars
+- Trained linear compliance probes on residual-stream activations across four instruction-tuned models from three labs (Qwen2.5-7B, Llama-3.1-8B, Gemma-2-9B, abliterated Llama-3). Compliance is linearly decodable and tracks refusal itself rather than surface phrasing.
+- Ran a red-team/blue-team co-evolution loop against the probes across three attack families (suffix-gradient, discrete search, activation steering). Jailbreak success and probe evasion came out mutually exclusive.
+- Deployment lesson: probes do find the jailbreak direction, but every probe keeps a false positive rate, so deployment needs a monitor cascade rather than one probe.
+- Extending into trained attack policies (Redwood open problem: stress-testing white-box monitors) behind a six-stage de-risking protocol. Built Whetstone, the open-source Red x Blue harness. Multi-GPU SLURM cluster (8x B200).
+
+AI Researcher, Tabular Foundation Models Lab
+Lexsi Labs
+2026 - Present
+Website: https://www.lexsi.ai
+- Capability research on tabular foundation models: attributing model behavior to synthetic pretraining data. Two papers at the ATTRIB workshop at NeurIPS 2026 (first author on one) and one at FMSD at ICML 2026.
+
+Co-founder and Research Lead
+Redarc Labs, Delhi
+2026 - Present
+Website: https://redarclabs.com
+- Founded and run a six-person AI safety research fellowship. Cohort 01 is built around one thesis: expressed confidence in LLMs is separable from internal knowledge, implemented partly through entropy neurons.
+- Mentoring three first-author workshop projects; two papers under review at NeurIPS 2026 workshops.
+- Wrote and teach Redarc Fellows, an eight-session mechanistic interpretability curriculum taught with PyTorch hooks and Hugging Face directly, with no interpretability library in the stack.
+
+Special Projects Fellow
+Secure AI Futures Lab, Delhi hub
+2026 - Present
+Website: https://secureaifutureslab.com
+- Teaching the Redarc Labs mechanistic interpretability bootcamp in person at the Delhi hub, and running reading groups on the weekends.
+
+Research Fellow
+Apart Research (mentor: Jason Hoelscher-Obermaier)
+Nov 2025 - Present
+Website: https://www.apartresearch.com
+- Measured geometric divergence of ViTs and ResNets under seven adversarial attack algorithms using Hutchinson's stochastic Hessian trace estimator. Found a five-order-of-magnitude gap between input-space and parameter-space curvature. Lead author, TAIS 2026.
+
+Research Intern
+Artificial Intelligence Institute of South Carolina (mentor: Dr. Amitava Das)
+Jan 2025 - Apr 2026
+Website: https://aiisc.ai
+- Co-author of AMBEDKAR (arXiv:2509.02133, cited by MIT Technology Review). Designed the fairness-aware speculative decoding algorithm, which reduces religion bias by 77% and caste bias by 23% at 6% latency overhead.
+
+PUBLICATIONS
+(* equal contribution)
+
+Accepted
+1. Known by Construction: Calibrating Model-State Instruments Against Models Whose State Was Installed, Hidden, or Never Present. M. Wadhwa*, S. Dubey*. New in ML, NeurIPS 2026.
+2. Dead Salmons Have a False-Positive Rate: A Calibrated Null-Model Test for Interpretability. M. Wadhwa*, S. Dubey*. Interpretability as a Science, NeurIPS 2026. Code: https://github.com/punctualprocrastinator/dead-salmon-fpr
+3. Steered Affect Moves a Partner Agent's Activations, and the Logistic Probe That Reads It Returns a Tie-Break, Not an Estimate. M. Wadhwa*, S. Dubey*, D. Ghosh, S. Kumar, A. Garg. Interpreting Agent Behavior, NeurIPS 2026. Code: https://github.com/punctualprocrastinator/affective-coupling-llm-agents
+4. When Does Synthetic Relational Data Teach Models to Use Relations? Tracing Predictive Structure from Pretraining Data to Model Behavior. S. Dubey, M. Bouadi, N. Bouarour, V. Kulkarni, A. Tanna, V. K. Sankarapu. ATTRIB Workshop, NeurIPS 2026. Code: https://github.com/punctualprocrastinator/rt-generator-attribution
+5. From Behavior to Provenance: Attributing Tabular Foundation Models to Synthetic Pretraining Data. M. Bouadi, N. Bouarour, S. Dubey, A. Tanna, V. K. Sankarapu. ATTRIB Workshop, NeurIPS 2026.
+6. Toxin Circuits in ESM-2: Mechanistic Interpretability for Biosecurity Screening. M. Wadhwa*, S. Dubey*. GenBio Workshop, ICML 2026. https://openreview.net/forum?id=Nb3y9BzCOi
+7. What You Pretrain On Matters: Synthetic Task Distributions Determine Tabular Foundation Model Quality. M. Bouadi, N. Bouarour, V. Kulkarni, S. Dubey, A. Tanna, V. K. Sankarapu. FMSD Workshop, ICML 2026. arXiv:2605.18971 (as "Shaping the Prior").
+8. Loss Landscape Response to Adversarial Perturbation Is Architecture-Dependent: Comparing ViT and ResNet. S. Dubey, J. Hoelscher-Obermaier. TAIS 2026, Oxford.
+9. Physics-Informed Neural Operators with Multi-Method Explainability for Ocean Temperature Prediction. S. Dubey. XAI4Science Workshop, AAAI 2026.
+10. Spectral Regularization as a Safety-Critical Inductive Bias. S. Dubey. Reliable ML Workshop, NeurIPS 2025.
+
+Under review and preprints
+11. AMBEDKAR: A Multi-level Bias Elimination through a Decoding Approach with Knowledge Augmentation for Robust Constitutional Alignment of Language Models. S. Mukhopadhyay, A. Kasat, S. Dubey, R. Karthikeyan, D. Sood, V. Jain, A. Chadha, A. Das. arXiv:2509.02133, 2025.
+12. Distance to the Boundary Is Not Steering Resistance. M. Wadhwa*, S. Dubey*. Under review, UniReps. Code: https://github.com/punctualprocrastinator/alignment-elasticity
+13. Doubt Is a Decision: A Sparse Circuit Commits Language Models to "I Don't Know". S. Mehta*, S. Chadha*, K. Singhal*, M. Wadhwa, S. Dubey. arXiv preprint, forthcoming.
+
+SELECTED PROJECTS
+- Isolating Refusal and Compliance Heads (Qwen2.5-7B): zero-shot harm classifier at AUC 0.943 with zero false positives; unconditional bipolar assertion holds nanoGCG attack success to 33%, against 66% undefended. Code: https://github.com/punctualprocrastinator/bipolar_defense_repo
+- Pre-commitment Probing (OLMo-3-7B-Think): a residual-stream probe predicts answer correctness before any reasoning token (AUC 0.780); a Layer 15 direction transfers across six languages (p = 0.0017). Code: https://github.com/punctualprocrastinator/thinking-model-emotions
+- The Geometry of Control: Spectral Attractors (Llama-3.2-3B, Qwen-2.5-3B): refusals, bias and reasoning each live in their own spectrally rigid low-dimensional subspace. Code: https://github.com/punctualprocrastinator/Attractor-Framework
+- Context Poisoning in Tabular ICL: the first logit lens for tabular in-context learning; 1.2% poisoned context hijacks it completely, and larger models are more vulnerable. Code: https://github.com/punctualprocrastinator/tab_red
+
+OPEN SOURCE
+- whetstone: Red x Blue harness for adversarial safety-monitor research. https://github.com/punctualprocrastinator/whetstone
+- research-paper-pilot: Claude Code / Codex skill that takes a research project to a submitted paper. https://github.com/punctualprocrastinator/research-paper-pilot
+- dead-salmon-fpr: calibrated null-model test for interpretability claims. https://github.com/punctualprocrastinator/dead-salmon-fpr
+- mechanistic-tamper-verification: detects tampered model updates by where their weight change concentrates. https://github.com/punctualprocrastinator/mechanistic-tamper-verification
+- neuron_autolabel: auto-interpretability for LLaMA-style models, scored by detection AUC.
+
+SKILLS
+Languages: Python, CUDA, MATLAB, Bash, JavaScript
+Frameworks: PyTorch, JAX, TransformerLens, NNsight, Hugging Face, DevInterp, LangChain, Docker, SLURM (multi-node, 8x B200)
+Methods: QK/OV circuit decomposition, direct logit attribution, activation patching, steering vectors (CAA), logit lens, linear probing, SAE feature attribution, nanoGCG and suffix-gradient attacks, Hutchinson Hessian trace, SVD and spectral dynamics

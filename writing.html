@@ -17,11 +17,11 @@
 <link rel="canonical" href="https://punctualprocrastinator.github.io/writing.html">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preload" href="fonts/Libron-Regular.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="main.css?v=22">
+<link rel="stylesheet" href="main.css?v=23">
 <!-- Applies a stored theme override before first paint, so there is no flash. -->
 <script>try{var t=localStorage.getItem("theme");
 if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
-<script src="app.js?v=22" defer></script>
+<script src="app.js?v=23" defer></script>
 </head>
 
 <body data-art="writing">
@@ -37,9 +37,10 @@ if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)
         <li><a href="index.html">Home</a></li>
         <li><a href="safety.html">AI Safety<span class="nav-long"> Research</span></a></li>
         <li><a href="capability.html">AI Capability<span class="nav-long"> Research</span></a></li>
-        <li><a href="resume.html">Resume</a></li>
+        <li><a href="resume.html">CV</a></li>
         <li><a href="writing.html" aria-current="page">Writing</a></li>
         <li><a href="teaching.html">Teaching</a></li>
+        <li class="downloads"><a href="cv.pdf" title="The full CV, two pages.">CV (PDF)</a><span class="sep" aria-hidden="true">&middot;</span><span class="resumes">Resume: <a href="resume-one-page.pdf" title="One page, typeset, as a PDF.">for humans</a><span class="sep" aria-hidden="true">&middot;</span><a href="resume.txt" title="Plain text. No columns, no fonts, nothing to parse around.">for clankers</a></span></li>
     </ul>
 </nav>
 <div class="artwork" aria-hidden="true">
@@ -94,6 +95,7 @@ if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)
     <article class="log">
         <h3>Safety is a property of the harness, not only the model</h3>
         <time class="when" datetime="2026-10-13">13 October 2026</time>
+        <p class="tldr"><span class="k">TL;DR</span> A model&rsquo;s safety depends on the harness it runs in, not only on its weights. I am moving to control and interpretability for capability that comes from scaffolding.</p>
         <p>Two things changed where I think the risk sits: the Hugging Face
     attacks, and the Fable GitHub incident. Neither turned on a base model
     deciding to do something harmful. Both turned on what the model was wired
@@ -114,6 +116,7 @@ if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)
     <article class="log">
         <h3>Five workshop papers in one cycle</h3>
         <time class="when" datetime="2026-10-13">13 October 2026</time>
+        <p class="tldr"><span class="k">TL;DR</span> Five workshop papers this cycle: three at NeurIPS with Manan, two at ATTRIB from Lexsi. My favorite is a negative result about instruments the field trusts.</p>
         <p>Three at NeurIPS with <a href="https://manan-wadhwa.github.io" title="Co-founder of Redarc Labs, and co-author on most of the NeurIPS papers." target="_blank" rel="noopener">Manan</a> (New in ML, Interpretability as a Science,
     Interpreting Agent Behavior), and two at ATTRIB from the <a href="https://www.lexsi.ai" title="A frontier AI research lab. I work in its Tabular Foundation Models Lab." target="_blank" rel="noopener">Lexsi</a> side.
     Workshops are where you find out whether a result survives contact with
@@ -129,6 +132,7 @@ if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)
     <article class="log">
         <h3>Whetstone is public</h3>
         <time class="when" datetime="2026-10-10">10 October 2026</time>
+        <p class="tldr"><span class="k">TL;DR</span> The red team versus blue team harness from MARS is open source, with docs. Most of the work went into making runs comparable.</p>
         <p>The harness behind the <a href="https://caish.org/mars" title="Run by the Cambridge AI Safety Hub. Lindley Lentati's track on white-box techniques for AI control." target="_blank" rel="noopener">MARS</a> co-evolution experiments is
     <a href="https://github.com/punctualprocrastinator/whetstone" target="_blank" rel="noopener">up</a>,
     with <a href="https://punctualprocrastinator.github.io/whetstone/" target="_blank" rel="noopener">docs</a>.
@@ -143,6 +147,7 @@ if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)
     <article class="log">
         <h3>What the MARS result actually says</h3>
         <time class="when" datetime="2026-09-20">20 September 2026</time>
+        <p class="tldr"><span class="k">TL;DR</span> Probes do find the jailbreak direction. Their false positive rate is the problem, so a deployed system needs a monitor cascade, not one probe.</p>
         <p>At <a href="https://caish.org/mars" title="Run by the Cambridge AI Safety Hub. Lindley Lentati's track on white-box techniques for AI control." target="_blank" rel="noopener">MARS</a> we spent a while attacking linear compliance probes with
     adaptive attackers (suffix-gradient, discrete search, activation steering).
     The expectation was that a determined attacker evades the monitor and
@@ -166,6 +171,7 @@ if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)
     <article class="log">
         <h3>Teaching without the libraries</h3>
         <time class="when" datetime="2026-08-15">15 August 2026</time>
+        <p class="tldr"><span class="k">TL;DR</span> We teach interpretability with raw PyTorch hooks, so students learn where the residual stream is rather than which function returns it.</p>
         <p>Redarc Fellows runs on PyTorch hooks and Hugging Face, with no
     interpretability library in the stack. People ask why, usually politely.</p>
 
@@ -197,7 +203,7 @@ if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)
 </main>
 
 <footer>
-    <p><a href="resume.html">Resume</a> &middot;
+    <p><a href="resume.html">CV</a> &middot;
        <a href="https://github.com/punctualprocrastinator" target="_blank" rel="noopener">GitHub</a> &middot;
        <a href="https://linkedin.com/in/syntaxsavant" rel="me">LinkedIn</a></p>
     <p class="keywords">Shivam Dubey &middot; AI safety &middot; mechanistic interpretability &middot; adversarial robustness &middot; tabular foundation models &middot; Lexsi Labs &middot; IIT Madras</p>
