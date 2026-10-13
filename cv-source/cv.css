@@ -83,7 +83,7 @@ ol.pubs li::marker { font-size: 8pt; color: var(--muted); }
 .cols .k { font-weight: 700; }
 
 /* one-pager: tighter */
-.compact { font-size: 9.7pt; line-height: 1.36; }
+.compact { font-size: 9.45pt; line-height: 1.33; }
 .compact h2 { font-size: 8.6pt; }
 .compact h2 { margin: 9pt 0 3.5pt; }
 .compact .entry { margin-bottom: 4pt; }
