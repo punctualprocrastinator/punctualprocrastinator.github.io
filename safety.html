@@ -17,11 +17,11 @@
 <link rel="canonical" href="https://punctualprocrastinator.github.io/safety.html">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preload" href="fonts/Libron-Regular.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="main.css?v=16">
+<link rel="stylesheet" href="main.css?v=17">
 <!-- Applies a stored theme override before first paint, so there is no flash. -->
 <script>try{var t=localStorage.getItem("theme");
 if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
-<script src="app.js?v=16" defer></script>
+<script src="app.js?v=17" defer></script>
 </head>
 
 <body data-art="safety">
@@ -75,13 +75,14 @@ if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)
         <span class="venue">NeurIPS 2026 &middot; Interpretability as a Science</span>
         <p class="authors">Manan Wadhwa<span class="eq">*</span>, <span class="me">Shivam Dubey</span><span class="eq">*</span></p>
         <p class="abstract">When we look inside a model to see what it has learned, say if it has picked up something like sentiment, we use methods like linear probes, SAEs and concept directions. This paper runs those methods on untrained models, which have learned nothing at all, and finds they report the same confident results. The proposed fix is simple: check every finding against an untrained baseline before trusting it.</p>
-        <p class="links"><a href="https://github.com/punctualprocrastinator" target="_blank" rel="noopener">Code</a></p>
+        <p class="links"><a href="https://github.com/punctualprocrastinator/dead-salmon-fpr" target="_blank" rel="noopener">Code</a></p>
     </article>
 
     <article class="pub" data-cat="safety">
         <h3>Steered Affect Moves a Partner Agent&rsquo;s Activations, and the Logistic Probe That Reads It Returns a Tie-Break, Not an Estimate</h3>
         <span class="venue">NeurIPS 2026 &middot; Interpreting Agent Behavior</span>
         <p class="authors">Manan Wadhwa<span class="eq">*</span>, <span class="me">Shivam Dubey</span><span class="eq">*</span>, Debojeet Ghosh, Shreyansh Kumar, Ayushman Garg</p>
+        <p class="links"><a href="https://github.com/punctualprocrastinator/affective-coupling-llm-agents" target="_blank" rel="noopener">Code</a></p>
         <p class="abstract">As AI agents become progressively more talkative around each other, it matters whether one agent&rsquo;s emotional tone can carry over into another. We pushed one AI agent into an emotional state such as sadness or fear, and found measurable changes inside the agent it was talking to. We also found a common method for detecting these changes gives different answers when run twice on similar data. Once we accounted for that, only the effect for sadness held up clearly. The broader point is that some standard tools for inspecting AI systems need stronger checks before people rely on their results.</p>
     </article>
 
@@ -90,7 +91,7 @@ if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)
         <span class="venue">ICML 2026 &middot; GenBio Workshop</span>
         <p class="authors">Manan Wadhwa<span class="eq">*</span>, <span class="me">Shivam Dubey</span><span class="eq">*</span></p>
         <p class="abstract">BLAST detects 0% of 643 ProteinMPNN redesigns; a frozen ESM-2 linear probe detects 93.9% with no retraining. SAE analysis shows why: redesign amplifies toxin structural features rather than obscuring them. A four-tier attack taxonomy places the security boundary at gradient access (6.1% evasion black-box against 100% white-box), and direct probe attribution pinpoints Layer 32 as the detection bottleneck (<em>r</em> = 0.992).</p>
-        <p class="links"><a href="https://openreview.net/forum?id=Nb3y9BzCOi" target="_blank" rel="noopener">OpenReview</a> <a href="https://github.com/punctualprocrastinator" target="_blank" rel="noopener">Code</a></p>
+        <p class="links"><a href="https://openreview.net/forum?id=Nb3y9BzCOi" target="_blank" rel="noopener">OpenReview</a> <a href="https://github.com/punctualprocrastinator/cautious-goggles" target="_blank" rel="noopener">Code</a></p>
     </article>
 
     <article class="pub" data-cat="safety">
@@ -98,7 +99,7 @@ if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)
         <span class="venue">TAIS 2026 &middot; Oxford</span>
         <p class="authors"><span class="me">Shivam Dubey</span>, Jason Hoelscher-Obermaier</p>
         <p class="abstract">Geometric divergence of ViTs and ResNets under seven adversarial attack algorithms, measured with Hutchinson&rsquo;s stochastic Hessian trace estimator. Input-space and parameter-space curvature differ by five orders of magnitude, which means standard robustness metrics misclassify internal model instability.</p>
-        <p class="links"><a href="https://github.com/punctualprocrastinator" target="_blank" rel="noopener">Code</a></p>
+        <p class="links"><a href="https://github.com/punctualprocrastinator/Strong-Adversarial-Attacks-Are-Characterized-by-Large-Loss-Landscape-Curvatures" target="_blank" rel="noopener">Code</a></p>
     </article>
 
     <article class="pub" data-cat="safety">
@@ -106,7 +107,7 @@ if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)
         <span class="venue">NeurIPS 2025 &middot; Reliable ML Workshop</span>
         <p class="authors"><span class="me">Shivam Dubey</span></p>
         <p class="abstract">Fourier Gradient Regularization penalises high-frequency input-gradients during training, doubling adversarial robustness on ResNet-18 with CIFAR-10 at minimal cost to clean accuracy.</p>
-        <p class="links"><a href="https://github.com/punctualprocrastinator" target="_blank" rel="noopener">Code</a></p>
+        <p class="links"><a href="https://github.com/punctualprocrastinator/Spectral-Regularization-as-a-Safety-Critical-Inductive-Bias" target="_blank" rel="noopener">Code</a></p>
     </article>
 
     <article class="pub" data-cat="safety">
@@ -121,6 +122,7 @@ if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)
         <h3>Distance to the Boundary Is Not Steering Resistance</h3>
         <span class="venue"><span class="status">Under review &middot; UniReps</span></span>
         <p class="authors">Manan Wadhwa<span class="eq">*</span>, <span class="me">Shivam Dubey</span><span class="eq">*</span></p>
+        <p class="links"><a href="https://github.com/punctualprocrastinator/alignment-elasticity" target="_blank" rel="noopener">Code</a></p>
         <p class="abstract">How far a representation sits from a decision boundary is not the same quantity as how hard it is to steer, and treating the first as a proxy for the second gives the wrong answer.</p>
     </article>
 
@@ -136,7 +138,7 @@ if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)
         <span class="venue"><span class="status">2026 &middot; safety circuits, Qwen2.5-7B</span></span>
         <p class="authors"><span class="me">Shivam Dubey</span></p>
         <p class="abstract">A compliance-score classifier reaches AUC 0.943 (Cohen's <em>d</em> = 2.636) with zero false positives across five benign categories: a working zero-shot white-box harm detector. Unconditional bipolar assertion, amplifying refusal heads while zero-ablating compliance heads at L25-H4, holds attack success to 33% under nanoGCG against 36&ndash;42% for conditional gating and 66% undefended: the precision of conditional gating is itself a structural vulnerability under white-box optimization. Layer 25 shows extreme intra-layer antagonism between the two head types.</p>
-        <p class="links"><a href="https://github.com/punctualprocrastinator" target="_blank" rel="noopener">Code</a></p>
+        <p class="links"><a href="https://github.com/punctualprocrastinator/bipolar_defense_repo" target="_blank" rel="noopener">Code</a></p>
     </article>
 
     <article class="pub" data-cat="safety">
@@ -144,7 +146,7 @@ if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)
         <span class="venue"><span class="status">2026 &middot; OLMo-3-7B-Think</span></span>
         <p class="authors"><span class="me">Shivam Dubey</span></p>
         <p class="abstract">A linear probe on the residual stream predicts answer correctness before any reasoning token is emitted (AUC 0.780, 5-fold CV). The model commits before it reasons, which makes the chain of thought post-hoc rationalization rather than deliberation. A functional frustration direction at Layer 15 transfers cross-lingually across six languages (<em>p</em> = 0.0017): a sub-linguistic computational state invisible in the output but readable mechanistically, usable either as a monitor or as an attack surface.</p>
-        <p class="links"><a href="https://github.com/punctualprocrastinator" target="_blank" rel="noopener">Code</a></p>
+        <p class="links"><a href="https://github.com/punctualprocrastinator/thinking-model-emotions" target="_blank" rel="noopener">Code</a></p>
     </article>
 
     <h2>Work in progress</h2>
@@ -196,18 +198,23 @@ if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)
                 <span class="note">Red&times;Blue harness for adversarial safety-monitor research, built for the MARS fellowship.</span></span>
         </li>
         <li>
+            <span class="date">Skill</span>
+            <span class="what"><a href="https://github.com/punctualprocrastinator/research-paper-pilot" target="_blank" rel="noopener">research-paper-pilot</a>
+                <span class="note">A Claude Code and Codex skill that takes a research project to a submitted paper: blind review, number and citation checks.</span></span>
+        </li>
+        <li>
             <span class="date">Package</span>
-            <span class="what"><a href="https://github.com/punctualprocrastinator" target="_blank" rel="noopener">neuron_autolabel</a>
+            <span class="what">neuron_autolabel
                 <span class="note">Auto-interpretability for LLaMA-style models, scored by detection AUC rather than simulation.</span></span>
         </li>
         <li>
             <span class="date">Method</span>
-            <span class="what"><a href="https://github.com/punctualprocrastinator" target="_blank" rel="noopener">dead-salmon-fpr</a>
+            <span class="what"><a href="https://github.com/punctualprocrastinator/dead-salmon-fpr" target="_blank" rel="noopener">dead-salmon-fpr</a>
                 <span class="note">Implementation of the calibrated null-model test.</span></span>
         </li>
         <li>
             <span class="date">Tool</span>
-            <span class="what"><a href="https://github.com/punctualprocrastinator" target="_blank" rel="noopener">mechanistic-tamper-verification</a>
+            <span class="what"><a href="https://github.com/punctualprocrastinator/mechanistic-tamper-verification" target="_blank" rel="noopener">mechanistic-tamper-verification</a>
                 <span class="note">Two-tier integrity verifier for tampered model updates.</span></span>
         </li>
     </ul>
